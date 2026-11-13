@@ -1,0 +1,134 @@
+/* ==========================================================================
+   DESIGN: minimal — one quiet column.
+
+   No frame or shadow, a centred header, "Step 2 of 4" over a thin bar in place
+   of the numbered steps (which stay for a screen reader), larger headings,
+   softly filled controls, round buttons, and the order summary folded into a
+   bar under the step at every width.
+
+   The card still paints its own surface: the text colours are chosen for it,
+   and a theme's page may be any colour.
+   ========================================================================== */
+
+.pcp-ui.pcp-ui[data-pcp-design="minimal"] {
+  --pcp-radius: 12px;
+  --pcp-radius-md: 16px;
+  --pcp-radius-lg: 24px;
+
+  &.pcp-wizard,
+  &.pcp-account,
+  &.pcp-summary {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  /* Controls: filled, and edged only as strongly as a control must be. */
+  & .pcp-input.pcp-input,
+  & .pcp-counter { background-color: var(--pcp-surface-2); }
+  & .pcp-input.pcp-input:focus,
+  & .pcp-counter:focus-within { background-color: var(--pcp-surface); }
+  & .pcp-counter .pcp-input.pcp-input { background-color: transparent; }
+
+  & .pcp-btn.pcp-btn,
+  & .pcp-chip.pcp-chip { border-radius: var(--pcp-radius-pill); }
+
+  & .pcp-card,
+  & .pcp-review-list { border-color: transparent; background: var(--pcp-surface-2); }
+  & .pcp-review-row:nth-child(even) { background: transparent; }
+  & .pcp-review-row + .pcp-review-row { border-color: var(--pcp-border); }
+  & .pcp-acc-title { text-align: center; }
+
+  /* ------------------------------------------------------------------------
+     The wizard.
+     ---------------------------------------------------------------------- */
+  & .pcp-header { align-items: center; flex-direction: column; gap: var(--pcp-space-3); text-align: center; }
+  & .pcp-header-badge { border-radius: 16px; height: 52px; width: 52px; }
+  & .pcp-title { font-size: var(--pcp-text-2xl); letter-spacing: -.025em; }
+
+  /* The bar, and the words over it. The list is still there for a screen
+     reader, which is why it is clipped and not removed. */
+  & .pcp-stepper { margin-inline: auto; max-width: 280px; text-align: center; }
+  & .pcp-progress-text {
+    color: var(--pcp-text-muted);
+    display: block;
+    font-size: var(--pcp-text-xs);
+    font-weight: 700;
+    letter-spacing: .08em;
+    margin-block-end: var(--pcp-space-2);
+    text-transform: uppercase;
+  }
+  & .pcp-progress { display: block; }
+  & .pcp-steps {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+  }
+
+  & .pcp-h { font-size: var(--pcp-text-2xl); letter-spacing: -.025em; text-align: center; }
+
+  & .pcp-stay,
+  & .pcp-quick { justify-content: center; }
+
+  & .pcp-space-card { background: var(--pcp-surface-2); border-color: transparent; box-shadow: none; }
+  & .pcp-space-card:hover:not(.is-disabled) { background: var(--pcp-surface); box-shadow: var(--pcp-shadow-1); }
+  & .pcp-pay-option { background: var(--pcp-surface-2); border-color: transparent; }
+
+  /* One button that carries the step, full width; the way back under it. */
+  & .pcp-actions { align-items: stretch; border: 0; flex-direction: column-reverse; padding: 0; }
+  & .pcp-actions .pcp-btn { width: 100%; }
+  & .pcp-actions .pcp-btn.pcp-btn-primary { min-height: 54px; font-size: var(--pcp-text-md); }
+  & .pcp-actions .pcp-btn.pcp-back { align-self: center; min-height: 40px; width: auto; }
+
+  /* Never two columns. */
+  &.pcp-wizard.has-order:not(.is-complete) .pcp-body { grid-template-columns: minmax(0, 1fr); }
+  & .pcp-body { gap: var(--pcp-space-5); }
+
+  /* The summary, folded into a bar under the step, at every width. */
+  &.pcp-wizard .pcp-order {
+    background: var(--pcp-surface);
+    border-color: var(--pcp-border);
+    box-shadow: var(--pcp-shadow-lg);
+    inset-block: auto var(--pcp-space-3);
+    padding: 0;
+    position: sticky;
+    z-index: 3;
+  }
+  &.pcp-wizard .pcp-order-toggle {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-radius: inherit;
+    color: var(--pcp-text);
+    cursor: pointer;
+    display: flex;
+    font: inherit;
+    gap: var(--pcp-space-3);
+    margin: 0;
+    min-height: 60px;
+    padding: 10px 20px;
+    text-align: start;
+    width: 100%;
+  }
+  &.pcp-wizard .pcp-order-toggle-label { color: var(--pcp-text-muted); flex: 1 1 auto; font-size: var(--pcp-text-sm); font-weight: 600; }
+  &.pcp-wizard .pcp-order-toggle-total { font-size: var(--pcp-text-lg); font-variant-numeric: tabular-nums; font-weight: 800; }
+  &.pcp-wizard .pcp-order-toggle-chevron { height: 20px; transition: transform var(--pcp-fast) var(--pcp-ease); width: 20px; }
+  &.pcp-wizard .pcp-order.is-open .pcp-order-toggle-chevron { transform: rotate(180deg); }
+  &.pcp-wizard .pcp-order-body { max-height: 60vh; overflow: auto; padding: 0 20px 20px; }
+  &.pcp-wizard .pcp-order:not(.is-open) .pcp-order-body { display: none; }
+  &.pcp-wizard .pcp-order-body .pcp-order-title { display: none; }
+
+  &.pcp-wizard[data-step="confirm"] .pcp-order { box-shadow: none; order: -1; position: static; }
+  &.pcp-wizard[data-step="confirm"] .pcp-order-toggle { display: none; }
+  &.pcp-wizard[data-step="confirm"] .pcp-order .pcp-order-body { display: block; max-height: none; padding: 20px; }
+  &.pcp-wizard[data-step="confirm"] .pcp-order-body .pcp-order-title { display: block; }
+}
+
+@container pcp-wizard (min-width: 720px) {
+  .pcp-ui.pcp-ui.pcp-wizard[data-pcp-design="minimal"] { --pcp-pad: var(--pcp-space-7) clamp(24px, 8%, 56px); }
+  /* The classic layout makes the summary stick to the top; here it is a bar at the bottom. */
+  .pcp-ui.pcp-ui.pcp-wizard[data-pcp-design="minimal"].has-order:not(.is-complete) .pcp-order { inset-block: auto var(--pcp-space-3); }
+}

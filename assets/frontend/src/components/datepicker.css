@@ -1,0 +1,88 @@
+/* ==========================================================================
+   CALENDAR
+   The calendar is appended to <body>, outside every wrapper. The script adds
+   `.pcp-fp` to it, which gives it the tokens above and lifts each rule here one
+   class over the library's own, so the order the two stylesheets load in does
+   not matter. The form's own colour and its design are copied onto it by the
+   script, so it matches the form it opened from.
+   ========================================================================== */
+.pcp-fp.flatpickr-calendar {
+  background: var(--pcp-surface);
+  border: 1px solid var(--pcp-border);
+  border-radius: var(--pcp-radius-lg);
+  box-shadow: var(--pcp-shadow-popup);
+  color: var(--pcp-text);
+  padding: 4px;
+  font-family: var(--pcp-font);
+  font-size: var(--pcp-text-sm);
+  line-height: 1.4;
+}
+.pcp-fp.flatpickr-calendar.arrowTop::before { border-bottom-color: var(--pcp-border); }
+.pcp-fp.flatpickr-calendar.arrowTop::after { border-bottom-color: var(--pcp-surface); }
+.pcp-fp.flatpickr-calendar.arrowBottom::before { border-top-color: var(--pcp-border); }
+.pcp-fp.flatpickr-calendar.arrowBottom::after { border-top-color: var(--pcp-surface); }
+
+.pcp-fp .flatpickr-months .flatpickr-month,
+.pcp-fp .flatpickr-weekdays,
+.pcp-fp span.flatpickr-weekday,
+.pcp-fp .flatpickr-current-month .flatpickr-monthDropdown-months,
+.pcp-fp .flatpickr-innerContainer { background: transparent; }
+
+.pcp-fp .flatpickr-months .flatpickr-month,
+.pcp-fp .flatpickr-current-month,
+.pcp-fp .flatpickr-current-month .flatpickr-monthDropdown-months,
+.pcp-fp .flatpickr-current-month input.cur-year { color: var(--pcp-text); fill: var(--pcp-text); font-weight: 600; }
+.pcp-fp .flatpickr-current-month { font-size: 15px; }
+.pcp-fp .flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month { background: var(--pcp-surface); color: var(--pcp-text); }
+.pcp-fp .flatpickr-current-month .flatpickr-monthDropdown-months:hover,
+.pcp-fp .flatpickr-current-month .numInputWrapper:hover { background: var(--pcp-hover); }
+
+.pcp-fp .flatpickr-months .flatpickr-prev-month,
+.pcp-fp .flatpickr-months .flatpickr-next-month { color: var(--pcp-text); fill: var(--pcp-text); }
+.pcp-fp .flatpickr-months .flatpickr-prev-month:hover svg,
+.pcp-fp .flatpickr-months .flatpickr-next-month:hover svg { fill: var(--pcp-primary-text); }
+.pcp-fp .numInputWrapper span { border-color: var(--pcp-border); }
+.pcp-fp .numInputWrapper span.arrowUp::after { border-bottom-color: var(--pcp-text-muted); }
+.pcp-fp .numInputWrapper span.arrowDown::after { border-top-color: var(--pcp-text-muted); }
+
+.pcp-fp span.flatpickr-weekday { color: var(--pcp-text-muted); font-size: 12px; font-weight: 600; }
+
+.pcp-fp .flatpickr-day { border-radius: var(--pcp-radius-sm); color: var(--pcp-text); font-variant-numeric: tabular-nums; font-weight: 500; }
+.pcp-fp .flatpickr-day:hover,
+.pcp-fp .flatpickr-day:focus { background: var(--pcp-primary-soft); border-color: var(--pcp-primary-soft); color: var(--pcp-text); }
+.pcp-fp .flatpickr-day.today { border-color: var(--pcp-primary-text); }
+.pcp-fp .flatpickr-day.today:hover,
+.pcp-fp .flatpickr-day.today:focus { background: var(--pcp-primary-soft); border-color: var(--pcp-primary-text); color: var(--pcp-text); }
+.pcp-fp .flatpickr-day.selected,
+.pcp-fp .flatpickr-day.selected:hover,
+.pcp-fp .flatpickr-day.selected:focus,
+.pcp-fp .flatpickr-day.startRange,
+.pcp-fp .flatpickr-day.endRange {
+  background: var(--pcp-primary);
+  border-color: var(--pcp-primary);
+  color: var(--pcp-primary-contrast);
+}
+.pcp-fp .flatpickr-day.prevMonthDay,
+.pcp-fp .flatpickr-day.nextMonthDay { color: var(--pcp-text-muted); }
+.pcp-fp .flatpickr-day.flatpickr-disabled,
+.pcp-fp .flatpickr-day.flatpickr-disabled:hover {
+  background: transparent;
+  border-color: transparent;
+  color: color-mix(in srgb, var(--pcp-text-muted) 55%, var(--pcp-surface));
+}
+.pcp-fp .flatpickr-day:focus-visible { outline: 2px solid var(--pcp-focus); outline-offset: 1px; }
+
+.pcp-fp.flatpickr-calendar.hasTime .flatpickr-time { border-top-color: var(--pcp-border); }
+.pcp-fp .flatpickr-time input,
+.pcp-fp .flatpickr-time .flatpickr-time-separator,
+.pcp-fp .flatpickr-time .flatpickr-am-pm { color: var(--pcp-text); font-weight: 500; }
+.pcp-fp .flatpickr-time input:hover,
+.pcp-fp .flatpickr-time input:focus,
+.pcp-fp .flatpickr-time .flatpickr-am-pm:hover,
+.pcp-fp .flatpickr-time .flatpickr-am-pm:focus { background: var(--pcp-primary-soft); }
+.pcp-fp .flatpickr-time .numInputWrapper span.arrowUp::after { border-bottom-color: var(--pcp-text-muted); }
+.pcp-fp .flatpickr-time .numInputWrapper span.arrowDown::after { border-top-color: var(--pcp-text-muted); }
+
+/* The minimal design draws its days as circles, like its buttons. */
+.pcp-fp[data-pcp-design="minimal"] .flatpickr-day { border-radius: 50%; }
+.pcp-fp[data-pcp-design="minimal"].flatpickr-calendar { border-color: transparent; }

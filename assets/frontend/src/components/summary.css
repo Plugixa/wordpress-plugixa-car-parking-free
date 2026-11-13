@@ -1,0 +1,104 @@
+/* ==========================================================================
+   SUMMARY: a booking's invoice, with print and a way to pay what is owed.
+   ========================================================================== */
+.pcp-ui.pcp-ui {
+
+  & .pcp-summary-doc { container-name: pcp-doc; container-type: inline-size; overflow-x: auto; padding: var(--pcp-space-6); }
+  & .pcp-summary-actions,
+  & .pcp-pay-buttons { display: flex; flex-wrap: wrap; gap: var(--pcp-space-2); }
+  & .pcp-summary-actions { margin-block-start: var(--pcp-space-4); }
+  & .pcp-summary-pay { background: var(--pcp-surface-2); margin-block-start: var(--pcp-space-4); padding: var(--pcp-space-5); }
+  & .pcp-summary-pay > * + * { margin-block-start: var(--pcp-space-3); }
+  & .pcp-pay-msg:empty { display: none; }
+
+  /* The invoice is written with inline styles, for renderers that read no
+     stylesheet. On the page, these put it in the site's font and colours. Only
+     `!important` can out-rank an inline style, so this is the one place it is
+     used for anything but [hidden] and print. */
+  & .pcp-inv {
+    color: var(--pcp-text) !important;
+    font-family: var(--pcp-font) !important;
+    font-size: 14.5px !important;
+    max-width: none !important;
+  }
+  & .pcp-inv .pcp-inv-table { width: 100%; }
+  & .pcp-inv .pcp-inv-muted { color: var(--pcp-text-muted) !important; }
+  & .pcp-inv .pcp-inv-caption { letter-spacing: .06em; }
+  & .pcp-inv .pcp-inv-ref { font-family: var(--pcp-font-mono); }
+  & .pcp-inv .pcp-inv-party { overflow-wrap: anywhere; }
+  & .pcp-inv .pcp-inv-head { background: var(--pcp-surface-2) !important; }
+  & .pcp-inv .pcp-inv-cell { border-block-end-color: var(--pcp-border) !important; }
+  & .pcp-inv .pcp-inv-total { border-block-start-color: var(--pcp-text) !important; }
+  & .pcp-inv .pcp-inv-totals td:last-child,
+  & .pcp-inv .pcp-inv-items td:not(:first-child) { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  @container pcp-doc (max-width: 480px) {
+    /* The totals take the full width instead of the right-hand 45%. */
+    & .pcp-inv .pcp-inv-gap { display: none; }
+    & .pcp-inv .pcp-inv-gap + td { width: 100% !important; }
+    /* Customer and booking: one above the other instead of side by side. */
+    & .pcp-inv .pcp-inv-party { display: block; padding: 0 0 12px !important; width: 100% !important; }
+    & .pcp-inv .pcp-inv-items th,
+    & .pcp-inv .pcp-inv-items td { padding-inline: 4px !important; }
+  }
+
+  @media (max-width: 480px) {
+    &.pcp-account,
+    &.pcp-summary { --pcp-pad: var(--pcp-space-4); }
+    & .pcp-summary-doc,
+    & .pcp-summary-pay,
+    & .pcp-acc-lookup { padding: var(--pcp-space-4); }
+    & .pcp-summary-actions .pcp-btn,
+    & .pcp-pay-buttons .pcp-btn,
+    & .pcp-acc-submit .pcp-btn { flex: 1 1 auto; width: 100%; }
+  }
+
+  @media print {
+    &.pcp-summary { background: none; border: 0; border-radius: 0; box-shadow: none; max-width: none; padding: 0; }
+    & .pcp-summary-doc { background: none; border: 0; border-radius: 0; overflow: visible; padding: 0; }
+    & .no-print { display: none !important; }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Printing a summary prints the invoice and nothing else.
+
+   The page around it belongs to the theme: its header, menu, page title,
+   sidebar and footer would all print too. On a page that holds an invoice,
+   everything is left out except the invoice itself and the boxes it sits in,
+   and those boxes lose their own spacing so the invoice starts at the top of
+   the sheet. Written in CSS rather than in the Print button's script so that
+   the browser's own Print (Ctrl+P) gives the same sheet.
+   -------------------------------------------------------------------------- */
+@media print {
+  body:has(.pcp-summary-doc) *:not(:has(.pcp-summary-doc), .pcp-summary-doc, .pcp-summary-doc *) {
+    display: none !important;
+  }
+  body:has(.pcp-summary-doc),
+  body:has(.pcp-summary-doc) :has(.pcp-summary-doc) {
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+  /* The invoice's shaded header row and status badge are part of it, not decoration. */
+  .pcp-ui.pcp-ui .pcp-summary-doc {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  /* A sheet's colours, whatever scheme the screen is in. */
+  .pcp-ui.pcp-ui.pcp-summary {
+    --pcp-surface: #fff;
+    --pcp-surface-2: #f8fafc;
+    --pcp-text: #0f172a;
+    --pcp-text-muted: #556274;
+    --pcp-border: #e2e8f0;
+    color-scheme: light;
+  }
+}
+
+@page { margin: 14mm; }

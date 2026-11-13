@@ -1,0 +1,165 @@
+/* ==========================================================================
+   SCOPED RESET, and the wrappers' own card.
+   Element selectors are inside :where(), so they weigh nothing.
+   ========================================================================== */
+.pcp-ui.pcp-ui {
+  box-sizing: border-box;
+  color: var(--pcp-text);
+  font-family: var(--pcp-font);
+  font-size: var(--pcp-text-md);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-align: start;
+  text-indent: 0;
+  text-transform: none;
+  text-shadow: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  & *,
+  & *::before,
+  & *::after { box-sizing: border-box; }
+
+  & :where(h2, h3, h4, p, dl, dt, dd, ul, ol, li, fieldset, legend, figure, form, label, table, blockquote) {
+    margin: 0;
+    padding: 0;
+  }
+
+  & :where(h2, h3, h4) {
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: 1.3;
+    text-transform: none;
+    text-wrap: balance;
+  }
+
+  /* Themes hang rules, numbers and bullets off these. */
+  & :where(h2, h3, h4, li, legend)::before,
+  & :where(h2, h3, h4, li, legend)::after { content: none; }
+
+  & :where(ul, ol) { list-style: none; }
+  & :where(fieldset) { border: 0; min-width: 0; }
+  & :where(legend) { float: none; width: auto; }
+  & :where(label) { color: inherit; font: inherit; }
+  & :where(dt, dd) { font: inherit; }
+
+  & :where(button, input, select, textarea) {
+    box-shadow: none;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    margin: 0;
+    max-width: 100%;
+    text-transform: none;
+  }
+
+  & :where(a) {
+    background: none;
+    box-shadow: none;
+    color: var(--pcp-primary-text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  & :where(table) {
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: inherit;
+    margin: 0;
+    table-layout: auto;
+  }
+
+  & :where(thead, tbody, tr) { background: none; border: 0; }
+
+  & :where(th, td) {
+    background: none;
+    border: 0;
+    font: inherit;
+    padding: 0;
+    text-align: start;
+  }
+
+  & :where(svg) { display: block; }
+
+  & [hidden] { display: none !important; }
+
+  & :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--pcp-focus);
+    outline-offset: 2px;
+  }
+
+  /* Read by a screen reader, seen by nobody. */
+  & .pcp-sr {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  /* ------------------------------------------------------------------------
+     The wrappers. Each paints its own card, so the text colours above are
+     always on the surface they were chosen for, whatever the theme's page
+     colour is and whichever colour scheme the visitor uses.
+     ---------------------------------------------------------------------- */
+  &.pcp-wizard,
+  &.pcp-account,
+  &.pcp-summary,
+  &.pcp-notice {
+    background: var(--pcp-surface);
+    border: 1px solid var(--pcp-border);
+    border-radius: var(--pcp-radius-lg);
+    box-shadow: var(--pcp-shadow-1);
+    padding: var(--pcp-pad);
+  }
+
+  /* Every public card is as wide as the place it is put in: the theme's column, a
+     Group block, a page builder's section. Nothing caps it below that. */
+  &.pcp-wizard { width: 100%; }
+
+  &.pcp-notice { padding: var(--pcp-space-4); }
+}
+
+/* --------------------------------------------------------------------------
+   The wizard's own breakpoints are asked of the shell around the card.
+   -------------------------------------------------------------------------- */
+.pcp-wizard-shell { container-name: pcp-wizard; container-type: inline-size; }
+
+/* The account and summary cards and the notices fill their container too, at no
+   weight at all, so a theme that wants them narrower still can. */
+:where(.pcp-ui.pcp-account, .pcp-ui.pcp-summary, .pcp-ui.pcp-notice) { width: 100%; }
+
+/* A block theme narrows everything in the post content to its "content size", a
+   column made for reading (645px in Twenty Twenty-Five), at no weight. The
+   plugin's cards hold forms, tables and lists that need the room, so they
+   take the full width of that container instead. A block given left or right
+   alignment, or already full width, keeps what its alignment says. */
+:is(.is-layout-constrained, .wp-block-post-content) > :is(.pcp-ui, .pcp-wizard-shell),
+:is(.is-layout-constrained, .wp-block-post-content) > .wp-block-plugixacarparking-booking-form:not(.alignleft, .alignright, .alignfull) {
+  max-width: none;
+}
+
+/* A small icon drawn in the current colour from one of the --pcp-icon-* masks.
+   Written once here and borrowed by every rule that draws one. */
+.pcp-ui.pcp-ui .pcp-ico {
+  background-color: currentColor;
+  display: inline-block;
+  flex: 0 0 auto;
+  height: 18px;
+  -webkit-mask: var(--pcp-icon, none) center / contain no-repeat;
+  mask: var(--pcp-icon, none) center / contain no-repeat;
+  width: 18px;
+}

@@ -1,0 +1,99 @@
+/* ==========================================================================
+   DESIGN: classic — and the layout every design falls back to.
+
+   A card with the numbered steps across the top, the step in the middle and
+   the order summary beside it once the form is wide enough (720px of card).
+   On a narrow card the summary becomes a bar at the bottom of the screen that
+   shows the total and opens on a tap.
+
+   These rules carry no design attribute, so they are what split uses below
+   its own breakpoint. Minimal overrides them with its attribute.
+   ========================================================================== */
+
+@container pcp-wizard (min-width: 720px) {
+  /* The second column exists only once the script has drawn the summary. */
+  .pcp-ui.pcp-ui.pcp-wizard.has-order:not(.is-complete) .pcp-body { grid-template-columns: minmax(0, 1fr) minmax(250px, 310px); }
+  .pcp-ui.pcp-ui.pcp-wizard.has-order .pcp-order { inset-block-start: var(--pcp-space-5); position: sticky; }
+}
+
+@container pcp-wizard (min-width: 820px) {
+  .pcp-ui.pcp-ui.pcp-wizard { --pcp-pad: var(--pcp-space-7); }
+}
+
+@container pcp-wizard (max-width: 719.98px) {
+  .pcp-ui.pcp-ui.pcp-wizard { --pcp-pad: var(--pcp-space-5); }
+
+  /* The summary as a bar: the total, and a button that opens the rest. It
+     sticks to the bottom of the screen while the form is on it. */
+  .pcp-ui.pcp-ui.pcp-wizard .pcp-order {
+    background: var(--pcp-surface);
+    box-shadow: var(--pcp-shadow-lg);
+    inset-block-end: var(--pcp-space-3);
+    padding: 0;
+    position: sticky;
+    z-index: 3;
+  }
+  .pcp-ui.pcp-ui.pcp-wizard .pcp-order-toggle {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-radius: inherit;
+    color: var(--pcp-text);
+    cursor: pointer;
+    display: flex;
+    font: inherit;
+    gap: var(--pcp-space-3);
+    margin: 0;
+    min-height: 56px;
+    padding: 10px 16px;
+    text-align: start;
+    width: 100%;
+  }
+  .pcp-ui.pcp-ui.pcp-wizard .pcp-order-toggle-label { color: var(--pcp-text-muted); flex: 1 1 auto; font-size: var(--pcp-text-sm); font-weight: 600; }
+  .pcp-ui.pcp-ui.pcp-wizard .pcp-order-toggle-total { font-size: var(--pcp-text-lg); font-variant-numeric: tabular-nums; font-weight: 800; }
+  .pcp-ui.pcp-ui.pcp-wizard .pcp-order-toggle-chevron { height: 20px; transition: transform var(--pcp-fast) var(--pcp-ease); width: 20px; }
+  .pcp-ui.pcp-ui.pcp-wizard .pcp-order.is-open .pcp-order-toggle-chevron { transform: rotate(180deg); }
+  .pcp-ui.pcp-ui.pcp-wizard .pcp-order-body { max-height: 60vh; overflow: auto; padding: 0 16px 16px; }
+  .pcp-ui.pcp-ui.pcp-wizard .pcp-order:not(.is-open) .pcp-order-body { display: none; }
+  .pcp-ui.pcp-ui.pcp-wizard .pcp-order-body .pcp-order-title { display: none; }
+
+  /* On the last step the price comes before the button that commits to it,
+     open, and not as a bar. */
+  .pcp-ui.pcp-ui.pcp-wizard[data-step="confirm"] .pcp-order { box-shadow: none; order: -1; position: static; }
+  .pcp-ui.pcp-ui.pcp-wizard[data-step="confirm"] .pcp-order-toggle { display: none; }
+  .pcp-ui.pcp-ui.pcp-wizard[data-step="confirm"] .pcp-order .pcp-order-body { display: block; max-height: none; padding: 18px; }
+  .pcp-ui.pcp-ui.pcp-wizard[data-step="confirm"] .pcp-order-body .pcp-order-title { display: block; }
+}
+
+@container pcp-wizard (max-width: 719.98px) {
+  /* Only the current step keeps its label. The others keep theirs for a
+     screen reader. */
+  .pcp-ui.pcp-ui .pcp-step:not(.is-active) .pcp-step-text {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+  }
+  .pcp-ui.pcp-ui .pcp-step.is-active { flex: 0 0 auto; }
+}
+
+@container pcp-wizard (max-width: 560px) {
+  .pcp-ui.pcp-ui.pcp-wizard { --pcp-pad: var(--pcp-space-4); border-radius: var(--pcp-radius-md); }
+  .pcp-ui.pcp-ui .pcp-header { margin-block-end: var(--pcp-space-4); }
+  .pcp-ui.pcp-ui .pcp-title { font-size: 20px; }
+  .pcp-ui.pcp-ui .pcp-h { font-size: var(--pcp-text-lg); }
+  .pcp-ui.pcp-ui .pcp-stepper { margin-block-end: var(--pcp-space-5); }
+  .pcp-ui.pcp-ui .pcp-steps { gap: var(--pcp-space-2); }
+  .pcp-ui.pcp-ui .pcp-step { gap: var(--pcp-space-2); }
+  .pcp-ui.pcp-ui .pcp-step:not(:last-child)::after { min-width: 10px; }
+  .pcp-ui.pcp-ui .pcp-actions { align-items: stretch; flex-direction: column-reverse; }
+  .pcp-ui.pcp-ui .pcp-actions .pcp-btn { width: 100%; }
+  .pcp-ui.pcp-ui .pcp-success-actions .pcp-btn { width: 100%; }
+  .pcp-ui.pcp-ui .pcp-space-card { gap: var(--pcp-space-3); padding: var(--pcp-space-3); }
+  .pcp-ui.pcp-ui .pcp-space-dot { height: 38px; width: 38px; }
+  .pcp-ui.pcp-ui .pcp-success-ref { grid-template-columns: auto; padding-inline: 18px; text-align: center; }
+  .pcp-ui.pcp-ui .pcp-success-ref .pcp-copy { grid-column: 1; grid-row: auto; justify-self: center; }
+}

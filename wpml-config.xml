@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wpml-config>
+    <shortcodes>
+        <shortcode>
+            <tag>plugixa_car_parking</tag>
+            <attributes>
+                <attribute>id</attribute>
+                <attribute>form</attribute>
+                <attribute>location</attribute>
+                <attribute>view</attribute>
+                <attribute>mode</attribute>
+            </attributes>
+        </shortcode>
+    </shortcodes>
+
+    <admin-texts>
+        <key name="plugixacarparking_settings">
+            <key name="offline_instructions" />
+            <key name="customer_confirm_subject" />
+            <key name="customer_confirm_message" />
+            <key name="admin_notify_subject" />
+            <key name="admin_notify_message" />
+        </key>
+    </admin-texts>
+</wpml-config>

@@ -1,0 +1,105 @@
+/* ==========================================================================
+   STEPPER
+   The numbered list is the progress for every design and for a screen reader.
+   Here it is drawn across: marker, label, and a track to the next step that
+   fills with the primary colour once that step is done. The split design turns
+   it on its side; the minimal design hides it from sight and shows the bar.
+
+   The script updates the list in place, never redraws it, so a track filling
+   and a tick appearing are transitions, not a jump.
+   ========================================================================== */
+.pcp-ui.pcp-ui {
+
+  & .pcp-stepper { margin-block-end: var(--pcp-space-6); }
+  & .pcp-steps { align-items: center; display: flex; gap: var(--pcp-space-3); }
+  & .pcp-step {
+    align-items: center;
+    color: var(--pcp-text-muted);
+    display: flex;
+    flex: 1 1 auto;
+    font-size: var(--pcp-text-sm);
+    font-weight: 500;
+    gap: 10px;
+    min-width: 0;
+    transition: color var(--pcp-slow) var(--pcp-ease);
+  }
+  & .pcp-step:last-child { flex: 0 0 auto; }
+  & .pcp-step:not(:last-child)::after {
+    background:
+      linear-gradient(var(--pcp-primary), var(--pcp-primary)) no-repeat 0 0 / 0% 100%,
+      var(--pcp-border);
+    border-radius: 2px;
+    content: "";
+    flex: 1 1 16px;
+    height: 2px;
+    min-width: 16px;
+    transition: background-size var(--pcp-slow) var(--pcp-ease);
+  }
+  &:dir(rtl) .pcp-step:not(:last-child)::after { background-position: 100% 0, 0 0; }
+  & .pcp-step.is-done:not(:last-child)::after { background-size: 100% 100%, auto; }
+
+  & .pcp-step-marker {
+    align-items: center;
+    background: var(--pcp-surface);
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1.5px var(--pcp-border-strong);
+    color: var(--pcp-text-muted);
+    display: flex;
+    flex: 0 0 auto;
+    font-size: var(--pcp-text-sm);
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    height: 32px;
+    justify-content: center;
+    line-height: 1;
+    position: relative;
+    transition: background-color var(--pcp-slow) var(--pcp-ease), box-shadow var(--pcp-slow) var(--pcp-ease), color var(--pcp-slow) var(--pcp-ease);
+    width: 32px;
+  }
+  & .pcp-step-text { display: flex; flex-direction: column; min-width: 0; }
+  & .pcp-step-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* The line under a step's name. Only the split design has room for it. */
+  & .pcp-step-desc { display: none; }
+
+  & .pcp-step.is-active { color: var(--pcp-text); font-weight: 600; }
+  & .pcp-step.is-active .pcp-step-marker {
+    background: var(--pcp-primary);
+    box-shadow: inset 0 0 0 1px var(--pcp-primary-edge), var(--pcp-ring);
+    color: var(--pcp-primary-contrast);
+  }
+  & .pcp-step.is-done { color: var(--pcp-text); }
+  & .pcp-step.is-done .pcp-step-marker {
+    background: var(--pcp-primary-soft);
+    box-shadow: inset 0 0 0 1px var(--pcp-primary-border);
+    color: var(--pcp-primary-text);
+    font-size: 0;
+  }
+  /* A finished step shows a tick in place of its number, popped in. */
+  & .pcp-step.is-done .pcp-step-marker::before {
+    animation: pcp-pop var(--pcp-slow) var(--pcp-ease) both;
+    background-color: currentColor;
+    content: "";
+    height: 16px;
+    -webkit-mask: var(--pcp-icon-check) center / contain no-repeat;
+    mask: var(--pcp-icon-check) center / contain no-repeat;
+    width: 16px;
+  }
+
+  /* "Step 2 of 4" and a bar. Drawn by the minimal design only. */
+  & .pcp-progress-text,
+  & .pcp-progress { display: none; }
+  & .pcp-progress {
+    background: var(--pcp-surface-3);
+    border-radius: var(--pcp-radius-pill);
+    height: 6px;
+    overflow: hidden;
+  }
+  & .pcp-progress-bar {
+    background: var(--pcp-primary);
+    border-radius: inherit;
+    display: block;
+    height: 100%;
+    transition: width var(--pcp-slow) var(--pcp-ease);
+    width: calc(var(--pcp-progress, 0) * 100%);
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "src/main.tsx": {
+    "file": "js/main-B2WSulrI.js",
+    "name": "main",
+    "src": "src/main.tsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/modules/calendar/CalendarPage.tsx"
+    ],
+    "assets": [
+      "assets/plugixa-logo-DnjmQzFj.webp"
+    ]
+  },
+  "src/modules/calendar/CalendarPage.tsx": {
+    "file": "js/CalendarPage-Bn3fTFZU.js",
+    "name": "CalendarPage",
+    "src": "src/modules/calendar/CalendarPage.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.tsx"
+    ]
+  },
+  "src/shell/brand/plugixa-logo.webp": {
+    "file": "assets/plugixa-logo-DnjmQzFj.webp",
+    "src": "src/shell/brand/plugixa-logo.webp"
+  },
+  "style.css": {
+    "file": "css/main.css",
+    "src": "style.css"
+  }
+}

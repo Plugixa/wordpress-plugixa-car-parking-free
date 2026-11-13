@@ -1,0 +1,153 @@
+/* ==========================================================================
+   BUTTONS: primary, secondary, ghost, danger, chip.
+   Any margin on a <button> needs two classes: see the header of frontend.css.
+   ========================================================================== */
+.pcp-ui.pcp-ui {
+
+  & .pcp-btn.pcp-btn {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--pcp-radius);
+    box-shadow: none;
+    color: var(--pcp-text);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    gap: var(--pcp-space-2);
+    height: auto;
+    justify-content: center;
+    letter-spacing: -.005em;
+    line-height: 1.25;
+    margin: 0;
+    min-height: var(--pcp-control);
+    padding: 11px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    transition: background-color var(--pcp-fast), border-color var(--pcp-fast), color var(--pcp-fast), box-shadow var(--pcp-fast), transform var(--pcp-fast) var(--pcp-ease);
+    user-select: none;
+    width: auto;
+  }
+  & .pcp-btn.pcp-btn:focus-visible { outline: 2px solid var(--pcp-focus); outline-offset: 2px; }
+  & .pcp-btn.pcp-btn:active:not(:disabled) { transform: translateY(1px); }
+  & .pcp-btn.pcp-btn:disabled { cursor: not-allowed; opacity: .55; }
+
+  & .pcp-btn.pcp-btn-primary {
+    background: var(--pcp-primary);
+    border-color: var(--pcp-primary-edge);
+    box-shadow: 0 1px 2px rgb(15 23 42 / .1), 0 8px 18px -8px var(--pcp-primary-glow);
+    color: var(--pcp-primary-contrast);
+  }
+  & .pcp-btn.pcp-btn-primary:hover:not(:disabled) {
+    background: var(--pcp-primary-hover);
+    box-shadow: 0 1px 2px rgb(15 23 42 / .1), 0 12px 24px -10px var(--pcp-primary-glow);
+    color: var(--pcp-primary-contrast);
+  }
+  & .pcp-btn.pcp-btn-primary:active:not(:disabled) { background: var(--pcp-primary-active); box-shadow: 0 1px 2px rgb(15 23 42 / .1); }
+
+  & .pcp-btn.pcp-btn-secondary {
+    background: var(--pcp-surface);
+    border-color: var(--pcp-primary-border);
+    color: var(--pcp-primary-text);
+  }
+  & .pcp-btn.pcp-btn-secondary:hover:not(:disabled) { background: var(--pcp-primary-softer); border-color: var(--pcp-primary-text); color: var(--pcp-primary-text); }
+
+  & .pcp-btn.pcp-btn-ghost { color: var(--pcp-text-muted); }
+  & .pcp-btn.pcp-btn-ghost:hover:not(:disabled) { background: var(--pcp-hover); color: var(--pcp-text); }
+
+  & .pcp-btn.pcp-btn-danger {
+    background: var(--pcp-surface);
+    border-color: var(--pcp-danger-border);
+    color: var(--pcp-danger-text);
+  }
+  & .pcp-btn.pcp-btn-danger:hover:not(:disabled) { background: var(--pcp-danger-bg); border-color: var(--pcp-danger); color: var(--pcp-danger-text); }
+
+  & .pcp-btn.pcp-btn-sm { font-size: var(--pcp-text-sm); min-height: 38px; padding: 7px 14px; }
+  & .pcp-btn.pcp-btn-block { width: 100%; }
+
+  /* The buttons that move the customer on carry an arrow that leans forward
+     on hover; the one that goes back, an arrow the other way. */
+  & .pcp-btn.pcp-check::after,
+  & .pcp-btn.pcp-to-details::after,
+  & .pcp-btn.pcp-to-review::after,
+  & .pcp-btn.pcp-to-next::after,
+  & .pcp-btn.pcp-back::before {
+    background-color: currentColor;
+    content: "";
+    flex: 0 0 auto;
+    height: 18px;
+    -webkit-mask: var(--pcp-icon-arrow) center / contain no-repeat;
+    mask: var(--pcp-icon-arrow) center / contain no-repeat;
+    transition: transform var(--pcp-fast) var(--pcp-ease);
+    width: 18px;
+  }
+  & .pcp-btn.pcp-back::before {
+    -webkit-mask-image: var(--pcp-icon-back);
+    mask-image: var(--pcp-icon-back);
+  }
+  & .pcp-btn:is(.pcp-check, .pcp-to-details, .pcp-to-review, .pcp-to-next):hover:not(:disabled)::after { transform: translateX(3px); }
+  & .pcp-btn.pcp-back:hover:not(:disabled)::before { transform: translateX(-3px); }
+  &:dir(rtl) .pcp-btn:is(.pcp-check, .pcp-to-details, .pcp-to-review, .pcp-to-next)::after,
+  &:dir(rtl) .pcp-btn.pcp-back::before { scale: -1 1; }
+  /* The commit button says it is the last step: a lock, not an arrow. */
+  & .pcp-btn.pcp-confirm::after {
+    background-color: currentColor;
+    content: "";
+    flex: 0 0 auto;
+    height: 17px;
+    -webkit-mask: var(--pcp-icon-lock) center / contain no-repeat;
+    mask: var(--pcp-icon-lock) center / contain no-repeat;
+    order: -1;
+    width: 17px;
+  }
+
+  /* Busy: a spinner beside whatever the button says meanwhile, in place of the
+     arrow. */
+  & .pcp-btn.is-loading { cursor: progress; }
+  & .pcp-btn.is-loading::after { display: none; }
+  & .pcp-btn.is-loading::before {
+    animation: pcp-spin .7s linear infinite;
+    background: none;
+    border: 2px solid currentColor;
+    border-inline-end-color: transparent;
+    border-radius: 50%;
+    content: "";
+    flex: 0 0 auto;
+    height: 16px;
+    -webkit-mask: none;
+    mask: none;
+    width: 16px;
+  }
+
+  /* A chip: a small choice that fills something in. */
+  & .pcp-chip.pcp-chip {
+    align-items: center;
+    appearance: none;
+    background: var(--pcp-surface);
+    border: 1px solid var(--pcp-border);
+    border-radius: var(--pcp-radius-pill);
+    color: var(--pcp-text);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--pcp-text-sm);
+    font-weight: 500;
+    gap: 6px;
+    line-height: 1.2;
+    margin: 0;
+    min-height: 36px;
+    padding: 7px 14px;
+    transition: background-color var(--pcp-fast), border-color var(--pcp-fast), color var(--pcp-fast);
+  }
+  & .pcp-chip.pcp-chip:hover { background: var(--pcp-primary-softer); border-color: var(--pcp-primary-border); }
+  & .pcp-chip.pcp-chip[aria-pressed="true"] {
+    background: var(--pcp-primary-soft);
+    border-color: var(--pcp-primary-text);
+    color: var(--pcp-primary-text);
+    font-weight: 600;
+  }
+}

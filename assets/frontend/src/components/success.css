@@ -1,0 +1,109 @@
+/* ==========================================================================
+   CONFIRMATION, and the screen a customer returns to after paying online.
+   ========================================================================== */
+.pcp-ui.pcp-ui {
+
+  & .pcp-success { padding-block: var(--pcp-space-4); text-align: center; }
+  & .pcp-success > * + * { margin-block-start: var(--pcp-space-4); }
+  & .pcp-success-icon {
+    align-items: center;
+    animation: pcp-pop .45s var(--pcp-ease) both;
+    background: var(--pcp-success);
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px var(--pcp-success-bg), 0 14px 30px -10px color-mix(in srgb, var(--pcp-success) 60%, transparent);
+    color: var(--pcp-success-on);
+    display: flex;
+    height: 72px;
+    justify-content: center;
+    margin-block: var(--pcp-space-3) var(--pcp-space-5);
+    margin-inline: auto;
+    position: relative;
+    width: 72px;
+  }
+  /* A tick, drawn in after the circle lands. */
+  & .pcp-success-icon::before {
+    animation: pcp-tick .35s .25s var(--pcp-ease) both;
+    background-color: currentColor;
+    content: "";
+    height: 34px;
+    -webkit-mask: var(--pcp-icon-check) center / contain no-repeat;
+    mask: var(--pcp-icon-check) center / contain no-repeat;
+    width: 34px;
+  }
+  /* A cross: two bars. */
+  & .pcp-success-icon.pcp-success-icon-failed {
+    background: var(--pcp-danger);
+    box-shadow: 0 0 0 10px var(--pcp-danger-bg);
+    color: var(--pcp-danger-on);
+  }
+  & .pcp-success-icon.pcp-success-icon-failed::before,
+  & .pcp-success-icon.pcp-success-icon-failed::after {
+    animation: none;
+    background: currentColor;
+    border-radius: 2px;
+    content: "";
+    height: 3.5px;
+    -webkit-mask: none;
+    mask: none;
+    position: absolute;
+    transform: rotate(45deg);
+    width: 30px;
+  }
+  & .pcp-success-icon.pcp-success-icon-failed::after { transform: rotate(-45deg); }
+  /* A clock: a ring and two hands. */
+  & .pcp-success-icon.pcp-success-icon-pending {
+    background: var(--pcp-info);
+    box-shadow: 0 0 0 10px var(--pcp-info-bg);
+    color: var(--pcp-info-on);
+  }
+  & .pcp-success-icon.pcp-success-icon-pending::before {
+    animation: none;
+    height: 36px;
+    -webkit-mask-image: var(--pcp-icon-clock);
+    mask-image: var(--pcp-icon-clock);
+    width: 36px;
+  }
+  & .pcp-success-title { font-size: var(--pcp-text-2xl); font-weight: 750; letter-spacing: -.02em; }
+  & .pcp-success-lead { color: var(--pcp-text-muted); margin-block-start: var(--pcp-space-2); margin-inline: auto; max-width: 46ch; }
+
+  /* The reference, in a dashed ticket, with a button that copies it. */
+  & .pcp-success-ref {
+    align-items: center;
+    background: var(--pcp-surface-2);
+    border: 1.5px dashed var(--pcp-border-strong);
+    border-radius: var(--pcp-radius-md);
+    display: inline-grid;
+    gap: 2px 14px;
+    grid-template-columns: auto auto;
+    padding-block: 12px;
+    padding-inline: 22px 14px;
+    text-align: start;
+  }
+  & .pcp-success-ref-label { color: var(--pcp-text-muted); font-size: var(--pcp-text-xs); font-weight: 700; grid-column: 1; letter-spacing: .08em; text-transform: uppercase; }
+  & .pcp-success-ref-value { font-family: var(--pcp-font-mono); font-size: var(--pcp-text-xl); font-weight: 700; grid-column: 1; letter-spacing: .05em; user-select: all; }
+  & .pcp-success-ref .pcp-copy { grid-column: 2; grid-row: 1 / span 2; }
+  & .pcp-copy.pcp-btn::before {
+    background-color: currentColor;
+    content: "";
+    height: 16px;
+    -webkit-mask: var(--pcp-icon-copy) center / contain no-repeat;
+    mask: var(--pcp-icon-copy) center / contain no-repeat;
+    width: 16px;
+  }
+  & .pcp-copy.pcp-btn.is-copied { border-color: var(--pcp-success-border); color: var(--pcp-success-text); }
+  & .pcp-copy.pcp-btn.is-copied::before {
+    -webkit-mask-image: var(--pcp-icon-check);
+    mask-image: var(--pcp-icon-check);
+  }
+
+  & .pcp-success .pcp-review-list,
+  & .pcp-success .pcp-alert { margin-inline: auto; max-width: 460px; text-align: start; }
+  & .pcp-success-actions { display: flex; flex-wrap: wrap; gap: var(--pcp-space-3); justify-content: center; }
+  & .pcp-success > .pcp-success-actions { margin-block-start: var(--pcp-space-6); }
+
+  /* The confirmation is its own screen: no header, no stepper, no order summary. */
+  &.pcp-wizard.is-complete .pcp-header,
+  &.pcp-wizard.is-complete .pcp-stepper,
+  &.pcp-wizard.is-complete .pcp-order { display: none; }
+  &.pcp-wizard.is-complete .pcp-body { display: block; }
+}

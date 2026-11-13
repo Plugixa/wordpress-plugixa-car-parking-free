@@ -1,0 +1,175 @@
+/* ==========================================================================
+   TOKENS
+   On the wrappers, and on the calendar: that one is appended to <body>, so it
+   inherits nothing from the page's own wrapper.
+
+   Neutrals are a cool slate. Every text colour reaches 4.5:1 on each surface it
+   is drawn on, and `--pcp-border-strong`, the edge of a control, 3:1 on the card.
+   ========================================================================== */
+.pcp-ui,
+.pcp-fp {
+  /* Primary. Change the first one and the rest follow. */
+  --pcp-primary: #1976d2;
+  /* Text on the primary colour. A form's own colour brings the right one. */
+  --pcp-primary-contrast: #fff;
+  --pcp-primary-hover: color-mix(in srgb, var(--pcp-primary) 88%, #000);
+  --pcp-primary-active: color-mix(in srgb, var(--pcp-primary) 76%, #000);
+  --pcp-primary-soft: color-mix(in srgb, var(--pcp-primary) 14%, var(--pcp-surface));
+  --pcp-primary-softer: color-mix(in srgb, var(--pcp-primary) 6%, var(--pcp-surface));
+  /* The primary colour as text on a card: darkened until it can be read. */
+  --pcp-primary-text: var(--pcp-primary-ink-light, color-mix(in srgb, var(--pcp-primary) 82%, #000));
+  --pcp-primary-border: color-mix(in srgb, var(--pcp-primary-text) 55%, var(--pcp-surface));
+  --pcp-primary-edge: transparent;
+  --pcp-primary-glow: color-mix(in srgb, var(--pcp-primary) 45%, transparent);
+  --pcp-focus: var(--pcp-primary-text);
+  /* The halo round a focused field: a tint, so it never reads as an error. */
+  --pcp-ring: 0 0 0 4px color-mix(in srgb, var(--pcp-primary) 20%, transparent);
+
+  /* Neutrals. */
+  --pcp-surface: #fff;
+  --pcp-surface-2: #f8fafc;
+  --pcp-surface-3: #f1f5f9;
+  --pcp-text: #0f172a;
+  --pcp-text-muted: #556274;
+  --pcp-border: #e2e8f0;
+  /* The edge of a control: 3:1 against the card, as a control's edge must be. */
+  --pcp-border-strong: #8792a2;
+  --pcp-hover: rgb(15 23 42 / .045);
+
+  /* Meaning. Each has a solid, a text colour, a tint and the tint's edge. */
+  --pcp-success: #059669;
+  --pcp-success-on: #fff;
+  --pcp-success-text: #046c4e;
+  --pcp-success-bg: #ecfdf5;
+  --pcp-success-border: #a7f3d0;
+  --pcp-warning: #d97706;
+  --pcp-warning-text: #8a3c04;
+  --pcp-warning-bg: #fffbeb;
+  --pcp-warning-border: #fcd34d;
+  --pcp-danger: #dc2626;
+  --pcp-danger-on: #fff;
+  --pcp-danger-text: #b91c1c;
+  --pcp-danger-bg: #fef2f2;
+  --pcp-danger-border: #fca5a5;
+  --pcp-info: #0284c7;
+  --pcp-info-on: #fff;
+  --pcp-info-text: #075985;
+  --pcp-info-bg: #f0f9ff;
+  --pcp-info-border: #7dd3fc;
+  --pcp-neutral-text: #334155;
+  --pcp-neutral-bg: #f1f5f9;
+  --pcp-neutral-border: #cbd5e1;
+
+  /* One radius scale, one type scale, one spacing scale. */
+  --pcp-radius-sm: 8px;
+  --pcp-radius: 10px;
+  --pcp-radius-md: 12px;
+  --pcp-radius-lg: 18px;
+  --pcp-radius-pill: 999px;
+
+  --pcp-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --pcp-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --pcp-text-xs: 12.5px;
+  --pcp-text-sm: 14px;
+  --pcp-text-md: 16px;
+  --pcp-text-lg: 18px;
+  --pcp-text-xl: 22px;
+  --pcp-text-2xl: 28px;
+
+  --pcp-space-1: 4px;
+  --pcp-space-2: 8px;
+  --pcp-space-3: 12px;
+  --pcp-space-4: 16px;
+  --pcp-space-5: 24px;
+  --pcp-space-6: 32px;
+  --pcp-space-7: 40px;
+
+  /* How far the card's content sits from its edge. A design may change it. */
+  --pcp-pad: var(--pcp-space-6);
+  /* The control height everything on a row lines up to. */
+  --pcp-control: 48px;
+
+  /* Two layers: a hairline for the edge, a long soft one for the lift. */
+  --pcp-shadow-1: 0 1px 2px rgb(15 23 42 / .05), 0 10px 30px -12px rgb(15 23 42 / .14);
+  --pcp-shadow-lg: 0 2px 4px rgb(15 23 42 / .05), 0 22px 44px -14px rgb(15 23 42 / .22);
+  --pcp-shadow-popup: 0 12px 40px -10px rgb(15 23 42 / .32), 0 6px 16px -8px rgb(15 23 42 / .16);
+
+  --pcp-ease: cubic-bezier(.2, .7, .2, 1);
+  --pcp-fast: .16s;
+  --pcp-slow: .32s;
+
+  /* Small line icons, drawn by `mask` in the current text colour. */
+  --pcp-icon-pin: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 5-8 12-8 12s-8-7-8-12a8 8 0 0 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
+  --pcp-icon-calendar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4.5' width='18' height='17' rx='3'/%3E%3Cpath d='M16 2.5v4M8 2.5v4M3 10h18'/%3E%3C/svg%3E");
+  --pcp-icon-user: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E");
+  --pcp-icon-mail: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2.5' y='4.5' width='19' height='15' rx='3'/%3E%3Cpath d='m3 7 9 6 9-6'/%3E%3C/svg%3E");
+  --pcp-icon-phone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z'/%3E%3C/svg%3E");
+  --pcp-icon-car: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 17H3v-5l2-5h14l2 5v5h-2'/%3E%3Cpath d='M3 12h18'/%3E%3Ccircle cx='7.5' cy='17' r='2'/%3E%3Ccircle cx='16.5' cy='17' r='2'/%3E%3Cpath d='M9.5 17h5'/%3E%3C/svg%3E");
+  --pcp-icon-tag: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4Z'/%3E%3Ccircle cx='7.5' cy='7.5' r='1.5'/%3E%3C/svg%3E");
+  --pcp-icon-clock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9.5'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+  --pcp-icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  --pcp-icon-back: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 12H5M11 6l-6 6 6 6'/%3E%3C/svg%3E");
+  --pcp-icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E");
+  --pcp-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='8' y='8' width='13' height='13' rx='2.5'/%3E%3Cpath d='M16 8V5.5A2.5 2.5 0 0 0 13.5 3h-8A2.5 2.5 0 0 0 3 5.5v8A2.5 2.5 0 0 0 5.5 16H8'/%3E%3C/svg%3E");
+  --pcp-icon-alert: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9.5'/%3E%3Cpath d='M12 7.5v5M12 16.2v.3'/%3E%3C/svg%3E");
+  --pcp-icon-lock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='10.5' width='16' height='11' rx='2.5'/%3E%3Cpath d='M8 10.5V7a4 4 0 0 1 8 0v3.5'/%3E%3C/svg%3E");
+
+  color-scheme: light;
+}
+
+/* Dark is a swap of tokens and nothing else. `screen`, so paper stays light.
+   The card colour here is also declared in Palette.php (SURFACE_DARK): the two
+   must agree, or a form's own colour is checked against the wrong card. */
+@media screen and (prefers-color-scheme: dark) {
+  .pcp-ui,
+  .pcp-fp {
+    --pcp-primary-hover: color-mix(in srgb, var(--pcp-primary) 86%, #fff);
+    --pcp-primary-active: color-mix(in srgb, var(--pcp-primary) 74%, #fff);
+    --pcp-primary-soft: color-mix(in srgb, var(--pcp-primary) 26%, var(--pcp-surface));
+    --pcp-primary-softer: color-mix(in srgb, var(--pcp-primary) 13%, var(--pcp-surface));
+    /* The primary colour as text on a dark card: lightened until it can be read. */
+    --pcp-primary-text: var(--pcp-primary-ink-dark, color-mix(in srgb, var(--pcp-primary) 55%, #fff));
+    /* A dark primary on a dark card would otherwise have no edge at all. */
+    --pcp-primary-edge: color-mix(in srgb, var(--pcp-primary) 62%, #fff);
+    --pcp-primary-glow: color-mix(in srgb, var(--pcp-primary) 35%, transparent);
+    --pcp-ring: 0 0 0 4px color-mix(in srgb, var(--pcp-primary) 32%, transparent);
+
+    --pcp-surface: #111827;
+    --pcp-surface-2: #172033;
+    --pcp-surface-3: #1f2a3d;
+    --pcp-text: #f1f5f9;
+    --pcp-text-muted: #a3b0c2;
+    --pcp-border: #263247;
+    --pcp-border-strong: #6b7a90;
+    --pcp-hover: rgb(255 255 255 / .06);
+
+    --pcp-success: #34d399;
+    --pcp-success-on: #052e1f;
+    --pcp-success-text: #6ee7b7;
+    --pcp-success-bg: #0b2a22;
+    --pcp-success-border: #047857;
+    --pcp-warning: #fbbf24;
+    --pcp-warning-text: #fcd34d;
+    --pcp-warning-bg: #2b2009;
+    --pcp-warning-border: #a16207;
+    --pcp-danger: #f87171;
+    --pcp-danger-on: #2a0b09;
+    --pcp-danger-text: #fca5a5;
+    --pcp-danger-bg: #2c1215;
+    --pcp-danger-border: #b91c1c;
+    --pcp-info: #38bdf8;
+    --pcp-info-on: #06202c;
+    --pcp-info-text: #7dd3fc;
+    --pcp-info-bg: #0b2233;
+    --pcp-info-border: #0369a1;
+    --pcp-neutral-text: #e2e8f0;
+    --pcp-neutral-bg: #1f2a3d;
+    --pcp-neutral-border: #475569;
+
+    --pcp-shadow-1: 0 1px 2px rgb(0 0 0 / .4), 0 12px 32px -14px rgb(0 0 0 / .6);
+    --pcp-shadow-lg: 0 2px 4px rgb(0 0 0 / .4), 0 22px 44px -14px rgb(0 0 0 / .7);
+    --pcp-shadow-popup: 0 14px 44px -10px rgb(0 0 0 / .7), 0 6px 16px -8px rgb(0 0 0 / .5);
+
+    color-scheme: dark;
+  }
+}

@@ -1,0 +1,215 @@
+/* ==========================================================================
+   FIELDS: text, date, number, select, textarea, checkbox, the counter.
+   ========================================================================== */
+.pcp-ui.pcp-ui {
+
+  & .pcp-field { display: block; min-width: 0; }
+  & .pcp-label { display: block; position: relative; }
+  & .pcp-label-text {
+    color: var(--pcp-text);
+    display: block;
+    font-size: var(--pcp-text-sm);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-block-end: 7px;
+  }
+  & .pcp-req { color: var(--pcp-danger-text); }
+
+  & .pcp-input.pcp-input {
+    appearance: none;
+    background-color: var(--pcp-surface);
+    border: 1px solid var(--pcp-border-strong);
+    border-radius: var(--pcp-radius);
+    color: var(--pcp-text);
+    display: block;
+    font-size: var(--pcp-text-md);
+    height: auto;
+    line-height: 1.4;
+    min-height: var(--pcp-control);
+    outline: 0;
+    padding: 11px 14px;
+    transition: border-color var(--pcp-fast), box-shadow var(--pcp-fast), background-color var(--pcp-fast);
+    width: 100%;
+  }
+  & .pcp-input.pcp-input::placeholder { color: var(--pcp-text-muted); opacity: 1; }
+  & .pcp-input.pcp-input:hover { border-color: var(--pcp-text-muted); }
+  /* Focus is the coloured edge plus a soft halo. The edge alone is the
+     indicator (3:1 or better); the halo is the polish. */
+  & .pcp-input.pcp-input:focus,
+  & .pcp-input.pcp-input:focus-visible {
+    border-color: var(--pcp-focus);
+    box-shadow: inset 0 0 0 1px var(--pcp-focus), var(--pcp-ring);
+    outline: 0;
+  }
+  & .pcp-input.pcp-input[aria-invalid="true"] { border-color: var(--pcp-danger); }
+  & .pcp-input.pcp-input[aria-invalid="true"]:focus {
+    box-shadow: inset 0 0 0 1px var(--pcp-danger), 0 0 0 4px color-mix(in srgb, var(--pcp-danger) 18%, transparent);
+  }
+  & .pcp-input.pcp-input:disabled { background-color: var(--pcp-surface-3); cursor: not-allowed; opacity: .6; }
+  & .pcp-input.pcp-input-date { cursor: pointer; }
+  & textarea.pcp-input.pcp-input { min-height: 104px; resize: vertical; }
+
+  /* A chevron drawn from two gradients, so it takes the text colour in either
+     scheme. background-position has no logical side; the rule below mirrors it. */
+  & select.pcp-input.pcp-input {
+    background-image:
+      linear-gradient(45deg, transparent 50%, currentColor 50%),
+      linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%;
+    background-repeat: no-repeat;
+    background-size: 5px 5px;
+    cursor: pointer;
+    padding-inline-end: 40px;
+  }
+  &:dir(rtl) select.pcp-input.pcp-input { background-position: 15px 50%, 20px 50%; }
+
+  /* ------------------------------------------------------------------------
+     A leading icon on the fields whose meaning a picture says faster than the
+     label: where, when, who, how to reach them, which car. Drawn on the label,
+     which ends where its control ends, so it sits in the control's middle.
+     It turns the primary colour while the field has focus.
+     ---------------------------------------------------------------------- */
+  & .pcp-label:has(> .pcp-location),
+  & .pcp-dates .pcp-label,
+  & .pcp-label:has(> .pcp-name),
+  & .pcp-label:has(> .pcp-email),
+  & .pcp-label:has(> .pcp-phone),
+  & .pcp-label:has(> .pcp-plate),
+  & .pcp-label:has(> .pcp-coupon) {
+    & > .pcp-input.pcp-input { padding-inline-start: 44px; }
+
+    &::after {
+      background-color: var(--pcp-text-muted);
+      content: "";
+      height: 20px;
+      inset-block-end: calc((var(--pcp-control) - 20px) / 2);
+      inset-inline-start: 14px;
+      -webkit-mask: var(--pcp-icon) center / contain no-repeat;
+      mask: var(--pcp-icon) center / contain no-repeat;
+      pointer-events: none;
+      position: absolute;
+      transition: background-color var(--pcp-fast);
+      width: 20px;
+    }
+    &:focus-within::after { background-color: var(--pcp-primary-text); }
+  }
+  & .pcp-label:has(> .pcp-location) { --pcp-icon: var(--pcp-icon-pin); }
+  & .pcp-dates .pcp-label { --pcp-icon: var(--pcp-icon-calendar); }
+  & .pcp-label:has(> .pcp-name) { --pcp-icon: var(--pcp-icon-user); }
+  & .pcp-label:has(> .pcp-email) { --pcp-icon: var(--pcp-icon-mail); }
+  & .pcp-label:has(> .pcp-phone) { --pcp-icon: var(--pcp-icon-phone); }
+  & .pcp-label:has(> .pcp-plate) { --pcp-icon: var(--pcp-icon-car); }
+  & .pcp-label:has(> .pcp-coupon) { --pcp-icon: var(--pcp-icon-tag); }
+
+  /* A plate reads as a plate. */
+  & .pcp-input.pcp-plate,
+  & .pcp-input.pcp-coupon { font-family: var(--pcp-font-mono); letter-spacing: .06em; text-transform: uppercase; }
+  & .pcp-input.pcp-plate::placeholder,
+  & .pcp-input.pcp-coupon::placeholder { font-family: var(--pcp-font); letter-spacing: normal; text-transform: none; }
+
+  & .pcp-field-error,
+  & .pcp-coupon-msg {
+    align-items: center;
+    color: var(--pcp-danger-text);
+    display: flex;
+    font-size: var(--pcp-text-sm);
+    font-weight: 500;
+    gap: 6px;
+    margin-block-start: 7px;
+  }
+  & .pcp-field-error::before,
+  & .pcp-coupon-msg::before {
+    background-color: currentColor;
+    content: "";
+    flex: 0 0 auto;
+    height: 15px;
+    -webkit-mask: var(--pcp-icon-alert) center / contain no-repeat;
+    mask: var(--pcp-icon-alert) center / contain no-repeat;
+    width: 15px;
+  }
+  & .pcp-coupon-msg.is-ok { color: var(--pcp-success-text); }
+  & .pcp-coupon-msg.is-ok::before {
+    -webkit-mask-image: var(--pcp-icon-check);
+    mask-image: var(--pcp-icon-check);
+  }
+
+  & .pcp-checkbox {
+    align-items: flex-start;
+    cursor: pointer;
+    display: flex;
+    font-size: var(--pcp-text-md);
+    gap: 10px;
+  }
+  & .pcp-checkbox-input {
+    accent-color: var(--pcp-primary);
+    flex: 0 0 auto;
+    height: 20px;
+    margin-block-start: 2px;
+    width: 20px;
+  }
+
+  /* Two columns when there is room for two, one when there is not. */
+  & .pcp-row {
+    display: grid;
+    gap: var(--pcp-space-4);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  }
+
+  /* ------------------------------------------------------------------------
+     The counter: a number field between a minus and a plus. The field stays a
+     real number input, so typing, the arrow keys and a screen reader all work
+     as they would without the buttons.
+     ---------------------------------------------------------------------- */
+  & .pcp-qty-field { max-width: 220px; position: relative; }
+  & .pcp-counter {
+    background: var(--pcp-surface);
+    border: 1px solid var(--pcp-border-strong);
+    border-radius: var(--pcp-radius);
+    display: block;
+    min-height: var(--pcp-control);
+    overflow: hidden;
+    padding-inline: 48px;
+    transition: border-color var(--pcp-fast), box-shadow var(--pcp-fast);
+  }
+  & .pcp-counter:focus-within { border-color: var(--pcp-focus); box-shadow: inset 0 0 0 1px var(--pcp-focus), var(--pcp-ring); }
+  & .pcp-counter .pcp-input.pcp-input {
+    -moz-appearance: textfield;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font-variant-numeric: tabular-nums;
+    font-weight: 650;
+    min-height: calc(var(--pcp-control) - 2px);
+    padding-inline: 4px;
+    text-align: center;
+  }
+  & .pcp-counter .pcp-input.pcp-input::-webkit-inner-spin-button,
+  & .pcp-counter .pcp-input.pcp-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  & .pcp-qty-field .pcp-counter-btn {
+    align-items: center;
+    appearance: none;
+    background: var(--pcp-surface-2);
+    border: 0;
+    border-radius: 0;
+    color: var(--pcp-text);
+    cursor: pointer;
+    display: flex;
+    font-size: 20px;
+    font-weight: 500;
+    height: calc(var(--pcp-control) - 2px);
+    inset-block-end: 1px;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    transition: background-color var(--pcp-fast), color var(--pcp-fast);
+    width: 47px;
+  }
+  & .pcp-qty-field .pcp-counter-less { border-end-start-radius: calc(var(--pcp-radius) - 1px); border-start-start-radius: calc(var(--pcp-radius) - 1px); inset-inline-start: 1px; }
+  & .pcp-qty-field .pcp-counter-more { border-end-end-radius: calc(var(--pcp-radius) - 1px); border-start-end-radius: calc(var(--pcp-radius) - 1px); inset-inline-end: 1px; }
+  & .pcp-qty-field .pcp-counter-btn:hover:not(:disabled) { background: var(--pcp-primary-soft); color: var(--pcp-primary-text); }
+  & .pcp-qty-field .pcp-counter-btn:disabled { color: var(--pcp-text-muted); cursor: not-allowed; opacity: .5; }
+  & .pcp-qty-field .pcp-counter-btn:focus-visible { outline: 2px solid var(--pcp-focus); outline-offset: -2px; }
+}

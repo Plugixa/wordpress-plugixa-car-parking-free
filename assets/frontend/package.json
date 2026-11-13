@@ -1,0 +1,17 @@
+{
+  "name": "plugixa-car-parking-frontend",
+  "private": true,
+  "version": "1.2.0",
+  "scripts": {
+    "build": "tailwindcss -i src/frontend.css -o build/css/frontend.css --minify && node ../build-tools/stamp-source-banner.mjs frontend",
+    "watch": "tailwindcss -i src/frontend.css -o build/css/frontend.css --watch",
+    "postinstall": "node ./copy-vendor.mjs"
+  },
+  "dependencies": {
+    "flatpickr": "^4.6.13"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}

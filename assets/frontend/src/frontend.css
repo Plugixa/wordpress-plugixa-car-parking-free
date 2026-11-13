@@ -1,0 +1,83 @@
+/*
+ * Plugixa Car Parking — public design system (Tailwind v4, CSS-first).
+ *
+ * Built to build/css/frontend.css with `npm run build`. Never edit the build.
+ * The Tailwind CLI inlines every @import below into that one file.
+ *
+ * One markup, three designs. Every public page carries `data-pcp-design` on
+ * its wrapper: `classic` (a card, a numbered stepper and the order beside it),
+ * `split` (a side column with the steps and the order, the step beside it) or
+ * `minimal` (one quiet column, a progress bar, the order folded under it).
+ * A design is a handful of token overrides plus a layout, in designs/. The
+ * components never ask which design they are in, so whatever a script that
+ * extends the form adds is drawn right in all three without knowing.
+ *
+ * The brand is a form's one primary colour; every tint of it is derived with
+ * color-mix(). Palette.php works out, against WCAG, what color-mix() cannot
+ * decide: the text colour on it and how dark it must be as text.
+ *
+ * HOW THIS FILE STAYS OUT OF A THEME'S WAY, AND A THEME OUT OF ITS.
+ *
+ * 1. No Preflight, and no utility classes. A global reset would restyle the
+ *    host theme, and `utilities.css` scans the plugin's own scripts for words
+ *    that look like class names: a build that imported it shipped a global
+ *    `.hidden` and `.flex` to every site. Only `theme.css` is imported, so
+ *    `@apply` and `theme()` resolve; it emits nothing unless used.
+ *
+ * 2. Nothing is in a cascade layer. An unlayered rule beats a layered one at
+ *    any specificity, and every theme's stylesheet is unlayered: with this file
+ *    in `@layer components`, a theme's bare `h2`, `input`, `button`, `a` and
+ *    `table` rules all won.
+ *
+ * 3. Everything is written under `.pcp-ui.pcp-ui`, the class every wrapper
+ *    carries, doubled. That makes the scoped reset (0,2,0) and each component
+ *    (0,3,0) or more: above a theme's `.entry-content h2` or
+ *    `input[type="text"]`, and above a page builder's `.kit button`, without
+ *    an id or an `!important`. A design adds its attribute on top, so a design
+ *    rule always outranks the component rule it changes.
+ *
+ * 4. The reset selects elements through `:where()`, which adds nothing to its
+ *    weight. So the reset can never out-rank a component, however a component
+ *    is written. (It once did: `.pcp-wizard button { margin: 0 }` beat
+ *    `.pcp-check { margin-top }` and the main button sat flush on the fields.)
+ *
+ * 5. `[hidden]` is restated, with `!important`. Without Preflight nothing says
+ *    `[hidden] { display: none }` except the browser's own sheet, which any
+ *    `display` here beats. The honeypot field, `.pcp-hp`, relies on it: never
+ *    give that class a `display`.
+ *
+ * 6. The tokens sit on `.pcp-ui` once, at (0,1,0). A site's Additional CSS is
+ *    printed after this file, so `.pcp-wizard { --pcp-primary: … }` there wins,
+ *    and so does `--pcp-radius` or any other token.
+ *
+ * Layout breakpoints are container queries, not media queries: the theme
+ * decides how wide the form is, not the screen. A container cannot style
+ * itself, so the query container is a wrapper that exists for that purpose
+ * (.pcp-wizard-shell), never the card.
+ *
+ * Direction comes from logical properties throughout, so a right-to-left site
+ * needs no second set of rules (the few drawn arrows are mirrored by hand).
+ */
+
+@import 'tailwindcss/theme.css' layer(theme);
+
+@import './base/tokens.css';
+@import './base/reset.css';
+
+@import './components/feedback.css';
+@import './components/fields.css';
+@import './components/buttons.css';
+@import './components/stepper.css';
+@import './components/wizard.css';
+@import './components/order.css';
+@import './components/review.css';
+@import './components/success.css';
+@import './components/account.css';
+@import './components/summary.css';
+
+@import './designs/classic.css';
+@import './designs/split.css';
+@import './designs/minimal.css';
+
+@import './base/motion.css';
+@import './components/datepicker.css';

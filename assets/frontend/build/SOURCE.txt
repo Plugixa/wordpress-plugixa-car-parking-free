@@ -1,0 +1,20 @@
+Plugixa Car Parking -- compiled output
+====================================
+
+Every file in this directory is GENERATED. Do not edit it by hand; the next
+build overwrites it.
+
+Human-readable source
+---------------------
+  assets/frontend/src/frontend.css public stylesheet (Tailwind CSS)
+
+Rebuild
+-------
+  cd assets/frontend && npm install && npm run build
+  (requires Node.js 20+)
+
+Exact dependency versions are pinned in the package-lock.json next to that
+source. Any .js.map alongside a bundle here also embeds the original source
+verbatim in its "sourcesContent" field.
+
+License: GPLv2 or later -- https://www.gnu.org/licenses/gpl-2.0.html

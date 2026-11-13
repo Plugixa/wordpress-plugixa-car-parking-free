@@ -1,0 +1,216 @@
+/* ==========================================================================
+   WIZARD: header, panels, the dates step, the space cards, coupon, actions.
+   ========================================================================== */
+.pcp-ui.pcp-ui {
+
+  & .pcp-header { align-items: center; display: flex; gap: 14px; margin-block-end: var(--pcp-space-5); }
+  & .pcp-header-badge {
+    align-items: center;
+    background: linear-gradient(140deg, color-mix(in srgb, var(--pcp-primary) 78%, #fff), var(--pcp-primary) 55%, var(--pcp-primary-active));
+    border: 1px solid var(--pcp-primary-edge);
+    border-radius: 14px;
+    box-shadow: 0 8px 18px -8px var(--pcp-primary-glow), inset 0 1px 0 rgb(255 255 255 / .25);
+    color: var(--pcp-primary-contrast);
+    display: flex;
+    flex: 0 0 auto;
+    height: 48px;
+    justify-content: center;
+    width: 48px;
+  }
+  & .pcp-header-badge svg { height: 26px; width: 26px; }
+  & .pcp-header-text { min-width: 0; }
+  & .pcp-title { font-size: var(--pcp-text-xl); font-weight: 700; letter-spacing: -.015em; line-height: 1.2; }
+  & .pcp-subtitle { color: var(--pcp-text-muted); font-size: var(--pcp-text-sm); margin-block-start: 3px; }
+
+  & .pcp-error { margin-block-end: var(--pcp-space-4); }
+
+  /* Body: the steps, and the order summary beside or under them. */
+  & .pcp-body { align-items: start; display: grid; gap: var(--pcp-space-6); }
+  & .pcp-panels { min-width: 0; }
+
+  & .pcp-panel { display: none; }
+  & .pcp-panel.is-active { animation: pcp-in var(--pcp-slow) var(--pcp-ease) both; display: block; }
+  & .pcp-panel > * + * { margin-block-start: var(--pcp-space-5); }
+
+  & .pcp-h { font-size: var(--pcp-text-xl); font-weight: 700; letter-spacing: -.015em; line-height: 1.25; }
+  /* Focus is moved to a step's heading by the script, so a screen reader starts
+     there. It is not a control, and a ring round it says it is. */
+  & .pcp-h:focus,
+  & .pcp-success-title:focus { outline: 0; }
+
+  /* One location: named with its pin, not offered as a choice of one. */
+  & .pcp-location-name {
+    align-items: center;
+    background: var(--pcp-surface-2);
+    border: 1px solid var(--pcp-border);
+    border-radius: var(--pcp-radius);
+    display: flex;
+    font-size: var(--pcp-text-md);
+    font-weight: 600;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+  & .pcp-location-name::before {
+    background-color: var(--pcp-primary-text);
+    content: "";
+    flex: 0 0 auto;
+    height: 20px;
+    -webkit-mask: var(--pcp-icon-pin) center / contain no-repeat;
+    mask: var(--pcp-icon-pin) center / contain no-repeat;
+    width: 20px;
+  }
+
+  /* Under the two dates: quick stay lengths, one tap setting the exit from the
+     entry, and the stay's length once both dates make sense. */
+  & .pcp-panel > .pcp-stay { margin-block-start: var(--pcp-space-3); }
+  & .pcp-stay { align-items: center; display: flex; flex-wrap: wrap; gap: var(--pcp-space-2); }
+  & .pcp-quick { display: flex; flex-wrap: wrap; gap: var(--pcp-space-2); }
+  & .pcp-duration {
+    align-items: center;
+    background: var(--pcp-primary-softer);
+    border: 1px solid color-mix(in srgb, var(--pcp-primary-border) 45%, transparent);
+    border-radius: var(--pcp-radius-pill);
+    color: var(--pcp-primary-text);
+    display: inline-flex;
+    font-size: var(--pcp-text-sm);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    gap: 8px;
+    padding: 6px 14px 6px 10px;
+  }
+  & .pcp-duration::before {
+    background-color: currentColor;
+    content: "";
+    height: 17px;
+    -webkit-mask: var(--pcp-icon-clock) center / contain no-repeat;
+    mask: var(--pcp-icon-clock) center / contain no-repeat;
+    width: 17px;
+  }
+
+  & .pcp-actions {
+    align-items: center;
+    border-block-start: 1px solid var(--pcp-border);
+    display: flex;
+    gap: var(--pcp-space-3);
+    justify-content: space-between;
+    padding-block-start: var(--pcp-space-5);
+  }
+  & .pcp-panel > .pcp-actions { margin-block-start: var(--pcp-space-6); }
+  & .pcp-actions.pcp-actions-single { border-block-start: 0; padding-block-start: 0; }
+  & .pcp-actions .pcp-btn-primary { min-width: 160px; }
+
+  /* ------------------------------------------------------------------------
+     Space types: a radio group of cards. The radio itself is real and only
+     visually hidden, so the keyboard and the screen reader get the browser's
+     own radio behaviour.
+     ---------------------------------------------------------------------- */
+  & .pcp-space-types { display: grid; gap: var(--pcp-space-3); }
+  & .pcp-space-card {
+    align-items: center;
+    background: var(--pcp-surface);
+    border: 1px solid var(--pcp-border);
+    border-radius: var(--pcp-radius-md);
+    box-shadow: 0 1px 2px rgb(15 23 42 / .04);
+    cursor: pointer;
+    display: flex;
+    gap: 14px;
+    padding: 14px 16px;
+    position: relative;
+    transition: background-color var(--pcp-fast), border-color var(--pcp-fast), box-shadow var(--pcp-fast), transform var(--pcp-fast) var(--pcp-ease);
+  }
+  & .pcp-space-radio {
+    height: 1px;
+    inset-block-start: 50%;
+    inset-inline-start: 16px;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    width: 1px;
+  }
+  & .pcp-space-card:hover:not(.is-disabled) {
+    border-color: var(--pcp-primary-border);
+    box-shadow: var(--pcp-shadow-lg);
+    transform: translateY(-1px);
+  }
+  & .pcp-space-card:focus-within { outline: 2px solid var(--pcp-focus); outline-offset: 2px; }
+  & .pcp-space-card.is-selected,
+  & .pcp-space-card:has(.pcp-space-radio:checked) {
+    background: var(--pcp-primary-softer);
+    border-color: var(--pcp-primary-text);
+    box-shadow: inset 0 0 0 1px var(--pcp-primary-text), 0 8px 22px -12px var(--pcp-primary-glow);
+  }
+  & .pcp-space-card.is-disabled { box-shadow: none; cursor: not-allowed; opacity: .55; }
+
+  /* The space type's own colour, as a tile with a car on it. The colour comes
+     from the administrator as --pcp-swatch; the tile is a tint of it. */
+  & .pcp-space-dot {
+    align-items: center;
+    background: color-mix(in srgb, var(--pcp-swatch, var(--pcp-primary)) 16%, var(--pcp-surface));
+    border-radius: var(--pcp-radius);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pcp-swatch, var(--pcp-primary)) 30%, transparent);
+    display: flex;
+    flex: 0 0 auto;
+    height: 44px;
+    justify-content: center;
+    width: 44px;
+  }
+  & .pcp-space-dot::after {
+    background-color: color-mix(in srgb, var(--pcp-swatch, var(--pcp-primary)) 82%, var(--pcp-text));
+    content: "";
+    height: 24px;
+    -webkit-mask: var(--pcp-icon-car) center / contain no-repeat;
+    mask: var(--pcp-icon-car) center / contain no-repeat;
+    width: 24px;
+  }
+  & .pcp-space-info { display: flex; flex: 1 1 auto; flex-direction: column; gap: 4px; min-width: 0; }
+  & .pcp-space-name { font-size: var(--pcp-text-md); font-weight: 650; overflow-wrap: anywhere; }
+  /* How many are free, as a badge: amber when only a few are left. */
+  & .pcp-space-meta {
+    align-items: center;
+    align-self: flex-start;
+    background: var(--pcp-success-bg);
+    border-radius: var(--pcp-radius-pill);
+    color: var(--pcp-success-text);
+    display: inline-flex;
+    font-size: var(--pcp-text-xs);
+    font-weight: 600;
+    gap: 5px;
+    line-height: 1.5;
+    padding: 1px 9px;
+  }
+  & .pcp-space-meta::before { background: currentColor; border-radius: 50%; content: ""; height: 6px; width: 6px; }
+  & .pcp-space-meta.is-low { background: var(--pcp-warning-bg); color: var(--pcp-warning-text); }
+  & .pcp-space-meta.is-out { background: var(--pcp-neutral-bg); color: var(--pcp-neutral-text); }
+  & .pcp-space-price {
+    font-size: var(--pcp-text-lg);
+    font-variant-numeric: tabular-nums;
+    font-weight: 750;
+    letter-spacing: -.01em;
+    white-space: nowrap;
+  }
+  /* What says "chosen" without relying on colour: the radio's own mark. */
+  & .pcp-space-tick {
+    border: 2px solid var(--pcp-border-strong);
+    border-radius: 50%;
+    flex: 0 0 auto;
+    height: 22px;
+    position: relative;
+    transition: border-color var(--pcp-fast), background-color var(--pcp-fast);
+    width: 22px;
+  }
+  & .pcp-space-card.is-selected .pcp-space-tick,
+  & .pcp-space-card:has(.pcp-space-radio:checked) .pcp-space-tick { background: var(--pcp-primary); border-color: var(--pcp-primary); }
+  & .pcp-space-card.is-selected .pcp-space-tick::after,
+  & .pcp-space-card:has(.pcp-space-radio:checked) .pcp-space-tick::after {
+    animation: pcp-pop var(--pcp-fast) var(--pcp-ease) both;
+    background-color: var(--pcp-primary-contrast);
+    content: "";
+    inset: 3px;
+    -webkit-mask: var(--pcp-icon-check) center / contain no-repeat;
+    mask: var(--pcp-icon-check) center / contain no-repeat;
+    position: absolute;
+  }
+
+  & .pcp-coupon-row { align-items: flex-end; display: flex; gap: var(--pcp-space-2); }
+  & .pcp-coupon-row .pcp-label { flex: 1 1 auto; min-width: 0; }
+}

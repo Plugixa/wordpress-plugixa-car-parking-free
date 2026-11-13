@@ -1,0 +1,136 @@
+/* ==========================================================================
+   ORDER SUMMARY
+   Drawn by renderOrder() in booking-wizard.js. Two forms: a card that is always
+   open (beside the steps), and a bar that shows the total and opens on a tap
+   (a narrow form, and the minimal design). The bar's rules are in designs/,
+   because when it is a bar is a layout decision.
+   ========================================================================== */
+.pcp-ui.pcp-ui {
+
+  & .pcp-order {
+    background: var(--pcp-surface-2);
+    border: 1px solid var(--pcp-border);
+    border-radius: var(--pcp-radius-md);
+    min-width: 0;
+    padding: 20px;
+  }
+  /* The bar's button. Shown only where the summary is a bar. */
+  & .pcp-order-toggle { display: none; }
+
+  & .pcp-order-title {
+    color: var(--pcp-text-muted);
+    font-size: var(--pcp-text-xs);
+    font-weight: 700;
+    letter-spacing: .08em;
+    margin-block-end: var(--pcp-space-3);
+    text-transform: uppercase;
+  }
+  & .pcp-order-place {
+    align-items: center;
+    display: flex;
+    font-weight: 650;
+    gap: 8px;
+    margin-block-end: var(--pcp-space-3);
+    overflow-wrap: anywhere;
+  }
+  & .pcp-order-place::before {
+    background-color: var(--pcp-primary-text);
+    content: "";
+    flex: 0 0 auto;
+    height: 18px;
+    -webkit-mask: var(--pcp-icon-pin) center / contain no-repeat;
+    mask: var(--pcp-icon-pin) center / contain no-repeat;
+    width: 18px;
+  }
+  & .pcp-order-row {
+    align-items: baseline;
+    display: flex;
+    font-size: var(--pcp-text-sm);
+    gap: var(--pcp-space-3);
+    justify-content: space-between;
+    padding-block: 4px;
+  }
+  & .pcp-order-row dt { color: var(--pcp-text-muted); min-width: 0; overflow-wrap: anywhere; }
+  & .pcp-order-row dd { font-variant-numeric: tabular-nums; font-weight: 550; text-align: end; }
+
+  /* Entry and exit as a little timeline: a ring, a dashed line, a dot. */
+  & .pcp-order-facts { position: relative; }
+  & .pcp-order-row.is-entry,
+  & .pcp-order-row.is-exit {
+    display: grid;
+    gap: 1px;
+    padding-block: 2px 10px;
+    padding-inline-start: 24px;
+    position: relative;
+  }
+  & .pcp-order-row.is-entry dt,
+  & .pcp-order-row.is-exit dt { font-size: var(--pcp-text-xs); font-weight: 600; letter-spacing: .02em; }
+  & .pcp-order-row.is-entry dd,
+  & .pcp-order-row.is-exit dd { color: var(--pcp-text); font-weight: 600; text-align: start; }
+  & .pcp-order-row.is-entry::before,
+  & .pcp-order-row.is-exit::before {
+    border: 2.5px solid var(--pcp-primary);
+    border-radius: 50%;
+    content: "";
+    height: 12px;
+    inset-block-start: 6px;
+    inset-inline-start: 2px;
+    position: absolute;
+    width: 12px;
+  }
+  & .pcp-order-row.is-exit::before { background: var(--pcp-primary); }
+  & .pcp-order-row.is-entry::after {
+    border-inline-start: 2px dashed var(--pcp-border-strong);
+    content: "";
+    inset-block: 21px -4px;
+    inset-inline-start: 7px;
+    position: absolute;
+  }
+  & .pcp-order-row.is-duration { border-block-start: 1px dashed var(--pcp-border); margin-block-start: 2px; padding-block-start: 8px; }
+
+  & .pcp-order-lines { border-block-start: 1px solid var(--pcp-border); margin-block-start: var(--pcp-space-3); padding-block-start: var(--pcp-space-3); }
+  & .pcp-order-lines dt { color: var(--pcp-text); }
+  & .pcp-order-lines dd { white-space: nowrap; }
+  & .pcp-order-row.is-credit dd { color: var(--pcp-success-text); }
+  /* What changed a line's price, by name, under the line it changed. */
+  & .pcp-order-adjustment {
+    color: var(--pcp-text-muted);
+    display: block;
+    font-size: var(--pcp-text-xs);
+    font-variant-numeric: tabular-nums;
+    padding-inline-start: var(--pcp-space-3);
+  }
+  & .pcp-order-total {
+    align-items: baseline;
+    border-block-start: 1px solid var(--pcp-border-strong);
+    display: flex;
+    gap: var(--pcp-space-3);
+    justify-content: space-between;
+    margin-block-start: var(--pcp-space-3);
+    padding-block-start: var(--pcp-space-3);
+  }
+  & .pcp-order-total span { font-size: var(--pcp-text-sm); font-weight: 650; }
+  & .pcp-order-total strong {
+    font-size: var(--pcp-text-2xl);
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+  }
+  /* A new total arrives with a small lift, so the eye notices it changed. */
+  & .pcp-order-total strong.is-bump { animation: pcp-bump .45s var(--pcp-ease); }
+  & .pcp-order-notes { margin-block-start: var(--pcp-space-2); }
+  & .pcp-order-notes li {
+    color: var(--pcp-text-muted);
+    display: flex;
+    font-size: var(--pcp-text-sm);
+    gap: var(--pcp-space-3);
+    justify-content: space-between;
+  }
+  & .pcp-order-notes strong { color: var(--pcp-text); font-variant-numeric: tabular-nums; font-weight: 650; }
+  /* While a price is on its way the old one is dimmed, not removed: the card
+     keeping its height matters more than hiding a figure for a moment. */
+  & .pcp-order.is-loading .pcp-order-lines dd,
+  & .pcp-order.is-loading .pcp-order-total strong,
+  & .pcp-order.is-loading .pcp-order-notes strong { opacity: .4; transition: opacity var(--pcp-fast); }
+}

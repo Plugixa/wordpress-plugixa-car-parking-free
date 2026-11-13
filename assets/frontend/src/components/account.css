@@ -1,0 +1,104 @@
+/* ==========================================================================
+   ACCOUNT: a customer's own bookings, or the lookup form for a guest.
+   ========================================================================== */
+.pcp-ui.pcp-ui {
+
+  & .pcp-acc-title { font-size: var(--pcp-text-2xl); font-weight: 750; letter-spacing: -.02em; margin-block-end: var(--pcp-space-5); }
+  & .pcp-acc-loading { color: var(--pcp-text-muted); }
+  & .pcp-acc-notice:not(:empty) { margin-block-end: var(--pcp-space-4); }
+  & .pcp-acc-intro { color: var(--pcp-text-muted); font-size: 15px; margin-block-end: var(--pcp-space-5); }
+  & .pcp-acc-lookup { background: var(--pcp-surface-2); padding: var(--pcp-space-5); }
+  & .pcp-acc-submit { margin-block-start: var(--pcp-space-5); }
+  & .pcp-acc-list + .pcp-btn { margin-block-start: var(--pcp-space-4); }
+  & .pcp-empty + .pcp-btn { margin-block-start: var(--pcp-space-4); }
+
+  /* The list is the query container, so its table can become cards when the
+     list, not the screen, is narrow. */
+  & .pcp-acc-list { container-name: pcp-acc; container-type: inline-size; overflow: hidden; padding: 0; }
+  & .pcp-acc-table { width: 100%; }
+  & .pcp-acc-table th {
+    background: var(--pcp-surface-2);
+    border-block-end: 1px solid var(--pcp-border);
+    color: var(--pcp-text-muted);
+    font-size: var(--pcp-text-xs);
+    font-weight: 700;
+    letter-spacing: .06em;
+    padding: var(--pcp-space-3) var(--pcp-space-4);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  & .pcp-acc-table td {
+    border-block-end: 1px solid var(--pcp-border);
+    font-size: 15px;
+    padding: 16px var(--pcp-space-4);
+    transition: background-color var(--pcp-fast);
+    vertical-align: middle;
+  }
+  & .pcp-acc-table tr.pcp-acc-row:hover td { background: var(--pcp-surface-2); }
+  & .pcp-acc-table tbody tr:last-child td,
+  & .pcp-acc-table tbody tr:nth-last-child(2):has(+ [hidden]) td { border-block-end: 0; }
+  & .pcp-acc-ref strong { font-family: var(--pcp-font-mono); font-size: var(--pcp-text-sm); font-weight: 700; letter-spacing: .03em; white-space: nowrap; }
+  & .pcp-acc-table td.pcp-acc-stay { min-width: 176px; }
+  & .pcp-acc-table td.pcp-acc-actions { width: 1%; }
+  & .pcp-acc-place { display: block; font-weight: 600; overflow-wrap: anywhere; }
+  & .pcp-acc-when { color: var(--pcp-text-muted); display: block; font-size: var(--pcp-text-sm); }
+  & .pcp-acc-table .pcp-acc-total { font-variant-numeric: tabular-nums; font-weight: 700; text-align: end; white-space: nowrap; }
+  & .pcp-acc-buttons { display: flex; flex-wrap: wrap; gap: var(--pcp-space-2); justify-content: flex-end; }
+  & .pcp-acc-table td.pcp-acc-panel { background: var(--pcp-surface-2); padding: var(--pcp-space-4); }
+  & .pcp-acc-panel > * > p:first-child { font-weight: 600; }
+  & .pcp-acc-panel > * > * + * { margin-block-start: var(--pcp-space-3); }
+  & .pcp-acc-panel .pcp-acc-buttons { flex-wrap: wrap; justify-content: flex-start; }
+  & .pcp-acc-panel > :focus { outline: 0; }
+
+  @container pcp-acc (max-width: 540px) {
+    /* Headers stay for a screen reader; each cell carries its own caption. */
+    & .pcp-acc-table thead {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      width: 1px;
+    }
+    & .pcp-acc-table,
+    & .pcp-acc-table tbody,
+    & .pcp-acc-table tr,
+    & .pcp-acc-table td { display: block; width: 100%; }
+    & .pcp-acc-table tr.pcp-acc-row { border-block-end: 1px solid var(--pcp-border); padding: var(--pcp-space-3) var(--pcp-space-4); }
+    & .pcp-acc-table tr.pcp-acc-row:hover td { background: none; }
+    & .pcp-acc-table tbody tr.pcp-acc-row:nth-last-child(2) { border-block-end: 0; }
+    & .pcp-acc-table td { border: 0; padding: 5px 0; }
+    & .pcp-acc-table td[data-label] {
+      align-items: baseline;
+      display: flex;
+      gap: var(--pcp-space-4);
+      justify-content: space-between;
+      text-align: end;
+    }
+    & .pcp-acc-table td[data-label]::before {
+      color: var(--pcp-text-muted);
+      content: attr(data-label);
+      flex: 0 0 auto;
+      font-size: var(--pcp-text-sm);
+      font-weight: 400;
+    }
+    /* The place and the dates are two lines of their own under their caption. */
+    & .pcp-acc-table td.pcp-acc-stay { display: block; min-width: 0; text-align: start; }
+    & .pcp-acc-table td.pcp-acc-stay::before { display: block; margin-block-end: 2px; }
+    & .pcp-acc-table td.pcp-acc-actions { padding-block-start: var(--pcp-space-3); width: 100%; }
+    & .pcp-acc-buttons { justify-content: flex-start; }
+    & .pcp-acc-buttons .pcp-btn { flex: 1 1 auto; }
+    & .pcp-acc-table td.pcp-acc-panel { border-block-end: 1px solid var(--pcp-border); padding: var(--pcp-space-4); }
+  }
+
+  /* Placeholder while the list is on its way. */
+  & .pcp-acc-skeleton { display: grid; gap: var(--pcp-space-3); }
+  & .pcp-acc-skeleton span {
+    animation: pcp-shimmer 1.3s ease infinite;
+    background: linear-gradient(90deg, var(--pcp-surface-2) 25%, var(--pcp-surface-3) 37%, var(--pcp-surface-2) 63%);
+    background-size: 400% 100%;
+    border-radius: var(--pcp-radius-md);
+    display: block;
+    height: 60px;
+  }
+}

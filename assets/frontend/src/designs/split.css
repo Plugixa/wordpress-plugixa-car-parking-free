@@ -1,0 +1,107 @@
+/* ==========================================================================
+   DESIGN: split — a side column and the step beside it.
+
+   From 760px of card: the brand, the steps (on their side, each with a line
+   saying what it is for) and the order summary stack in a tinted side column;
+   the step has the rest of the width. Below 760px it is the classic layout.
+
+   How it is done without markup of its own: the card becomes a grid, and
+   `.pcp-body` stops being a box (display: contents), so the summary inside it
+   and the steps outside it can sit in the same column.
+   ========================================================================== */
+
+.pcp-ui.pcp-ui[data-pcp-design="split"] {
+  --pcp-radius-lg: 20px;
+}
+
+@container pcp-wizard (min-width: 760px) {
+  .pcp-ui.pcp-ui.pcp-wizard[data-pcp-design="split"]:not(.is-complete) {
+    --pcp-side: clamp(260px, 32%, 320px);
+
+    /* The side column's tint and its edge, painted on the card itself: the
+       column is three separate boxes, and none of them is the full height. */
+    background:
+      linear-gradient(to right, var(--pcp-surface-2) var(--pcp-side), var(--pcp-border) var(--pcp-side) calc(var(--pcp-side) + 1px), var(--pcp-surface) calc(var(--pcp-side) + 1px));
+    display: grid;
+    grid-template-areas:
+      "notice notice"
+      "head   main"
+      "steps  main"
+      "order  main";
+    grid-template-columns: var(--pcp-side) minmax(0, 1fr);
+    grid-template-rows: auto auto auto 1fr;
+    min-height: 560px;
+    /* clip, not hidden: hidden would make the card a scroll container, and the
+       summary could no longer stick inside it. */
+    overflow: clip;
+    padding: 0;
+
+    &:dir(rtl) {
+      background:
+        linear-gradient(to left, var(--pcp-surface-2) var(--pcp-side), var(--pcp-border) var(--pcp-side) calc(var(--pcp-side) + 1px), var(--pcp-surface) calc(var(--pcp-side) + 1px));
+    }
+
+    & .pcp-location-notice { grid-area: notice; margin: var(--pcp-space-4); }
+
+    & .pcp-header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: var(--pcp-space-4);
+      grid-area: head;
+      margin: 0;
+      padding: var(--pcp-space-6) var(--pcp-space-5) var(--pcp-space-6);
+    }
+    & .pcp-title { font-size: var(--pcp-text-xl); }
+
+    & .pcp-stepper { grid-area: steps; margin: 0; padding: 0 var(--pcp-space-5) var(--pcp-space-6); }
+
+    & .pcp-body { display: contents; }
+    & .pcp-panels { grid-area: main; padding: var(--pcp-space-7) clamp(28px, 5%, 48px) var(--pcp-space-6); }
+    & .pcp-h { font-size: var(--pcp-text-2xl); letter-spacing: -.02em; }
+
+    & .pcp-order {
+      align-self: start;
+      background: var(--pcp-surface);
+      box-shadow: 0 1px 2px rgb(15 23 42 / .04);
+      grid-area: order;
+      inset-block-start: var(--pcp-space-4);
+      margin: 0 var(--pcp-space-5) var(--pcp-space-5);
+      position: sticky;
+    }
+
+    /* The steps, on their side: the marker, the name with its line under it,
+       and a track down to the next marker that fills once the step is done. */
+    & .pcp-steps { align-items: stretch; flex-direction: column; gap: 0; }
+    & .pcp-step {
+      align-items: flex-start;
+      flex: 0 0 auto;
+      gap: 14px;
+      padding-block-end: 22px;
+      position: relative;
+    }
+    & .pcp-step:last-child { padding-block-end: 0; }
+    & .pcp-step:not(:last-child)::after {
+      background:
+        linear-gradient(var(--pcp-primary), var(--pcp-primary)) no-repeat 0 0 / 100% 0%,
+        var(--pcp-border-strong);
+      flex: none;
+      height: auto;
+      inset-block: 38px 4px;
+      inset-inline-start: 15px;
+      min-width: 0;
+      opacity: .7;
+      position: absolute;
+      width: 2px;
+    }
+    & .pcp-step.is-done:not(:last-child)::after { background-size: 100% 100%, auto; opacity: 1; }
+    & .pcp-step-text { gap: 1px; padding-block-start: 5px; }
+    & .pcp-step-label { white-space: normal; }
+    & .pcp-step-desc {
+      color: var(--pcp-text-muted);
+      display: block;
+      font-size: var(--pcp-text-xs);
+      font-weight: 400;
+    }
+    & .pcp-step.is-active .pcp-step-label { color: var(--pcp-primary-text); }
+  }
+}

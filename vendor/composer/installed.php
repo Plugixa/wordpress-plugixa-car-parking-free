@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'plugixa/plugixa-car-parking',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '4642c87e44a733cd7e9b6ed52b097bc47f2d18c2',
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'freemius/wordpress-sdk' => array(
+            'pretty_version' => '2.13.5',
+            'version' => '2.13.5.0',
+            'reference' => '0875c4ee3c941572f44d60cb2a687c54295db3d7',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../freemius/wordpress-sdk',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'plugixa/plugixa-car-parking' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '4642c87e44a733cd7e9b6ed52b097bc47f2d18c2',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'psr/container' => array(
+            'pretty_version' => '2.0.2',
+            'version' => '2.0.2.0',
+            'reference' => 'c71ecc56dfe541dbd90c5360474fbc405f8d5963',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/container',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);

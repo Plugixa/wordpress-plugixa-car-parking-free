@@ -1,0 +1,32 @@
+{
+    "name": "plugixa/plugixa-car-parking",
+    "description": "Plugixa Car Parking - Modern WordPress Car-Park Booking & Reservation Plugin",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Plugixa",
+            "homepage": "https://plugixa.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "freemius/wordpress-sdk": "2.13.5",
+        "psr/container": "^2.0"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "PlugixaCarParking\\": "includes/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "platform": {
+            "php": "8.2"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
