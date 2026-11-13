@@ -38,6 +38,8 @@ class ComposerStaticInit2fefc4c0322f4c5d45738b99ba13d015
         'PlugixaCarParking\\Core\\Admin\\Strings' => __DIR__ . '/../..' . '/includes/Core/Admin/Strings.php',
         'PlugixaCarParking\\Core\\App\\Bundle' => __DIR__ . '/../..' . '/includes/Core/App/Bundle.php',
         'PlugixaCarParking\\Core\\App\\Config' => __DIR__ . '/../..' . '/includes/Core/App/Config.php',
+        'PlugixaCarParking\\Core\\App\\Edition' => __DIR__ . '/../..' . '/includes/Core/App/Edition.php',
+        'PlugixaCarParking\\Core\\App\\Upsell\\Strings' => __DIR__ . '/../..' . '/includes/Core/App/Upsell/Strings.php',
         'PlugixaCarParking\\Core\\Compat\\LegacyHooks' => __DIR__ . '/../..' . '/includes/Core/Compat/LegacyHooks.php',
         'PlugixaCarParking\\Core\\Compat\\LegacyRoutes' => __DIR__ . '/../..' . '/includes/Core/Compat/LegacyRoutes.php',
         'PlugixaCarParking\\Core\\Container' => __DIR__ . '/../..' . '/includes/Core/Container.php',

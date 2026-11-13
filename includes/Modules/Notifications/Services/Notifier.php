@@ -109,7 +109,7 @@ final class Notifier {
 			$body = sprintf( __( 'A payment arrived for booking %s after its hold ran out, and its space has since been booked by someone else. The booking stays expired and the money is on its Payments panel. Refund the customer, or contact them about another space.', 'plugixa-car-parking' ), $reference );
 		}
 
-		[ $sent, $error ] = $this->send( (string) $admin, $subject, $body );
+		[ $sent, $error ] = $this->send( (string) $admin, $subject, $body, array(), $notice, $booking );
 		$this->log->record( (int) $booking['id'], 'email', (string) $admin, $sent ? 'sent' : 'failed', $notice, $error );
 
 		if ( $sent && '' !== $mailed ) {
@@ -163,16 +163,10 @@ final class Notifier {
 		$booking_id = (int) $booking['id'];
 
 		// The customer.
-		[ $subject, $message ] = $this->email_template( $event, $booking );
+		$composed = $this->compose( $booking, $event );
 
-		if ( ! empty( $booking['customer_email'] ) && '' !== $subject ) {
-			$body = strtr( $message, $context );
-
-			// Add the link to the booking summary, unless the site's template already carries it.
-			$summary_url = $context['{summary_url}'] ?? '';
-			if ( '' !== $summary_url && ! str_contains( $body, $summary_url ) ) {
-				$body .= "\n\n" . __( 'View or manage your booking:', 'plugixa-car-parking' ) . "\n" . $summary_url;
-			}
+		if ( ! empty( $booking['customer_email'] ) && null !== $composed ) {
+			[ $subject, $body ] = $composed;
 
 			/**
 			 * Absolute paths of files to attach to the customer's email.
@@ -187,7 +181,7 @@ final class Notifier {
 			$attachments = (array) apply_filters( 'plugixa_carparking_email_attachments', array(), $booking, $event );
 			$attachments = array_values( array_filter( $attachments, 'file_exists' ) );
 
-			[ $sent, $error ] = $this->send( (string) $booking['customer_email'], strtr( $subject, $context ), $body, $attachments );
+			[ $sent, $error ] = $this->send( (string) $booking['customer_email'], $subject, $body, $attachments, $event, $booking );
 			$this->log->record( $booking_id, 'email', (string) $booking['customer_email'], $sent ? 'sent' : 'failed', $event, $error );
 
 			foreach ( $attachments as $path ) {
@@ -205,7 +199,10 @@ final class Notifier {
 				[ $sent, $error ] = $this->send(
 					(string) $admin,
 					strtr( (string) Settings::get( 'admin_notify_subject', 'New booking {booking_ref}' ), $context ),
-					strtr( (string) Settings::get( 'admin_notify_message', '' ), $context )
+					strtr( (string) Settings::get( 'admin_notify_message', '' ), $context ),
+					array(),
+					$event,
+					$booking
 				);
 				$this->log->record( $booking_id, 'email', (string) $admin, $sent ? 'sent' : 'failed', $event, $error );
 			}
@@ -220,6 +217,66 @@ final class Notifier {
 		 * @param LogTable $log     The delivery log, so every attempt is recorded in one place.
 		 */
 		do_action( 'plugixa_carparking_booking_notify', $booking, $context, $event, $this->log );
+	}
+
+	/**
+	 * The customer's email for an event, filled in for this booking: subject, then body.
+	 *
+	 * Exactly what dispatch() sends the customer, so a preview of a message is the message. Null
+	 * when the event has no email.
+	 *
+	 * @param array<string, mixed> $booking The booking row.
+	 * @param string               $event   The event.
+	 *
+	 * @return array{0: string, 1: string}|null
+	 */
+	public function compose( array $booking, string $event ): ?array {
+		[ $subject, $message ] = $this->email_template( $event, $booking );
+
+		if ( '' === $subject ) {
+			return null;
+		}
+
+		$context = $this->context( $booking );
+		$body    = strtr( $message, $context );
+
+		// Add the link to the booking summary, unless the site's template already carries it.
+		$summary_url = $context['{summary_url}'] ?? '';
+		if ( '' !== $summary_url && ! str_contains( $body, $summary_url ) ) {
+			$body .= "\n\n" . __( 'View or manage your booking:', 'plugixa-car-parking' ) . "\n" . $summary_url;
+		}
+
+		return array( strtr( $subject, $context ), $body );
+	}
+
+	/**
+	 * Send one message about a booking and log it, the way every message of the plugin's is.
+	 *
+	 * Public so a module that mails someone the plugin does not, such as a second address for
+	 * a copy, still goes through the same headers, filters and log.
+	 *
+	 * @param array<string, mixed> $booking The booking row.
+	 * @param string               $to      Recipient.
+	 * @param string               $subject Subject line, already filled in.
+	 * @param string               $body    Plain-text body, already filled in.
+	 * @param string               $event   The event, as the log records it.
+	 */
+	public function deliver( array $booking, string $to, string $subject, string $body, string $event ): bool {
+		[ $sent, $error ] = $this->send( $to, $subject, $body, array(), $event, $booking );
+		$this->log->record( (int) ( $booking['id'] ?? 0 ), 'email', $to, $sent ? 'sent' : 'failed', $event, $error );
+
+		return $sent;
+	}
+
+	/**
+	 * The placeholders a template may use, with this booking's values.
+	 *
+	 * @param array<string, mixed> $booking The booking row.
+	 *
+	 * @return array<string, string>
+	 */
+	public function placeholders( array $booking ): array {
+		return $this->context( $booking );
 	}
 
 	/**
@@ -253,19 +310,45 @@ final class Notifier {
 	 * @param string   $to          Recipient.
 	 * @param string   $subject     Subject line.
 	 * @param string   $body        Plain-text body.
-	 * @param string[] $attachments Absolute paths.
+	 * @param string[]             $attachments Absolute paths.
+	 * @param string               $event       The event the message is about.
+	 * @param array<string, mixed> $booking     The booking it is about.
 	 *
 	 * @return array{0: bool, 1: string} Whether it was sent, and the failure reason ('' when sent).
 	 */
-	private function send( string $to, string $subject, string $body, array $attachments = array() ): array {
+	private function send( string $to, string $subject, string $body, array $attachments = array(), string $event = '', array $booking = array() ): array {
 		$error = '';
+
+		$message = array(
+			'to'          => $to,
+			'subject'     => $subject,
+			'body'        => $body,
+			'headers'     => $this->email_headers(),
+			'attachments' => $attachments,
+		);
+
+		/**
+		 * A message just before it is handed to wp_mail().
+		 *
+		 * The plugin sends plain text. A module may change the body and headers here, for
+		 * example to send a designed layout, as long as it keeps all five keys.
+		 *
+		 * @param array{to: string, subject: string, body: string, headers: string[], attachments: string[]} $message The message.
+		 * @param string               $event   The event the message is about.
+		 * @param array<string, mixed> $booking The booking it is about.
+		 */
+		$filtered = apply_filters( 'plugixa_carparking_email_message', $message, $event, $booking );
+
+		if ( is_array( $filtered ) && is_string( $filtered['body'] ?? null ) && is_string( $filtered['subject'] ?? null ) && is_array( $filtered['headers'] ?? null ) ) {
+			$message = array_merge( $message, array_intersect_key( $filtered, $message ) );
+		}
 
 		$capture = static function ( $wp_error ) use ( &$error ): void {
 			$error = is_wp_error( $wp_error ) ? $wp_error->get_error_message() : '';
 		};
 
 		add_action( 'wp_mail_failed', $capture );
-		$sent = wp_mail( $to, $subject, $body, $this->email_headers(), $attachments );
+		$sent = wp_mail( (string) $message['to'], (string) $message['subject'], (string) $message['body'], (array) $message['headers'], (array) $message['attachments'] );
 		remove_action( 'wp_mail_failed', $capture );
 
 		return array( (bool) $sent, $error );
@@ -349,7 +432,7 @@ final class Notifier {
 		// A trashed location still has a name, and the message should still say where.
 		$location = ! empty( $booking['location_id'] ) ? $this->locations->find( (int) $booking['location_id'], true ) : null;
 
-		return array(
+		$context = array(
 			'{booking_ref}'    => (string) ( $booking['booking_ref'] ?? '' ),
 			'{customer_name}'  => (string) ( $booking['customer_name'] ?? '' ),
 			'{customer_email}' => (string) ( $booking['customer_email'] ?? '' ),
@@ -364,5 +447,24 @@ final class Notifier {
 			'{custom_fields}'  => $this->answers->text( $booking ),
 			'{summary_url}'    => Invoice::summary_url( (string) ( $booking['booking_ref'] ?? '' ) ),
 		);
+
+		/**
+		 * The placeholders a message may use, with this booking's values.
+		 *
+		 * A module adds its own here. The plugin's own keep their values: a key already set is
+		 * not replaced.
+		 *
+		 * @param array<string, string> $extra   Placeholder => value, to add.
+		 * @param array<string, mixed>  $booking The booking row.
+		 */
+		$extra = apply_filters( 'plugixa_carparking_email_placeholders', array(), $booking );
+
+		foreach ( (array) $extra as $token => $value ) {
+			if ( is_string( $token ) && is_scalar( $value ) && ! isset( $context[ $token ] ) ) {
+				$context[ $token ] = (string) $value;
+			}
+		}
+
+		return $context;
 	}
 }

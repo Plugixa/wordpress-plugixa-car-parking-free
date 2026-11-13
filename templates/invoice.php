@@ -51,6 +51,17 @@ $pcp_badge  = 'paid' === $pcp_status ? '#2e7d32' : ('unpaid' === $pcp_status ? '
  * @param array $invoice Everything the template renders.
  */
 $pcp_rows = (array) apply_filters('plugixa_carparking_invoice_total_rows', array(), $b, $invoice);
+
+/**
+ * Lines to show under the booking reference at the top, such as a number the invoice is filed under.
+ *
+ * Each line: array( 'label' => string, 'value' => string ). Empty unless something adds one.
+ *
+ * @param array $lines   The lines.
+ * @param array $booking The booking row.
+ * @param array $invoice Everything the template renders.
+ */
+$pcp_head = (array) apply_filters('plugixa_carparking_invoice_header_lines', array(), $b, $invoice);
 ?>
 <div class="pcp-invoice pcp-inv" style="width:100%;font-family:DejaVu Sans, Arial, sans-serif;color:#212121;font-size:13px;line-height:1.5;">
   <table class="pcp-inv-table" style="width:100%;border-collapse:collapse;margin-bottom:20px;">
@@ -62,12 +73,31 @@ $pcp_rows = (array) apply_filters('plugixa_carparking_invoice_total_rows', array
       <td style="vertical-align:top;text-align:right;padding:0;">
         <div class="pcp-inv-ref" style="font-size:16px;font-weight:700;"><?php echo esc_html($b['booking_ref'] ?? ''); ?></div>
         <div class="pcp-inv-muted pcp-inv-date" style="color:#616161;"><?php echo esc_html($pcp_when($b['created_at'] ?? '')); ?></div>
+<?php
+foreach ($pcp_head as $pcp_line) {
+    // Nothing at all is written when nothing adds a line, so the page is byte for byte as before.
+    if (is_array($pcp_line) && '' !== (string) ($pcp_line['value'] ?? '')) {
+        echo '        <div class="pcp-inv-muted" style="color:#616161;">' . esc_html((string) ($pcp_line['label'] ?? '')) . ' <strong style="color:#212121;">' . esc_html((string) $pcp_line['value']) . '</strong></div>' . "\n";
+    }
+}
+?>
         <div style="margin-top:6px;">
           <span class="pcp-inv-badge" style="display:inline-block;padding:2px 10px;border-radius:10px;color:#ffffff;background:<?php echo esc_attr($pcp_badge); ?>;font-size:11px;font-weight:700;"><?php echo esc_html($pcp_label); ?></span>
         </div>
       </td>
     </tr>
   </table>
+<?php
+/**
+ * Fires under the invoice's heading, for a module to show something of its own there, such as a
+ * code the customer shows on arrival. Whatever is printed must be escaped by whoever prints it.
+ * Nothing is written when nothing listens, so the page is byte for byte as before.
+ *
+ * @param array $booking The booking row.
+ * @param array $invoice Everything the template renders.
+ */
+do_action('plugixa_carparking_invoice_after_header', $b, $invoice);
+?>
 
   <table class="pcp-inv-table" style="width:100%;border-collapse:collapse;margin-bottom:20px;">
     <tr>

@@ -4,7 +4,7 @@ Tags: parking, parking booking, reservation, car park, booking
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,18 @@ Records live in the plugin's **own database tables**, not in posts and post meta
 
 * Text messages through Twilio or Vonage, and Telegram notices
 * Reminders before arrival and a daily report by email
+* Designed emails with your logo and colours, a preview and a test send
+* Emails when a booking is cancelled, runs out unpaid, moves to other dates or changes status
+
+**Reports and invoices**
+
+* Reports of revenue, occupancy, coupons and extras for any dates and location, with CSV export
+* Invoice numbers in order with no gaps, on every invoice and in emails
+
+**Arrivals and regulars**
+
+* Check-in with QR codes: staff scan the code on a booking, or find it by licence plate, to check cars in and out
+* Season passes: monthly parking for regulars, paid by card each month until they cancel, sold with the `[plugixa_car_parking_passes]` shortcode
 
 [Upgrade to Plugixa Car Parking Pro](https://www.plugixa.com/plugins/plugixa-car-parking#pricing)
 
@@ -237,6 +249,15 @@ The plugin itself sends nothing to any outside service: no analytics, no trackin
 20. Booking form, Minimal design - one column with a progress bar
 
 == Changelog ==
+
+= 1.3.0 =
+* Add-on: email templates. Every email is sent in a designed layout with your logo, colour and footer, with the plain text kept for mail apps that cannot show it. New emails for a booking that is cancelled, runs out unpaid, is moved to other dates or has its status changed in the admin (this one starts off). Each can be switched off, reworded, copied to other addresses, previewed and sent to yourself as a test.
+* Add-on: reports. Net revenue, bookings, occupancy and average stay for any dates and location, against the period before, with revenue by day, money by payment method, occupancy by location, coupons and extras. Each table exports as CSV.
+* Add-on: invoice numbers. A booking gets its number the first time it is paid, so the numbers run in order with no gaps and are never reused. Set a prefix (with the year) and the number of digits, and number older paid bookings in one go.
+* Add-on: check-in. A QR code on each booking's summary page, PDF invoice and emails, and a Check-in screen where staff scan it with the camera or find a booking by reference or licence plate, then check the car in and out. Checking out completes the booking. A new capability, plugixa_carparking_check_in, is given to administrators.
+* Add-on: season passes. Monthly parking at one location and space type for a fixed price, with a limit on holders, sold with the `[plugixa_car_parking_passes]` shortcode and paid by card through Stripe each month until cancelled. Each pass holds a space while it runs, and holders can register two licence plates.
+* Fix (add-on): text messages and Telegram notices said a booking was confirmed for every event, including a failed or ending monthly payment. They are now sent only for a new booking, a payment and the reminder.
+* Developers: new hooks `plugixa_carparking_email_message`, `plugixa_carparking_email_placeholders`, `plugixa_carparking_booking_expired`, `plugixa_carparking_booking_status_changed`, `plugixa_carparking_invoice_header_lines` and `plugixa_carparking_invoice_after_header`. The notifier gains `compose()`, `deliver()` and `placeholders()`.
 
 = 1.2.0 =
 * Add-on: Mollie payments, with Mollie's hosted checkout: cards, iDEAL, Bancontact and the other methods you choose. Refunds go through Mollie, and refunds made in the Mollie dashboard and chargebacks are reported back. There is no webhook to set up, but your site must be reachable from the internet.

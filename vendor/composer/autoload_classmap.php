@@ -14,6 +14,8 @@ return array(
     'PlugixaCarParking\\Core\\Admin\\Strings' => $baseDir . '/includes/Core/Admin/Strings.php',
     'PlugixaCarParking\\Core\\App\\Bundle' => $baseDir . '/includes/Core/App/Bundle.php',
     'PlugixaCarParking\\Core\\App\\Config' => $baseDir . '/includes/Core/App/Config.php',
+    'PlugixaCarParking\\Core\\App\\Edition' => $baseDir . '/includes/Core/App/Edition.php',
+    'PlugixaCarParking\\Core\\App\\Upsell\\Strings' => $baseDir . '/includes/Core/App/Upsell/Strings.php',
     'PlugixaCarParking\\Core\\Compat\\LegacyHooks' => $baseDir . '/includes/Core/Compat/LegacyHooks.php',
     'PlugixaCarParking\\Core\\Compat\\LegacyRoutes' => $baseDir . '/includes/Core/Compat/LegacyRoutes.php',
     'PlugixaCarParking\\Core\\Container' => $baseDir . '/includes/Core/Container.php',

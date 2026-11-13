@@ -487,14 +487,53 @@ final class BookingRepository extends Repository {
 	public function expire_pending_holds(): int {
 		global $wpdb;
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- a bulk status change on the plugin's own table.
-		return (int) $wpdb->query(
-			$wpdb->prepare(
-				"UPDATE %i SET status = 'expired', modified_at = %s WHERE status = 'pending' AND hold_expires_at IS NOT NULL AND hold_expires_at <= %s",
-				$this->table_name(),
-				current_time( 'mysql', true ),
-				current_time( 'mysql' )
+		$now = current_time( 'mysql' );
+
+		// The ones due, found first so each can be announced once it has expired.
+		$due = array_map(
+			'intval',
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- a cron read of the plugin's own table.
+			(array) $wpdb->get_col(
+				$wpdb->prepare(
+					"SELECT id FROM %i WHERE status = 'pending' AND hold_expires_at IS NOT NULL AND hold_expires_at <= %s",
+					$this->table_name(),
+					$now
+				)
 			)
 		);
+
+		$expired = 0;
+
+		foreach ( $due as $id ) {
+			// Still pending is part of the condition: a payment that arrived since the read wins.
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- a status change on the plugin's own table.
+			$changed = (int) $wpdb->query(
+				$wpdb->prepare(
+					"UPDATE %i SET status = 'expired', modified_at = %s WHERE id = %d AND status = 'pending'",
+					$this->table_name(),
+					current_time( 'mysql', true ),
+					$id
+				)
+			);
+
+			if ( 1 !== $changed ) {
+				continue;
+			}
+
+			++$expired;
+
+			$booking = $this->find( $id );
+
+			if ( null !== $booking ) {
+				/**
+				 * Fires when an unpaid booking's hold runs out and it becomes expired.
+				 *
+				 * @param array<string, mixed> $booking The expired booking.
+				 */
+				do_action( 'plugixa_carparking_booking_expired', $booking );
+			}
+		}
+
+		return $expired;
 	}
 }

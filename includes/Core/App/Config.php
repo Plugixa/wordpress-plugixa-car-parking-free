@@ -8,6 +8,7 @@ declare( strict_types = 1 );
 namespace PlugixaCarParking\Core\App;
 
 use PlugixaCarParking\Core\Admin\Strings;
+use PlugixaCarParking\Core\App\Upsell\Strings as UpsellStrings;
 use PlugixaCarParking\Core\Plugin;
 use PlugixaCarParking\Core\Security\Capabilities;
 use PlugixaCarParking\Core\Settings;
@@ -62,6 +63,14 @@ final class Config {
 			// Formatting and vocabulary only. See Settings::for_display() for why not all of it.
 			'settings'    => Settings::for_display(),
 			'timezone'    => wp_timezone_string(),
+
+			// `free` or `premium`. The free build shows site managers a Pro features page; the
+			// premium build carries the same code and must not. See Edition.
+			'edition'     => Edition::current(),
+
+			// Where "See Pro plans" goes. A link somebody clicks, never a request, and sent from
+			// here so the app's own source names no outside host.
+			'pricingUrl'  => Edition::PRICING_URL,
 		);
 
 		/**
@@ -101,6 +110,6 @@ final class Config {
 		 *
 		 * @param array<string, string> $strings Strings so far.
 		 */
-		return (array) apply_filters( 'plugixa_carparking_admin_i18n_strings', Strings::all() );
+		return (array) apply_filters( 'plugixa_carparking_admin_i18n_strings', array_merge( Strings::all(), UpsellStrings::all() ) );
 	}
 }

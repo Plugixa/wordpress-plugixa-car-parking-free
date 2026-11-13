@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Plugixa Car Parking 1.2.0\n"
+"Project-Id-Version: Plugixa Car Parking 1.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plugixa-car-parking\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-03T10:23:34+00:00\n"
+"POT-Creation-Date: 2026-11-08T16:39:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: plugixa-car-parking\n"
@@ -133,7 +133,7 @@ msgstr ""
 #: includes/Modules/Frontend/Labels.php:47
 #: includes/Modules/Frontend/Labels.php:82
 #: includes/Modules/Payments/Strings.php:31
-#: templates/invoice.php:133
+#: templates/invoice.php:163
 msgid "Paid"
 msgstr ""
 
@@ -553,7 +553,7 @@ msgid "Full stop (.)"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:150
-#: includes/Modules/Bookings/Services/BookingAdminService.php:419
+#: includes/Modules/Bookings/Services/BookingAdminService.php:432
 #: includes/Modules/Frontend/Shortcodes.php:422
 #: includes/Modules/Frontend/Shortcodes.php:614
 #: includes/Modules/Frontend/Shortcodes.php:628
@@ -805,6 +805,7 @@ msgid "General"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:210
+#: includes/Core/App/Upsell/Strings.php:46
 #: includes/Modules/Payments/Module.php:142
 #: includes/Modules/Payments/Strings.php:28
 msgid "Payments"
@@ -1292,6 +1293,246 @@ msgstr ""
 msgid "Developers: build the app by running %1$s in %2$s."
 msgstr ""
 
+#: includes/Core/App/Upsell/Strings.php:35
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:36
+msgid "See Pro features"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:37
+msgid "Plugixa Car Parking Pro"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:38
+msgid "Everything in the free plugin keeps working. Pro adds the tools below for selling more kinds of parking, taking payment online and keeping customers informed. Your locations, bookings and payments stay as they are when you upgrade."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:39
+msgid "See Pro plans"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:40
+msgid "Compare plans"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:41
+msgid "Already bought Pro? Download it from your Plugixa account and install it. It takes over from this plugin and keeps all your data."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:42
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:45
+msgid "Pricing"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:47
+msgid "Spaces and bookings"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:48
+msgid "Messages"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:50
+msgid "Pricing rules"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:51
+msgid "Set prices by customer group, date, weekday, arrival time, length of stay, location or space type."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:52
+msgid "Customer group prices"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:53
+msgid "Give regulars, staff or partner companies their own prices."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:54
+msgid "Tax rates"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:55
+msgid "Add tax by rate, shown on every booking and invoice."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:56
+msgid "Deposits"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:57
+msgid "Take part of the price when booking and the rest later."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:59
+msgid "Stripe card payments"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:60
+msgid "Card payments through Stripe Checkout, with refunds from the booking."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:61
+msgid "Monthly payments"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:62
+msgid "Let long stays be paid month by month by card."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:63
+msgid "PayPal, Mollie, Adyen and Klarna"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:64
+msgid "More ways to pay, including the local methods European customers use."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:65
+msgid "PDF invoices"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:66
+msgid "Invoices as PDF files, attached to the emails your customers get."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:68
+msgid "Numbered spaces"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:69
+msgid "Add bays in a run, A1 to A20, and let customers pick one or get one assigned."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:70
+msgid "Bookable extras"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:71
+msgid "Offer add-ons such as a car wash or EV charging during booking."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:72
+msgid "Customers change their dates"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:73
+msgid "Customers move a booking to other dates themselves."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:74
+msgid "Car park map"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:75
+msgid "A Google Map of your locations, also inside the booking form."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:77
+msgid "Text messages"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:78
+msgid "Booking messages by SMS through Twilio or Vonage."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:79
+msgid "Telegram notices"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:80
+msgid "Booking notices posted to your Telegram chat."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:81
+msgid "Reminders"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:82
+msgid "Remind customers before they arrive."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:83
+msgid "Daily email summary"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:84
+msgid "A summary of the last day of bookings, emailed to you every day."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:86
+msgid "Emails and reports"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:87
+msgid "Designed emails"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:88
+msgid "Your logo and colours on every email, with a preview and a test send."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:89
+msgid "More booking emails"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:90
+msgid "Tell customers when a booking is cancelled, runs out unpaid, moves or changes status."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:91
+msgid "Reports"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:92
+msgid "Revenue, occupancy and coupon use for any dates and location, with CSV export."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:93
+msgid "Invoice numbers"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:94
+msgid "Numbers in order with no gaps, on every invoice and in emails."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:96
+msgid "Arrivals and regulars"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:97
+msgid "Check-in with QR codes"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:98
+msgid "Staff scan the code on each booking, or look it up by plate, to check cars in and out."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:99
+msgid "Season passes"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:100
+msgid "Sell monthly parking to regulars, paid by card each month until they cancel."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:103
+msgid "Get more from Plugixa Car Parking"
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:104
+msgid "Online card payments, numbered spaces, pricing rules, deposits and more come with Pro."
+msgstr ""
+
+#: includes/Core/App/Upsell/Strings.php:105
+msgid "Hide this card"
+msgstr ""
+
 #. translators: %d: the maximum number of characters the field holds.
 #: includes/Core/Database/Repository.php:664
 #, php-format
@@ -1455,7 +1696,7 @@ msgstr ""
 #: includes/Modules/Bookings/Http/BookingsController.php:140
 #: includes/Modules/Bookings/Http/BookingsController.php:339
 #: includes/Modules/Bookings/Repositories/BookingRepository.php:220
-#: includes/Modules/Bookings/Services/BookingAdminService.php:418
+#: includes/Modules/Bookings/Services/BookingAdminService.php:431
 #: includes/Modules/Bookings/Strings.php:39
 #: includes/Modules/Calendar/Strings.php:32
 #: includes/Modules/Locations/Strings.php:138
@@ -1468,7 +1709,7 @@ msgstr ""
 
 #: includes/Modules/Bookings/Http/BookingsController.php:141
 #: includes/Modules/Bookings/Http/BookingsController.php:342
-#: includes/Modules/Bookings/Services/BookingAdminService.php:417
+#: includes/Modules/Bookings/Services/BookingAdminService.php:430
 #: includes/Modules/Spaces/Module.php:126
 #: includes/Modules/Spaces/Services/SpaceService.php:231
 msgid "Quantity"
@@ -1478,7 +1719,7 @@ msgstr ""
 #: includes/Modules/Bookings/Http/BookingsController.php:340
 #: includes/Modules/Bookings/Repositories/BookingRepository.php:226
 #: includes/Modules/Bookings/Services/BookingAdminService.php:110
-#: includes/Modules/Bookings/Services/BookingAdminService.php:415
+#: includes/Modules/Bookings/Services/BookingAdminService.php:428
 #: includes/Modules/Bookings/Strings.php:41
 #: includes/Modules/Frontend/Shortcodes.php:629
 #: templates/booking-form.php:119
@@ -1489,7 +1730,7 @@ msgstr ""
 #: includes/Modules/Bookings/Http/BookingsController.php:341
 #: includes/Modules/Bookings/Repositories/BookingRepository.php:231
 #: includes/Modules/Bookings/Services/BookingAdminService.php:111
-#: includes/Modules/Bookings/Services/BookingAdminService.php:416
+#: includes/Modules/Bookings/Services/BookingAdminService.php:429
 #: includes/Modules/Bookings/Strings.php:42
 #: includes/Modules/Frontend/Shortcodes.php:630
 #: templates/booking-form.php:126
@@ -1516,7 +1757,7 @@ msgstr ""
 #: includes/Modules/Bookings/Http/BookingsController.php:336
 #: includes/Modules/Bookings/Module.php:219
 #: includes/Modules/Bookings/Repositories/BookingRepository.php:201
-#: includes/Modules/Bookings/Services/BookingAdminService.php:414
+#: includes/Modules/Bookings/Services/BookingAdminService.php:427
 #: includes/Modules/Bookings/Strings.php:67
 #: includes/Modules/Calendar/Strings.php:54
 #: includes/Modules/Coupons/Module.php:126
@@ -1556,7 +1797,7 @@ msgstr ""
 #: includes/Modules/Bookings/Module.php:224
 #: includes/Modules/Bookings/Strings.php:33
 #: includes/Modules/Bookings/Strings.php:78
-#: templates/invoice.php:75
+#: templates/invoice.php:105
 msgid "Customer"
 msgstr ""
 
@@ -1577,12 +1818,12 @@ msgid "Licence plate"
 msgstr ""
 
 #: includes/Modules/Bookings/Http/BookingsController.php:348
-#: templates/invoice.php:123
+#: templates/invoice.php:153
 msgid "Subtotal"
 msgstr ""
 
 #: includes/Modules/Bookings/Http/BookingsController.php:349
-#: templates/invoice.php:125
+#: templates/invoice.php:155
 msgid "Discount"
 msgstr ""
 
@@ -1591,8 +1832,8 @@ msgstr ""
 #: includes/Modules/Bookings/Strings.php:49
 #: includes/Modules/Frontend/Shortcodes.php:308
 #: includes/Modules/Frontend/Shortcodes.php:597
-#: templates/invoice.php:102
-#: templates/invoice.php:131
+#: templates/invoice.php:132
+#: templates/invoice.php:161
 msgid "Total"
 msgstr ""
 
@@ -1645,7 +1886,7 @@ msgstr[1] ""
 #: includes/Modules/Payments/Repositories/PaymentRepository.php:86
 #: includes/Modules/Payments/Services/PaymentAdminService.php:97
 #: includes/Modules/Payments/Strings.php:48
-#: templates/invoice.php:87
+#: templates/invoice.php:117
 msgid "Booking"
 msgstr ""
 
@@ -1689,39 +1930,39 @@ msgstr ""
 msgid "Billing unit"
 msgstr ""
 
-#: includes/Modules/Bookings/Services/BookingAdminService.php:363
+#: includes/Modules/Bookings/Services/BookingAdminService.php:376
 msgid "This booking has payments recorded against it, so it cannot be deleted permanently."
 msgstr ""
 
-#: includes/Modules/Bookings/Services/BookingAdminService.php:374
+#: includes/Modules/Bookings/Services/BookingAdminService.php:387
 msgid "That booking does not exist."
 msgstr ""
 
 #. translators: %s: a field's key, e.g. "payment_status".
-#: includes/Modules/Bookings/Services/BookingAdminService.php:393
+#: includes/Modules/Bookings/Services/BookingAdminService.php:406
 #, php-format
 msgid "\"%s\" is worked out from the booking's payments and cannot be set. Record a payment or a refund instead."
 msgstr ""
 
-#: includes/Modules/Bookings/Services/BookingAdminService.php:515
+#: includes/Modules/Bookings/Services/BookingAdminService.php:528
 #: includes/Modules/Bookings/Strings.php:107
 msgid "That is not an email address."
 msgstr ""
 
-#: includes/Modules/Bookings/Services/BookingAdminService.php:528
+#: includes/Modules/Bookings/Services/BookingAdminService.php:541
 #: includes/Modules/Bookings/Strings.php:106
 msgid "A booking is for at least one space."
 msgstr ""
 
-#: includes/Modules/Bookings/Services/BookingAdminService.php:529
+#: includes/Modules/Bookings/Services/BookingAdminService.php:542
 msgid "A booking needs a space type."
 msgstr ""
 
-#: includes/Modules/Bookings/Services/BookingAdminService.php:628
+#: includes/Modules/Bookings/Services/BookingAdminService.php:641
 msgid "There is no free space for those dates. Send force to save the booking anyway."
 msgstr ""
 
-#: includes/Modules/Bookings/Services/BookingAdminService.php:636
+#: includes/Modules/Bookings/Services/BookingAdminService.php:649
 #: includes/Modules/Bookings/Services/BookingService.php:102
 #: includes/Modules/Bookings/Services/BookingService.php:316
 msgid "This car park is taking another booking right now. Please try again."
@@ -1910,7 +2151,7 @@ msgstr ""
 
 #: includes/Modules/Bookings/Strings.php:51
 #: includes/Modules/Payments/Strings.php:33
-#: templates/invoice.php:134
+#: templates/invoice.php:164
 msgid "Balance due"
 msgstr ""
 
@@ -1931,12 +2172,12 @@ msgid "This booking has no price lines."
 msgstr ""
 
 #: includes/Modules/Bookings/Strings.php:56
-#: templates/invoice.php:99
+#: templates/invoice.php:129
 msgid "Item"
 msgstr ""
 
 #: includes/Modules/Bookings/Strings.php:57
-#: templates/invoice.php:100
+#: templates/invoice.php:130
 msgid "Qty"
 msgstr ""
 
@@ -3938,7 +4179,7 @@ msgstr ""
 msgid "A payment arrived for booking %s after its hold ran out, and its space has since been booked by someone else. The booking stays expired and the money is on its Payments panel. Refund the customer, or contact them about another space."
 msgstr ""
 
-#: includes/Modules/Notifications/Services/Notifier.php:174
+#: includes/Modules/Notifications/Services/Notifier.php:246
 msgid "View or manage your booking:"
 msgstr ""
 
@@ -4230,7 +4471,7 @@ msgid "The prices could not be saved."
 msgstr ""
 
 #: includes/Modules/SpaceTypes/Services/SpaceTypeService.php:290
-#: templates/invoice.php:101
+#: templates/invoice.php:131
 msgid "Unit"
 msgstr ""
 
@@ -4566,23 +4807,23 @@ msgstr ""
 msgid "Pay now"
 msgstr ""
 
-#: templates/invoice.php:60
+#: templates/invoice.php:71
 msgid "Parking booking invoice"
 msgstr ""
 
-#: templates/invoice.php:80
+#: templates/invoice.php:110
 msgid "Plate:"
 msgstr ""
 
-#: templates/invoice.php:89
+#: templates/invoice.php:119
 msgid "Entry:"
 msgstr ""
 
-#: templates/invoice.php:90
+#: templates/invoice.php:120
 msgid "Exit:"
 msgstr ""
 
-#: templates/invoice.php:91
+#: templates/invoice.php:121
 msgid "Quantity:"
 msgstr ""
 

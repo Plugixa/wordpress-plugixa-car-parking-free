@@ -276,21 +276,34 @@ final class BookingAdminService {
 		$takes_space = $this->holds_space( $merged ) && ( $moved || ! $this->holds_space( $existing ) );
 
 		if ( $force || ! $takes_space ) {
-			return $this->bookings->update( $id, $data );
+			$done = $this->bookings->update( $id, $data );
+		} else {
+			// The same lock the engine creates a booking under, so a move and a new booking cannot
+			// both count the same free space.
+			$done = $this->lock->run(
+				'booking:' . $window['location_id'],
+				function () use ( $id, $data, $window ): bool|WP_Error {
+					$conflict = $this->conflict( $window, $id );
+
+					return $conflict instanceof WP_Error ? $conflict : $this->bookings->update( $id, $data );
+				}
+			) ?? $this->busy();
 		}
 
-		// The same lock the engine creates a booking under, so a move and a new booking cannot
-		// both count the same free space.
-		$done = $this->lock->run(
-			'booking:' . $window['location_id'],
-			function () use ( $id, $data, $window ): bool|WP_Error {
-				$conflict = $this->conflict( $window, $id );
+		if ( true === $done && isset( $data['status'] ) && $data['status'] !== $existing['status'] ) {
+			/**
+			 * Fires when someone in the admin changes a booking's status, one booking at a time
+			 * or as part of a mass action. A customer cancelling their own booking fires
+			 * `plugixa_carparking_booking_cancelled` instead.
+			 *
+			 * @param array<string, mixed> $booking The booking after the change.
+			 * @param string               $from    The status before.
+			 * @param string               $to      The status now.
+			 */
+			do_action( 'plugixa_carparking_booking_status_changed', (array) $this->bookings->find( $id ), (string) $existing['status'], (string) $data['status'] );
+		}
 
-				return $conflict instanceof WP_Error ? $conflict : $this->bookings->update( $id, $data );
-			}
-		);
-
-		return $done ?? $this->busy();
+		return $done;
 	}
 
 	/**
