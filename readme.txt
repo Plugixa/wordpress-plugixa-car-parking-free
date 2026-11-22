@@ -4,7 +4,7 @@ Tags: parking, parking booking, reservation, car park, booking
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -207,6 +207,10 @@ Not unless you ask it to. See the "External services" section below.
 
 Full documentation - getting started, locations, pricing, booking forms, bookings, the calendar and payments - is at https://www.plugixa.com/documentation/plugixa-car-parking
 
+= Q. Does the booking form load fonts from Google or another service? =
+
+No. The booking form uses Inter and Space Grotesk, both under the SIL Open Font License 1.1. They are included in the plugin, in `assets/frontend/vendor/fonts/` with their licences, and are served from your own site.
+
 == External services ==
 
 The plugin itself sends nothing to any outside service: no analytics, no tracking, no remote configuration, no font or script CDN. Bookings, customers and payments stay in your WordPress database. Two things can contact a service, and both are listed here.
@@ -249,6 +253,18 @@ The plugin itself sends nothing to any outside service: no analytics, no trackin
 20. Booking form, Minimal design - one column with a progress bar
 
 == Changelog ==
+
+= 1.3.1 =
+* New: a fresh look for the booking form, the customer's bookings page and the booking summary, in all three designs: Space Grotesk headings, Inter text, flatter rows with a coloured mark on the one you choose, and tighter corners. Both typefaces are included in the plugin and are never loaded from a font service.
+* New: the booking form shows the chosen car park's lowest price ("from $8.00 / day") before the customer checks availability.
+* New: the dates start at the next full hour, after your minimum notice, instead of tomorrow at 08:00.
+* New: an optional badge for each space type, such as "Most popular", and an optional reassurance line under the booking form's first button, such as your cancellation policy (Settings, Bookings). Both stay empty until you write them.
+* New: each payment method shows an icon and a plain name ("Pay on arrival", "Pay online", "Credit / debit card").
+* Improved: on phones the steps show the current step's name in full, every field is large enough that an iPhone does not zoom in, and the admin lists show one card per row instead of a table that scrolls sideways.
+* Improved: the customer's bookings page and the booking summary use your booking form's colour.
+* Improved: the Minimal design keeps to 720px on large screens.
+* Add-on: with the map on, a wide booking form shows the fields on the left and the map on the right. Pins show the unit of their price ($8/day, $1.50/h), buttons are easier to tap, and extras with a quantity have a minus and plus.
+* Developers: new filter `plugixa_carparking_payment_logos` to show logos beside a payment method. A gateway may add `customer_label()` and `icon()`.
 
 = 1.3.0 =
 * Add-on: email templates. Every email is sent in a designed layout with your logo, colour and footer, with the plain text kept for mail apps that cannot show it. New emails for a booking that is cancelled, runs out unpaid, is moved to other dates or has its status changed in the admin (this one starts off). Each can be switched off, reworded, copied to other addresses, previewed and sent to yourself as a test.

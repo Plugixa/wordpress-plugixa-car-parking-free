@@ -20,6 +20,8 @@
   &.pcp-summary {
     border-color: transparent;
     box-shadow: none;
+    /* One quiet column stays one column: on a wide block it ran edge to edge and read as empty. */
+    @apply max-w-[720px] mx-auto;
   }
 
   /* Controls: filled, and edged only as strongly as a control must be. */

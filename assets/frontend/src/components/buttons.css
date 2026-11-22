@@ -144,10 +144,14 @@
     transition: background-color var(--pcp-fast), border-color var(--pcp-fast), color var(--pcp-fast);
   }
   & .pcp-chip.pcp-chip:hover { background: var(--pcp-primary-softer); border-color: var(--pcp-primary-border); }
+  /* Chosen: the primary colour itself, with the text colour Palette.php checked
+     against it. The tint used before put dark-primary text on a primary tint,
+     3.7:1 for #2271b1, under the 4.5:1 small text needs. */
   & .pcp-chip.pcp-chip[aria-pressed="true"] {
-    background: var(--pcp-primary-soft);
-    border-color: var(--pcp-primary-text);
-    color: var(--pcp-primary-text);
+    @apply bg-(--pcp-primary) border-(--pcp-primary) text-(--pcp-primary-contrast);
+    /* Plain, not font-semibold: that utility registers a --tw-* property inside an
+       @layer, and this stylesheet ships no layer (see frontend.css, point 2). */
     font-weight: 600;
   }
+  & .pcp-chip.pcp-chip[aria-pressed="true"]:hover { @apply bg-(--pcp-primary-hover); }
 }

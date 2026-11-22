@@ -58,6 +58,7 @@ final class Schema {
 			description text,
 			icon varchar(100) default NULL,
 			color varchar(20) default NULL,
+			badge varchar(40) default NULL,
 			width decimal(8,2) default NULL,
 			length decimal(8,2) default NULL,
 			dimension_unit varchar(10) default 'm',

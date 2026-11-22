@@ -1,0 +1,58 @@
+/* ==========================================================================
+   THE DESIGN SYSTEM'S LOOK
+   The reference page: Space Grotesk headings over Inter text, flat rows with a
+   hairline edge and a 4px mark at their start that says what state they are
+   in (neutral, or the brand colour once chosen), and small uppercase labels
+   with a little letter-spacing.
+
+   Imported after the components it restyles, so it wins on order alone: the
+   rows here keep each component's own weight. Plain declarations where a
+   Tailwind utility would register a --tw-* property (this file ships no
+   @layer; see frontend.css, point 2).
+   ========================================================================== */
+.pcp-ui.pcp-ui {
+
+  /* Headings. */
+  & :is(.pcp-title, .pcp-h, .pcp-acc-title, .pcp-success-title) {
+    font-family: var(--pcp-font-display);
+    font-weight: 700;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+  }
+
+  /* Rows: a choice the customer makes. Neutral mark, the brand's once chosen. */
+  & .pcp-space-card,
+  & .pcp-pay-option {
+    @apply border-s-(--pcp-mark);
+    border-inline-start-style: solid;
+    border-inline-start-width: 4px;
+    box-shadow: none;
+  }
+  & .pcp-space-card:hover:not(.is-disabled),
+  & .pcp-pay-option:hover {
+    @apply bg-(--pcp-primary-softer) border-(--pcp-primary-border) border-s-(--pcp-primary-border);
+    box-shadow: none;
+    transform: none;
+  }
+  & .pcp-space-card.is-selected,
+  & .pcp-space-card:has(.pcp-space-radio:checked),
+  & .pcp-pay-option.is-selected,
+  & .pcp-pay-option:has(.pcp-pay-radio:checked) {
+    @apply bg-(--pcp-primary-softer) border-(--pcp-primary-border) border-s-(--pcp-primary);
+    box-shadow: none;
+  }
+
+  /* Inter runs a little wider than the system font: keep the pill on one line. */
+  & .pcp-space-meta { white-space: nowrap; }
+
+  /* The focus ring for the keyboard only: a click is not a reason to draw it. */
+  & .pcp-space-card:focus-within:not(:has(:focus-visible)),
+  & .pcp-pay-option:focus-within:not(:has(:focus-visible)) { outline: 0; }
+
+  /* Labels over a group: small, uppercase, a little apart. */
+  & :is(.pcp-order-title, .pcp-pay-methods > .pcp-label-text) {
+    @apply text-(--pcp-text-muted) text-(length:--pcp-text-xs) uppercase;
+    font-weight: 600;
+    letter-spacing: .06em;
+  }
+}

@@ -9,6 +9,7 @@
  * @var array|null $config        The form's own settings for the script, or null for none.
  * @var string $location_notice   An editor-only note about the page's location, or ''.
  * @var string $design            The look the form is drawn in: classic, split or minimal.
+ * @var string $trust_line        The owner's reassurance line under the first button, or ''.
  *
  * Copyright (C) 2026 Plugixa (https://plugixa.com)
  * License: GNU General Public License v2 or later
@@ -100,7 +101,7 @@ if (empty($locations)) {
                     <span class="pcp-label-text"><?php esc_html_e('Location', 'plugixa-car-parking'); ?></span>
                     <select class="pcp-input pcp-location" required>
                         <?php foreach ($locations as $loc) : ?>
-                            <option value="<?php echo esc_attr((string) $loc['id']); ?>" data-slug="<?php echo esc_attr((string) ($loc['slug'] ?? '')); ?>" data-billing="<?php echo esc_attr((string) $loc['default_billing_type']); ?>" <?php selected($loc['id'], $default_location); ?>>
+                            <option value="<?php echo esc_attr((string) $loc['id']); ?>" data-slug="<?php echo esc_attr((string) ($loc['slug'] ?? '')); ?>" data-billing="<?php echo esc_attr((string) $loc['default_billing_type']); ?>" data-from="<?php echo esc_attr((string) $loc['from']); ?>" <?php selected($loc['id'], $default_location); ?>>
                                 <?php echo esc_html($loc['name']); ?>
                             </option>
                         <?php endforeach; ?>
@@ -109,7 +110,7 @@ if (empty($locations)) {
                 <p class="pcp-field-error" hidden></p>
             </div>
         <?php else : ?>
-            <input type="hidden" class="pcp-location" value="<?php echo esc_attr((string) $default_location); ?>" data-billing="<?php echo esc_attr((string) $locations[0]['default_billing_type']); ?>">
+            <input type="hidden" class="pcp-location" value="<?php echo esc_attr((string) $default_location); ?>" data-billing="<?php echo esc_attr((string) $locations[0]['default_billing_type']); ?>" data-from="<?php echo esc_attr((string) $locations[0]['from']); ?>">
             <p class="pcp-location-name"><?php echo esc_html($locations[0]['name']); ?></p>
         <?php endif; ?>
 
@@ -135,7 +136,23 @@ if (empty($locations)) {
         </div>
 
         <div class="pcp-actions pcp-actions-single">
+            <?php
+            /*
+             * The chosen location's lowest price, before the first click. Filled by the script from
+             * the location's data-from, and kept up to date when the location changes.
+             */
+            $first_from = '';
+            foreach ($locations as $loc) {
+                if ((int) $loc['id'] === (int) $default_location) {
+                    $first_from = (string) $loc['from'];
+                }
+            }
+            ?>
+            <p class="pcp-from-price" aria-live="polite"<?php echo '' === $first_from ? ' hidden' : ''; ?>><?php echo esc_html($first_from); ?></p>
             <button type="button" class="pcp-btn pcp-btn-primary pcp-btn-block pcp-check"><?php esc_html_e('Check availability', 'plugixa-car-parking'); ?></button>
+            <?php if ('' !== $trust_line) : ?>
+                <p class="pcp-trust"><?php echo esc_html($trust_line); ?></p>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -163,7 +180,7 @@ if (empty($locations)) {
             <div class="pcp-coupon-row">
                 <label class="pcp-label">
                     <span class="pcp-label-text"><?php esc_html_e('Coupon code', 'plugixa-car-parking'); ?></span>
-                    <input type="text" class="pcp-input pcp-coupon" autocomplete="off" autocapitalize="characters" spellcheck="false">
+                    <input type="text" class="pcp-input pcp-coupon" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="<?php esc_attr_e('Enter code', 'plugixa-car-parking'); ?>">
                 </label>
                 <button type="button" class="pcp-btn pcp-btn-secondary pcp-apply-coupon"><?php esc_html_e('Apply', 'plugixa-car-parking'); ?></button>
             </div>

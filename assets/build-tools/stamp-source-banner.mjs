@@ -27,7 +27,7 @@
  * rolldown's plugin-level `banner` addon hook is honoured under Vite 8, and a `generateBundle`
  * prepend cannot see the entry chunk's `__vite__mapDeps` preamble, which Vite injects later.
  *
- * Usage:  node <path>/stamp-source-banner.mjs <backend|frontend|vendor>
+ * Usage:  node <path>/stamp-source-banner.mjs <backend|frontend|pro-frontend|vendor>
  *
  * `backend` stamps whichever output tree the build it follows actually wrote, by the same rule
  * vite.config.js uses: PLUGIXA_TARGET=free, OR a tree with no src/pro/ (the free ZIP), is the base
@@ -75,6 +75,16 @@ const TARGETS = {
     source: 'assets/frontend/src/frontend.css',
     what: 'public stylesheet (Tailwind CSS)',
     rebuild: 'cd assets/frontend && npm install && npm run build',
+    node: 'Node.js 20+',
+  },
+  // The premium build's own public stylesheets, built the same way from their
+  // own Tailwind sources. Only in the premium ZIP; the directory is absent from the free one.
+  'pro-frontend': {
+    appDir: 'pro/assets/frontend',
+    outDir: () => 'css',
+    source: 'pro/assets/frontend/src/',
+    what: 'premium public stylesheets (Tailwind CSS)',
+    rebuild: 'cd pro/assets/frontend && npm install && npm run build',
     node: 'Node.js 20+',
   },
 };

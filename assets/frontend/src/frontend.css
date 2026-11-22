@@ -59,8 +59,9 @@
  * needs no second set of rules (the few drawn arrows are mirrored by hand).
  */
 
-@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/theme.css' layer(theme) theme(inline);
 
+@import './base/fonts.css';
 @import './base/tokens.css';
 @import './base/reset.css';
 
@@ -71,6 +72,7 @@
 @import './components/wizard.css';
 @import './components/order.css';
 @import './components/review.css';
+@import './components/rows.css';
 @import './components/success.css';
 @import './components/account.css';
 @import './components/summary.css';

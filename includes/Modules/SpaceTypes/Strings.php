@@ -101,6 +101,10 @@ final class Strings {
 			'space_type_prices_needed_hint' => __( 'What one space of this type costs for each unit a stay can be billed in. A unit left empty has no price: a location billed in it cannot offer this type.', 'plugixa-car-parking' ),
 			/* translators: %1$s: a billing unit as a word, such as day; %2$s: a location's name. */
 			'space_type_unpriced'           => __( 'No %1$s price for %2$s: customers can’t book this type there.', 'plugixa-car-parking' ),
+			'space_type_badge'             => __( 'Badge (optional)', 'plugixa-car-parking' ),
+			'space_type_badge_placeholder' => __( 'Most popular', 'plugixa-car-parking' ),
+			'space_type_badge_hint'        => __( 'A short highlight on this type in the booking form, such as "Most popular" or "Save $5". Only write what is true for your car park.', 'plugixa-car-parking' ),
+			'space_type_badge_too_long'    => __( 'At most 40 characters.', 'plugixa-car-parking' ),
 		);
 	}
 }

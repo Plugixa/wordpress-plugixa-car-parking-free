@@ -132,6 +132,7 @@ final class PublicBookingController extends PublicController {
 			$row['space_type_name'] = $type['name'] ?? null;
 			$row['icon']            = $type['icon'] ?? null;
 			$row['color']           = $type['color'] ?? null;
+			$row['badge']           = $type['badge'] ?? null;
 
 			// What one space costs across the window, to show beside the type.
 			$preview = $this->quote->build(
@@ -206,7 +207,30 @@ final class PublicBookingController extends PublicController {
 			return $scope;
 		}
 
-		return $this->success( $this->quote->build( $this->held_to( $params, $scope['form'] ) ) );
+		return $this->success( $this->quote->build( $this->priced( $this->held_to( $params, $scope['form'] ) ) ) );
+	}
+
+	/**
+	 * The fields a visitor may price a stay with, named one by one.
+	 *
+	 * The pricing engine also reads fields only the plugin itself may set, such as the coupon a
+	 * stored booking already redeemed, which it applies without asking whether that coupon is
+	 * still valid. Passed the raw request, a visitor could set them. So the request is rebuilt
+	 * from the fields the wizard sends, as creating a booking and the admin quote do.
+	 *
+	 * @param array<string, mixed> $params The request's parameters, held to the form.
+	 *
+	 * @return array<string, mixed>
+	 */
+	private function priced( array $params ): array {
+		return array(
+			'location_id'   => (int) ( $params['location_id'] ?? 0 ),
+			'space_type_id' => (int) ( $params['space_type_id'] ?? 0 ),
+			'entry'         => (string) ( $params['entry'] ?? '' ),
+			'exit'          => (string) ( $params['exit'] ?? '' ),
+			'quantity'      => is_numeric( $params['quantity'] ?? null ) ? max( 1, (int) $params['quantity'] ) : 1,
+			'coupon'        => is_scalar( $params['coupon'] ?? null ) ? sanitize_text_field( (string) $params['coupon'] ) : '',
+		) + Quote::carried( $params );
 	}
 
 	/**

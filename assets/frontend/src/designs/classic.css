@@ -89,6 +89,12 @@
   .pcp-ui.pcp-ui .pcp-steps { gap: var(--pcp-space-2); }
   .pcp-ui.pcp-ui .pcp-step { gap: var(--pcp-space-2); }
   .pcp-ui.pcp-ui .pcp-step:not(:last-child)::after { min-width: 10px; }
+  /* No room for a name beside the numbers ("Da…"): the row is numbers only and
+     the current step's name sits under it, in full. Still the same element, so
+     a screen reader reads it where it always did. */
+  .pcp-ui.pcp-ui:not([data-pcp-design="minimal"]) .pcp-stepper { @apply relative pb-7; }
+  .pcp-ui.pcp-ui:not([data-pcp-design="minimal"]) .pcp-step.is-active .pcp-step-text { @apply absolute start-0 bottom-0; }
+  .pcp-ui.pcp-ui .pcp-step.is-active .pcp-step-label { @apply overflow-visible; }
   .pcp-ui.pcp-ui .pcp-actions { align-items: stretch; flex-direction: column-reverse; }
   .pcp-ui.pcp-ui .pcp-actions .pcp-btn { width: 100%; }
   .pcp-ui.pcp-ui .pcp-success-actions .pcp-btn { width: 100%; }

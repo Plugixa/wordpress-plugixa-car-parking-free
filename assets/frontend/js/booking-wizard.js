@@ -192,8 +192,13 @@
     var groupName = U.uid('pcp-space');
     var gatewayName = U.uid('pcp-gateway');
 
-    // Sensible default dates: tomorrow 8:00 -> +1 day.
-    var start = new Date(); start.setDate(start.getDate() + 1); start.setHours(8, 0, 0, 0);
+    // Default dates: the next full hour the site will take, then one day. Most people book for
+    // now, and "tomorrow 08:00" made every one of them change it. The site's minimum notice
+    // counts, or the default itself would be refused.
+    var lead = Math.max(0, parseInt(CFG.minAdvanceMinutes, 10) || 0);
+    var start = new Date(Date.now() + lead * 60000);
+    start.setMinutes(0, 0, 0);
+    start.setHours(start.getHours() + 1);
     var end = new Date(start.getTime()); end.setDate(end.getDate() + 1);
     if (entryInput && !entryInput.value) entryInput.value = U.toLocalInput(start);
     if (exitInput && !exitInput.value) exitInput.value = U.toLocalInput(end);
@@ -700,7 +705,11 @@
           radio,
           dot,
           el('span', { class: 'pcp-space-info' }, [
-            el('span', { class: 'pcp-space-name', text: name }),
+            el('span', { class: 'pcp-space-name' }, [
+              name,
+              // The owner's own highlight for this type, if they wrote one.
+              r.badge ? el('span', { class: 'pcp-space-badge', text: String(r.badge) }) : null,
+            ]),
             el('span', { class: 'pcp-space-meta' + (soldOut ? ' is-out' : (r.available <= LOW_STOCK ? ' is-low' : '')), text: availability }),
           ]),
           el('span', { class: 'pcp-space-price', text: money(r.price_preview) }),
@@ -1023,9 +1032,16 @@
       var options = list.map(function (g) {
         var radio = el('input', { type: 'radio', class: 'pcp-pay-radio', name: gatewayName, value: g.id });
         radio.checked = g.id === state.gateway;
+        // A neutral glyph for what kind of payment it is, and any logos the site supplied
+        // (the plugixa_carparking_payment_logos filter; the plugin ships no brand marks).
+        var logos = (g.logos || []).map(function (src) {
+          return el('img', { class: 'pcp-pay-logo', src: src, alt: '', loading: 'lazy', decoding: 'async' });
+        });
         var option = el('label', { class: 'pcp-pay-option' + (radio.checked ? ' is-selected' : '') }, [
           radio,
+          el('span', { class: 'pcp-pay-icon', 'data-icon': g.icon || (g.online ? 'card' : 'cash'), 'aria-hidden': 'true' }),
           el('span', { class: 'pcp-pay-name', text: g.label || g.id }),
+          logos.length ? el('span', { class: 'pcp-pay-logos' }, logos) : null,
         ]);
         radio.addEventListener('change', function () {
           if (!radio.checked) return;
@@ -1322,6 +1338,18 @@
       field.addEventListener('change', datesChanged);
       field.addEventListener('input', datesChanged);
     });
+
+    // "From $8.00 / day" beside the first button follows the chosen location.
+    var fromPriceEl = $('.pcp-from-price');
+    function syncFromPrice() {
+      if (!fromPriceEl || !locationEl) return;
+      var option = locationEl.options ? locationEl.options[locationEl.selectedIndex] : locationEl;
+      var label = option ? (option.getAttribute('data-from') || '') : '';
+      fromPriceEl.textContent = label;
+      fromPriceEl.hidden = '' === label;
+    }
+    if (locationEl) locationEl.addEventListener('change', syncFromPrice);
+    syncFromPrice();
 
     // The counter's minus and plus. They change the number field and tell it
     // so, and its own listeners above do the rest.

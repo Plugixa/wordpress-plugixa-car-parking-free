@@ -65,17 +65,38 @@ final class GatewayRegistry {
 	/**
 	 * The gateways a customer can pay with: switched on, and configured.
 	 *
-	 * @return array<int, array{id: string, label: string, online: bool}>
+	 * `label` is what the customer reads. A gateway may word it differently from its admin name
+	 * with an optional `customer_label()`: "Pay online" where the admin needs the provider's name
+	 * to tell two card gateways apart. `icon` is a neutral glyph (card, wallet, cash, invoice) from an
+	 * optional `icon()`. `logos` is empty unless the filter below adds image URLs, such as the
+	 * official card marks a site has the right to show.
+	 *
+	 * @return array<int, array{id: string, label: string, online: bool, icon: string, logos: string[]}>
 	 */
 	public function available(): array {
 		$available = array();
 
 		foreach ( $this->all() as $gateway ) {
 			if ( $gateway->is_enabled() && $gateway->is_configured() ) {
+				$icon = method_exists( $gateway, 'icon' ) ? (string) $gateway->icon() : '';
+
+				/**
+				 * Logo images shown beside a payment method on the booking form.
+				 *
+				 * Empty by default: the plugin ships no brand marks. A site adds the official ones
+				 * it is entitled to show, e.g. its card schemes' acceptance marks.
+				 *
+				 * @param string[] $logos   Image URLs.
+				 * @param string   $gateway The gateway's id.
+				 */
+				$logos = (array) apply_filters( 'plugixa_carparking_payment_logos', array(), $gateway->id() );
+
 				$available[] = array(
 					'id'     => $gateway->id(),
-					'label'  => $gateway->label(),
+					'label'  => method_exists( $gateway, 'customer_label' ) ? (string) $gateway->customer_label() : $gateway->label(),
 					'online' => $gateway->supports_online(),
+					'icon'   => in_array( $icon, array( 'card', 'wallet', 'cash', 'invoice' ), true ) ? $icon : ( $gateway->supports_online() ? 'card' : 'cash' ),
+					'logos'  => array_values( array_filter( array_map( 'esc_url_raw', array_map( 'strval', $logos ) ) ) ),
 				);
 			}
 		}

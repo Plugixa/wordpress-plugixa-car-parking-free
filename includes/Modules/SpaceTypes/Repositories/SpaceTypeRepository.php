@@ -38,6 +38,7 @@ final class SpaceTypeRepository extends Repository {
 			'description',
 			'icon',
 			'color',
+			'badge',
 			'width',
 			'length',
 			'dimension_unit',

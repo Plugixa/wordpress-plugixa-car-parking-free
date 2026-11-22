@@ -106,6 +106,7 @@ return array(
     'PlugixaCarParking\\Modules\\Forms\\Strings' => $baseDir . '/includes/Modules/Forms/Strings.php',
     'PlugixaCarParking\\Modules\\Frontend\\Assets' => $baseDir . '/includes/Modules/Frontend/Assets.php',
     'PlugixaCarParking\\Modules\\Frontend\\BookingFormBlock' => $baseDir . '/includes/Modules/Frontend/BookingFormBlock.php',
+    'PlugixaCarParking\\Modules\\Frontend\\FromPrice' => $baseDir . '/includes/Modules/Frontend/FromPrice.php',
     'PlugixaCarParking\\Modules\\Frontend\\Kses' => $baseDir . '/includes/Modules/Frontend/Kses.php',
     'PlugixaCarParking\\Modules\\Frontend\\Labels' => $baseDir . '/includes/Modules/Frontend/Labels.php',
     'PlugixaCarParking\\Modules\\Frontend\\Module' => $baseDir . '/includes/Modules/Frontend/Module.php',

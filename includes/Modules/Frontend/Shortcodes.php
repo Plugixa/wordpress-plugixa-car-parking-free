@@ -61,7 +61,8 @@ final class Shortcodes {
 		private readonly BookingRepository $bookings,
 		private readonly GatewayRegistry $gateways,
 		private readonly Invoice $invoice,
-		private readonly Assets $assets
+		private readonly Assets $assets,
+		private readonly FromPrice $from_price
 	) {}
 
 	public function register(): void {
@@ -132,13 +133,15 @@ final class Shortcodes {
 
 		// The variables the template reads. It is included here so they are its locals.
 		$locations = array_map(
-			static fn( array $location ): array => array(
+			fn( array $location ): array => array(
 				'id'                   => (int) $location['id'],
 				'name'                 => $location['name'],
 				'inventory_mode'       => $location['inventory_mode'],
 				'default_billing_type' => $location['default_billing_type'],
 				'currency'             => $location['currency'],
 				'slug'                 => $location['slug'],
+				// "From $8.00 / day", shown beside the first step's button.
+				'from'                 => $this->from_price->label( $location, $form ?? array() ),
 			),
 			$locations
 		);
@@ -157,6 +160,10 @@ final class Shortcodes {
 		$flow = $this->flow( $form );
 
 		$default_location = $this->default_location( $locations, (string) $atts['location'] );
+
+		// The owner's own reassurance line under the first button ("Free cancellation up to
+		// 24h"). Empty by default: the plugin never claims a policy a site may not have.
+		$trust_line = trim( (string) Settings::get( 'booking_trust_line', '' ) );
 
 		// A page that starts on a location this form does not book at starts on the form's first
 		// one instead. Whoever can fix the page is told; a visitor just sees a working form.
@@ -186,6 +193,7 @@ final class Shortcodes {
 	public function render_summary( $atts ): string {
 		$atts   = shortcode_atts( array( 'design' => '' ), (array) $atts, self::SUMMARY );
 		$design = self::resolve_design( (string) $atts['design'], $this->forms->default_form() );
+		$style  = $this->site_style();
 
 		// A nonce cannot authorise this: the link is opened from an email, days later, by a
 		// signed-out customer, so there is no session for one to belong to. The token checked
@@ -199,7 +207,7 @@ final class Shortcodes {
 		// no summary link, so they are shown how the payment went, with the way back to the
 		// booking form when the site has one.
 		if ( '' === $ref ) {
-			$returned = $this->payment_return( '', $design, ReturnPage::form_url() );
+			$returned = $this->payment_return( $style, $design, ReturnPage::form_url() );
 			if ( null !== $returned ) {
 				return $returned;
 			}
@@ -322,7 +330,7 @@ final class Shortcodes {
 			)
 		);
 
-		return '<div class="pcp-ui pcp-account" data-pcp-design="' . esc_attr( $design ) . '"><p class="pcp-acc-loading">' . esc_html__( 'Loading…', 'plugixa-car-parking' ) . '</p></div>';
+		return '<div class="pcp-ui pcp-account" data-pcp-design="' . esc_attr( $design ) . '"' . self::style_attr( $this->site_style() ) . '><p class="pcp-acc-loading">' . esc_html__( 'Loading…', 'plugixa-car-parking' ) . '</p></div>';
 	}
 
 	/**
@@ -468,10 +476,32 @@ final class Shortcodes {
 	 * @param string $message Why not.
 	 * @param string $design  The look it is drawn in: one of FormService::DESIGNS.
 	 */
+	/**
+	 * The site's colours for a page that belongs to no one form (the account and summary
+	 * pages): the default form's, so a customer who books and then opens "My bookings" sees
+	 * the same brand on both. Without this they drew the stylesheet's own blue.
+	 *
+	 * @return string Custom properties as a style attribute's value, or '' for the stylesheet's.
+	 */
+	private function site_style(): string {
+		$form = $this->forms->default_form();
+
+		return Palette::style( is_array( $form['style'] ?? null ) ? (string) ( $form['style']['primary_color'] ?? '' ) : '' );
+	}
+
+	/**
+	 * ` style="…"` for a wrapper, or nothing when there is no colour of the form's own.
+	 *
+	 * @param string $style Custom properties, as Palette::style() returns them.
+	 */
+	private static function style_attr( string $style ): string {
+		return '' !== $style ? ' style="' . esc_attr( $style ) . '"' : '';
+	}
+
 	private function summary_notice( string $message, string $design ): string {
 		$this->assets->styles();
 
-		return '<div class="pcp-ui pcp-summary pcp-summary-error" data-pcp-design="' . esc_attr( $design ) . '"><p class="pcp-alert pcp-alert-error" role="alert">' . esc_html( $message ) . '</p></div>';
+		return '<div class="pcp-ui pcp-summary pcp-summary-error" data-pcp-design="' . esc_attr( $design ) . '"' . self::style_attr( $this->site_style() ) . '><p class="pcp-alert pcp-alert-error" role="alert">' . esc_html( $message ) . '</p></div>';
 	}
 
 	/**
@@ -585,6 +615,8 @@ final class Shortcodes {
 				'restNonce'           => wp_create_nonce( 'wp_rest' ),
 				'offlineInstructions' => Settings::get( 'offline_instructions', '' ),
 				'couponsEnabled'      => ! empty( Settings::get( 'enable_coupons' ) ),
+				// The default entry time starts after the site's minimum notice.
+				'minAdvanceMinutes'   => max( 0, (int) Settings::get( 'min_advance_minutes', 0 ) ),
 				'gateways'            => $this->gateways->available(),
 				'form'                => $form,
 				'i18n'                => array(

@@ -156,6 +156,7 @@ final class Settings {
 			),
 			'default_entry_time'       => array( 'type' => 'text' ),
 			'default_exit_time'        => array( 'type' => 'text' ),
+			'booking_trust_line'       => array( 'type' => 'text' ),
 			'booking_ref_prefix'       => array( 'type' => 'text' ),
 			'booking_statuses'         => array( 'type' => 'map' ),
 			'inventory_hold_statuses'  => array( 'type' => 'keys' ),
@@ -240,6 +241,8 @@ final class Settings {
 			'max_advance_days'         => 365,
 			'default_entry_time'       => '08:00',
 			'default_exit_time'        => '18:00',
+			// Empty: nothing is shown until the owner writes a line that is true for them.
+			'booking_trust_line'       => '',
 			'booking_ref_prefix'       => 'PKG-',
 
 			'booking_statuses'         => array(

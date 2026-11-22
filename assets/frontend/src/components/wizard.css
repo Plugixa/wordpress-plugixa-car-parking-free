@@ -97,6 +97,19 @@
   }
   & .pcp-panel > .pcp-actions { margin-block-start: var(--pcp-space-6); }
   & .pcp-actions.pcp-actions-single { border-block-start: 0; padding-block-start: 0; }
+  /* The first step's price, over its button: "from $8.00 / day". */
+  & .pcp-actions.pcp-actions-single { @apply flex-col items-stretch gap-2; }
+  & .pcp-from-price { @apply m-0 text-center text-(length:--pcp-text-sm) text-(--pcp-text-muted); }
+  /* The owner's reassurance line, under the button, with a tick. */
+  & .pcp-trust {
+    @apply m-0 flex items-center justify-center gap-1.5 text-center text-(length:--pcp-text-sm) text-(--pcp-success-text);
+  }
+  & .pcp-trust::before {
+    @apply shrink-0 size-4 bg-current;
+    content: "";
+    -webkit-mask: var(--pcp-icon-check) center / contain no-repeat;
+    mask: var(--pcp-icon-check) center / contain no-repeat;
+  }
   & .pcp-actions .pcp-btn-primary { min-width: 160px; }
 
   /* ------------------------------------------------------------------------
@@ -164,6 +177,12 @@
   }
   & .pcp-space-info { display: flex; flex: 1 1 auto; flex-direction: column; gap: 4px; min-width: 0; }
   & .pcp-space-name { font-size: var(--pcp-text-md); font-weight: 650; overflow-wrap: anywhere; }
+  /* The owner's highlight for a type ("Most popular"), beside its name. */
+  & .pcp-space-badge {
+    @apply inline-block align-middle ms-2 px-2 py-0.5 rounded-(--pcp-radius-pill) bg-(--pcp-primary-soft) text-(--pcp-primary-text) text-(length:--pcp-text-xs) whitespace-nowrap;
+    line-height: 1.375;
+    font-weight: 700;
+  }
   /* How many are free, as a badge: amber when only a few are left. */
   & .pcp-space-meta {
     align-items: center;

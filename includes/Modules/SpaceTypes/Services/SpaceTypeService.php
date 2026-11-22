@@ -409,6 +409,13 @@ final class SpaceTypeService {
 			$data['slug'] = sanitize_title( (string) $input['slug'] );
 		}
 
+		// A short highlight the owner writes ("Most popular", "Save $5"), shown on the booking
+		// form's card. Owner-typed only: the plugin never invents one. Empty clears it.
+		if ( array_key_exists( 'badge', $input ) ) {
+			$badge         = trim( sanitize_text_field( (string) $input['badge'] ) );
+			$data['badge'] = '' === $badge ? null : mb_substr( $badge, 0, 40 );
+		}
+
 		if ( array_key_exists( 'description', $input ) ) {
 			$data['description'] = wp_kses_post( (string) $input['description'] );
 		}

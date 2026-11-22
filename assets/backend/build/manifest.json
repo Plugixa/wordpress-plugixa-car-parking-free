@@ -1,6 +1,6 @@
 {
   "src/main.tsx": {
-    "file": "js/main-BLZgB7y-.js",
+    "file": "js/main-_ZVCwuKQ.js",
     "name": "main",
     "src": "src/main.tsx",
     "isEntry": true,
@@ -12,7 +12,7 @@
     ]
   },
   "src/modules/calendar/CalendarPage.tsx": {
-    "file": "js/CalendarPage-BY7lMg7-.js",
+    "file": "js/CalendarPage-BnT1OakY.js",
     "name": "CalendarPage",
     "src": "src/modules/calendar/CalendarPage.tsx",
     "isDynamicEntry": true,

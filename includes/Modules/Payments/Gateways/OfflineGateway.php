@@ -25,6 +25,11 @@ final class OfflineGateway extends AbstractGateway {
 		return __( 'Pay on arrival', 'plugixa-car-parking' );
 	}
 
+	/** The glyph beside the method on the booking form. */
+	public function icon(): string {
+		return 'cash';
+	}
+
 	public function supports_online(): bool {
 		return false;
 	}

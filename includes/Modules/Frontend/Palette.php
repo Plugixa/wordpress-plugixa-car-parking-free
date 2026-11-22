@@ -39,7 +39,7 @@ final class Palette {
 	 * The card a page is drawn on, in each colour scheme. The stylesheet declares the same two.
 	 */
 	private const SURFACE_LIGHT = '#ffffff';
-	private const SURFACE_DARK  = '#111827';
+	private const SURFACE_DARK  = '#161d29';
 
 	/**
 	 * A style attribute's worth of custom properties for a primary colour.

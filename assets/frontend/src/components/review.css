@@ -63,6 +63,18 @@
   }
   & .pcp-pay-radio:checked { border: 6px solid var(--pcp-primary); }
   & .pcp-pay-radio:focus-visible { outline: 0; }
-  & .pcp-pay-name { font-weight: 600; }
+  & .pcp-pay-name { font-weight: 600; flex: 1 1 auto; min-width: 0; }
+  /* What kind of payment each method is, at a glance: card, wallet, cash, invoice. */
+  & .pcp-pay-icon {
+    @apply shrink-0 size-6 bg-(--pcp-primary-text);
+    -webkit-mask: var(--pcp-icon-pay-card) center / contain no-repeat;
+    mask: var(--pcp-icon-pay-card) center / contain no-repeat;
+  }
+  & .pcp-pay-icon[data-icon="wallet"] { -webkit-mask-image: var(--pcp-icon-pay-wallet); mask-image: var(--pcp-icon-pay-wallet); }
+  & .pcp-pay-icon[data-icon="cash"] { -webkit-mask-image: var(--pcp-icon-pay-cash); mask-image: var(--pcp-icon-pay-cash); }
+  & .pcp-pay-icon[data-icon="invoice"] { -webkit-mask-image: var(--pcp-icon-pay-invoice); mask-image: var(--pcp-icon-pay-invoice); }
+  /* Logos a site supplied through the plugixa_carparking_payment_logos filter. */
+  & .pcp-pay-logos { @apply flex flex-wrap items-center justify-end gap-1.5 shrink-0; }
+  & .pcp-pay-logo { @apply block h-6 w-auto max-w-16 object-contain; }
   & .pcp-pay-note:empty { display: none; }
 }

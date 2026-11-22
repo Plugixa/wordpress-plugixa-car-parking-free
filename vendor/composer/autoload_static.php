@@ -130,6 +130,7 @@ class ComposerStaticInit2fefc4c0322f4c5d45738b99ba13d015
         'PlugixaCarParking\\Modules\\Forms\\Strings' => __DIR__ . '/../..' . '/includes/Modules/Forms/Strings.php',
         'PlugixaCarParking\\Modules\\Frontend\\Assets' => __DIR__ . '/../..' . '/includes/Modules/Frontend/Assets.php',
         'PlugixaCarParking\\Modules\\Frontend\\BookingFormBlock' => __DIR__ . '/../..' . '/includes/Modules/Frontend/BookingFormBlock.php',
+        'PlugixaCarParking\\Modules\\Frontend\\FromPrice' => __DIR__ . '/../..' . '/includes/Modules/Frontend/FromPrice.php',
         'PlugixaCarParking\\Modules\\Frontend\\Kses' => __DIR__ . '/../..' . '/includes/Modules/Frontend/Kses.php',
         'PlugixaCarParking\\Modules\\Frontend\\Labels' => __DIR__ . '/../..' . '/includes/Modules/Frontend/Labels.php',
         'PlugixaCarParking\\Modules\\Frontend\\Module' => __DIR__ . '/../..' . '/includes/Modules/Frontend/Module.php',

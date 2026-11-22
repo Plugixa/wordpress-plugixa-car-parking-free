@@ -50,10 +50,27 @@ if (existsSync(l10n)) {
   process.exit(1);
 }
 
+// The booking form's two typefaces, bundled so no visitor's browser calls a font
+// host: Space Grotesk for headings, Inter for text. Variable woff2, Latin and
+// Latin Extended only (the European languages the plugin is translated into),
+// with their SIL Open Font Licences.
+const fonts = [
+  ['@fontsource-variable/space-grotesk', 'files/space-grotesk-latin-wght-normal.woff2', 'fonts/space-grotesk/space-grotesk-latin.woff2'],
+  ['@fontsource-variable/space-grotesk', 'files/space-grotesk-latin-ext-wght-normal.woff2', 'fonts/space-grotesk/space-grotesk-latin-ext.woff2'],
+  ['@fontsource-variable/space-grotesk', 'LICENSE', 'fonts/space-grotesk/LICENSE'],
+  ['@fontsource-variable/inter', 'files/inter-latin-wght-normal.woff2', 'fonts/inter/inter-latin.woff2'],
+  ['@fontsource-variable/inter', 'files/inter-latin-ext-wght-normal.woff2', 'fonts/inter/inter-latin-ext.woff2'],
+  ['@fontsource-variable/inter', 'LICENSE', 'fonts/inter/LICENSE'],
+];
+
 let copied = 0;
 const missing = [];
-for (const [from, to] of files) {
-  const src = join(packageDir, from);
+const all = [
+  ...files.map(([from, to]) => [packageDir, from, to]),
+  ...fonts.map(([pkg, from, to]) => [join(here, 'node_modules', pkg), from, to]),
+];
+for (const [base, from, to] of all) {
+  const src = join(base, from);
   const dest = join(destination, to);
   if (!existsSync(src)) {
     missing.push(src);

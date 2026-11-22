@@ -7,6 +7,7 @@
  * @var bool   $unpaid       Whether anything is still owed.
  * @var array  $gateways     The ways to pay now: each has an id, a label and whether it is paid online.
  * @var string $design       The look the page is drawn in: classic, split or minimal.
+ * @var string $style        The site's colours as custom properties, or '' for the stylesheet's own.
  *
  * @package PlugixaCarParking
  *
@@ -24,7 +25,7 @@ if (!defined('ABSPATH')) {
  * page puts what it adds to the payment box. See assets/frontend/js/core.js.
  */
 ?>
-<div class="pcp-ui pcp-summary" data-pcp-design="<?php echo esc_attr($design); ?>" data-pcp-summary>
+<div class="pcp-ui pcp-summary" data-pcp-design="<?php echo esc_attr($design); ?>"<?php echo '' !== $style ? ' style="' . esc_attr($style) . '"' : ''; ?> data-pcp-summary>
     <div class="pcp-card pcp-summary-doc">
         <?php echo wp_kses($summary_html, \PlugixaCarParking\Modules\Frontend\Kses::allowed_html()); ?>
     </div>

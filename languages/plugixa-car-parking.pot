@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Plugixa Car Parking 1.3.0\n"
+"Project-Id-Version: Plugixa Car Parking 1.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plugixa-car-parking\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-08T16:39:56+00:00\n"
+"POT-Creation-Date: 2026-11-22T16:36:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: plugixa-car-parking\n"
@@ -57,7 +57,7 @@ msgid "The usual cause is a database user that is not allowed to create tables. 
 msgstr ""
 
 #: includes/Core/Admin/MigrationNotice.php:67
-#: includes/Core/Admin/Strings.php:240
+#: includes/Core/Admin/Strings.php:242
 msgid "Try again"
 msgstr ""
 
@@ -89,7 +89,7 @@ msgid "Car Parking"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:34
-#: includes/Core/Admin/Strings.php:209
+#: includes/Core/Admin/Strings.php:211
 #: includes/Modules/Bookings/Module.php:215
 #: includes/Modules/Bookings/Strings.php:47
 #: includes/Modules/Dashboard/Strings.php:55
@@ -109,7 +109,7 @@ msgid "Configuration"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:40
-#: includes/Core/Admin/Strings.php:226
+#: includes/Core/Admin/Strings.php:228
 msgid "Active"
 msgstr ""
 
@@ -226,7 +226,7 @@ msgid "That could not be applied."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:70
-#: includes/Modules/Frontend/Shortcodes.php:325
+#: includes/Modules/Frontend/Shortcodes.php:333
 msgid "Loading…"
 msgstr ""
 
@@ -235,7 +235,7 @@ msgid "Nothing to choose from yet — create one first."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:72
-#: includes/Modules/Frontend/Shortcodes.php:309
+#: includes/Modules/Frontend/Shortcodes.php:317
 msgid "Actions"
 msgstr ""
 
@@ -248,12 +248,12 @@ msgid "Delete"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:75
-#: includes/Modules/Frontend/Shortcodes.php:311
+#: includes/Modules/Frontend/Shortcodes.php:319
 msgid "Cancel"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:76
-#: includes/Modules/Frontend/Shortcodes.php:316
+#: includes/Modules/Frontend/Shortcodes.php:324
 msgid "Working…"
 msgstr ""
 
@@ -378,908 +378,916 @@ msgid "Accept coupon codes"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:108
-msgid "Shortest notice (minutes)"
+msgid "Reassurance line on the booking form"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:109
-msgid "Furthest ahead (days)"
+msgid "Shortest notice (minutes)"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:110
-msgid "Hold an unconfirmed booking for (minutes)"
+msgid "Furthest ahead (days)"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:111
-msgid "Cancellation cut-off (hours)"
+msgid "Hold an unconfirmed booking for (minutes)"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:112
-msgid "Status names"
+msgid "Cancellation cut-off (hours)"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:113
-msgid "Statuses that hold a space"
+msgid "Status names"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:114
-msgid "Booking page"
+msgid "Statuses that hold a space"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:115
-msgid "Booking summary page"
+msgid "Booking page"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:116
-msgid "Instructions for the customer"
+msgid "Booking summary page"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:117
-msgid "Send booking emails"
+msgid "Instructions for the customer"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:118
-msgid "Sender name"
+msgid "Send booking emails"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:119
-msgid "Sender address"
+msgid "Sender name"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:120
-msgid "Send new-booking notices to"
+msgid "Sender address"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:121
-msgid "Subject"
+msgid "Send new-booking notices to"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:122
-msgid "Message"
+msgid "Subject"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:123
-msgid "Erase all data when the plugin is deleted"
+msgid "Message"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:124
-msgid "Printed as the company on a booking summary."
+msgid "Erase all data when the plugin is deleted"
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:125
-msgid "The three-letter code, such as USD or EUR."
+msgid "Printed as the company on a booking summary."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:126
-msgid "The unit a new space type’s dimensions start in."
+msgid "The three-letter code, such as USD or EUR."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:127
-msgid "Pending waits for you or for a payment. Confirmed takes the booking at once."
+msgid "The unit a new space type’s dimensions start in."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:128
-msgid "Put in front of every new booking reference."
+msgid "Pending waits for you or for a payment. Confirmed takes the booking at once."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:129
-msgid "Off, no form offers the coupon field and no code is taken."
+msgid "Put in front of every new booking reference."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:130
-msgid "0 lets a customer book a stay that starts now."
+msgid "Off, no form offers the coupon field and no code is taken."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:131
-msgid "0 sets no limit."
+msgid "Optional. One short line under the booking form’s first button, such as your cancellation policy. Only write what your car park really offers."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:132
-msgid "How long a pending booking keeps its space before it expires. 0 keeps it until you act."
+msgid "0 lets a customer book a stay that starts now."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:133
-msgid "How long before entry a customer can still cancel. 0 allows it up to the entry time."
+msgid "0 sets no limit."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:134
-msgid "A booking in one of these statuses counts as taking a space when availability is worked out."
+msgid "How long a pending booking keeps its space before it expires. 0 keeps it until you act."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:135
-msgid "Where a customer lands after paying online. Left empty, the booking summary page is used, or a page that holds the booking form."
+msgid "How long before entry a customer can still cancel. 0 allows it up to the entry time."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:136
-msgid "The page that shows a customer their booking. Emails link to it. Left empty, no link is sent."
+msgid "A booking in one of these statuses counts as taking a space when availability is worked out."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:137
-msgid "Shown once a booking is placed, and on its summary."
+msgid "Where a customer lands after paying online. Left empty, the booking summary page is used, or a page that holds the booking form."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:138
-msgid "One address. It is told about every new booking."
+msgid "The page that shows a customer their booking. Emails link to it. Left empty, no link is sent."
 msgstr ""
 
 #: includes/Core/Admin/Strings.php:139
+msgid "Shown once a booking is placed, and on its summary."
+msgstr ""
+
+#: includes/Core/Admin/Strings.php:140
+msgid "One address. It is told about every new booking."
+msgstr ""
+
+#: includes/Core/Admin/Strings.php:141
 #: includes/Modules/Locations/Strings.php:101
 msgid "Sunday"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:140
+#: includes/Core/Admin/Strings.php:142
 #: includes/Modules/Locations/Strings.php:102
 msgid "Monday"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:141
+#: includes/Core/Admin/Strings.php:143
 #: includes/Modules/Locations/Strings.php:103
 msgid "Tuesday"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:142
+#: includes/Core/Admin/Strings.php:144
 #: includes/Modules/Locations/Strings.php:104
 msgid "Wednesday"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:143
+#: includes/Core/Admin/Strings.php:145
 #: includes/Modules/Locations/Strings.php:105
 msgid "Thursday"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:144
+#: includes/Core/Admin/Strings.php:146
 #: includes/Modules/Locations/Strings.php:106
 msgid "Friday"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:145
+#: includes/Core/Admin/Strings.php:147
 #: includes/Modules/Locations/Strings.php:107
 msgid "Saturday"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:146
+#: includes/Core/Admin/Strings.php:148
 msgid "After the amount"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:147
+#: includes/Core/Admin/Strings.php:149
 msgid "Before the amount"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:148
+#: includes/Core/Admin/Strings.php:150
 msgid "Comma (,)"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:149
+#: includes/Core/Admin/Strings.php:151
 msgid "Full stop (.)"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:150
+#: includes/Core/Admin/Strings.php:152
 #: includes/Modules/Bookings/Services/BookingAdminService.php:432
-#: includes/Modules/Frontend/Shortcodes.php:422
-#: includes/Modules/Frontend/Shortcodes.php:614
-#: includes/Modules/Frontend/Shortcodes.php:628
+#: includes/Modules/Frontend/Shortcodes.php:430
+#: includes/Modules/Frontend/Shortcodes.php:646
+#: includes/Modules/Frontend/Shortcodes.php:660
 #: includes/Modules/Spaces/Module.php:105
 msgid "Space"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:151
+#: includes/Core/Admin/Strings.php:153
 msgid "Apostrophe (’)"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:152
+#: includes/Core/Admin/Strings.php:154
 msgid "None"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:153
+#: includes/Core/Admin/Strings.php:155
 msgid "12-hour (2:30 pm)"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:154
+#: includes/Core/Admin/Strings.php:156
 msgid "24-hour (14:30)"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:155
+#: includes/Core/Admin/Strings.php:157
 #: includes/Modules/SpaceTypes/Strings.php:49
 msgid "Feet"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:156
+#: includes/Core/Admin/Strings.php:158
 #: includes/Modules/SpaceTypes/Strings.php:48
 msgid "Metres"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:157
+#: includes/Core/Admin/Strings.php:159
 msgid "The booking reference"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:158
+#: includes/Core/Admin/Strings.php:160
 msgid "The customer’s name"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:159
+#: includes/Core/Admin/Strings.php:161
 msgid "The customer’s email address"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:160
+#: includes/Core/Admin/Strings.php:162
 msgid "The location booked"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:161
+#: includes/Core/Admin/Strings.php:163
 msgid "When the stay starts"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:162
+#: includes/Core/Admin/Strings.php:164
 msgid "When the stay ends"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:163
+#: includes/Core/Admin/Strings.php:165
 msgid "How many spaces were booked"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:164
+#: includes/Core/Admin/Strings.php:166
 msgid "The total, with the currency symbol"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:165
+#: includes/Core/Admin/Strings.php:167
 msgid "The booking’s status"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:166
+#: includes/Core/Admin/Strings.php:168
 msgid "A link to the booking summary"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:167
+#: includes/Core/Admin/Strings.php:169
 msgid "Uninstall"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:168
+#: includes/Core/Admin/Strings.php:170
 msgid "Off by default: deleting the plugin removes its files and keeps your bookings, so installing it again picks up where you left off. Deactivating never deletes anything."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:169
+#: includes/Core/Admin/Strings.php:171
 msgid "Deleting the plugin will now permanently erase every booking, payment, location, form and setting. There is no undo. Nothing is erased while another copy of the plugin is still installed, because that copy uses the same data."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:170
+#: includes/Core/Admin/Strings.php:172
 msgid "New bookings"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:171
+#: includes/Core/Admin/Strings.php:173
 msgid "What a booking starts with when nothing more specific says otherwise."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:172
+#: includes/Core/Admin/Strings.php:174
 msgid "Booking window"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:173
+#: includes/Core/Admin/Strings.php:175
 msgid "How soon and how far ahead a stay can be booked, and how long it can be held or cancelled."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:174
+#: includes/Core/Admin/Strings.php:176
 msgid "Statuses"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:175
+#: includes/Core/Admin/Strings.php:177
 msgid "What each booking status is called on this site, and which of them keep a space taken."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:176
+#: includes/Core/Admin/Strings.php:178
 msgid "Pages"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:177
+#: includes/Core/Admin/Strings.php:179
 msgid "The pages of your site that customers are sent to."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:178
+#: includes/Core/Admin/Strings.php:180
 msgid "Business"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:179
+#: includes/Core/Admin/Strings.php:181
 msgid "Who the customer is booking with."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:180
+#: includes/Core/Admin/Strings.php:182
 #: includes/Modules/Bookings/Http/BookingsController.php:347
 #: includes/Modules/Locations/Strings.php:61
 msgid "Currency"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:181
+#: includes/Core/Admin/Strings.php:183
 msgid "How prices are written. Every amount is in this one currency."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:182
+#: includes/Core/Admin/Strings.php:184
 msgid "Preview"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:183
+#: includes/Core/Admin/Strings.php:185
 msgid "The thousands and decimal separators are the same, so an amount cannot be read. Choose two different ones."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:184
+#: includes/Core/Admin/Strings.php:186
 msgid "Dates and times"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:185
+#: includes/Core/Admin/Strings.php:187
 msgid "How a date and a time of day are written across the app."
 msgstr ""
 
 #. translators: %s: a value the app fills in.
-#: includes/Core/Admin/Strings.php:187
+#: includes/Core/Admin/Strings.php:189
 #, php-format
 msgid "Times follow the site’s timezone, %s. It is changed in WordPress, under Settings, General."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:188
+#: includes/Core/Admin/Strings.php:190
 msgid "Units"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:189
+#: includes/Core/Admin/Strings.php:191
 msgid "Could not copy. Type the placeholder as it is shown."
 msgstr ""
 
 #. translators: %s: a value the app fills in.
-#: includes/Core/Admin/Strings.php:191
+#: includes/Core/Admin/Strings.php:193
 #, php-format
 msgid "%s copied."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:192
+#: includes/Core/Admin/Strings.php:194
 msgid "Placeholders"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:193
+#: includes/Core/Admin/Strings.php:195
 msgid "Each is replaced with the booking’s own value in a subject or a message. Click one to copy it."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:194
+#: includes/Core/Admin/Strings.php:196
 #: includes/Modules/Bookings/Http/BookingsController.php:344
 #: includes/Modules/Bookings/Module.php:228
 #: includes/Modules/Bookings/Strings.php:34
 #: includes/Modules/Forms/Strings.php:101
-#: includes/Modules/Frontend/Shortcodes.php:633
+#: includes/Modules/Frontend/Shortcodes.php:665
 #: includes/Modules/Locations/Strings.php:57
 #: includes/Modules/Notifications/Http/LogController.php:100
-#: templates/booking-form.php:191
+#: templates/booking-form.php:208
 msgid "Email"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:195
+#: includes/Core/Admin/Strings.php:197
 msgid "Who booking emails come from, and who on your side is told about a new booking."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:196
+#: includes/Core/Admin/Strings.php:198
 msgid "Switched off, no email below is sent, to customers or to you."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:197
+#: includes/Core/Admin/Strings.php:199
 msgid "Email templates"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:198
+#: includes/Core/Admin/Strings.php:200
 msgid "What each email says. A link to the booking summary is added to a customer email that does not already carry one."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:199
-#: includes/Modules/Frontend/Shortcodes.php:660
+#: includes/Core/Admin/Strings.php:201
+#: includes/Modules/Frontend/Shortcodes.php:692
 msgid "Booking received"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:200
+#: includes/Core/Admin/Strings.php:202
 msgid "Sent to the customer when a booking is placed."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:201
+#: includes/Core/Admin/Strings.php:203
 msgid "New booking notice"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:202
+#: includes/Core/Admin/Strings.php:204
 msgid "Sent to your own address when a booking is placed."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:203
+#: includes/Core/Admin/Strings.php:205
 #: templates/payment-return.php:28
 msgid "Payment received"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:204
+#: includes/Core/Admin/Strings.php:206
 msgid "Sent to the customer once a booking is paid in full."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:205
+#: includes/Core/Admin/Strings.php:207
 #: includes/Modules/Payments/Gateways/OfflineGateway.php:25
 msgid "Pay on arrival"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:206
+#: includes/Core/Admin/Strings.php:208
 msgid "The customer books now and pays at the car park. You record the payment on the booking when it is made."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:207
+#: includes/Core/Admin/Strings.php:209
 msgid "Let customers pay on arrival"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:208
+#: includes/Core/Admin/Strings.php:210
 msgid "General"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:210
+#: includes/Core/Admin/Strings.php:212
 #: includes/Core/App/Upsell/Strings.php:46
 #: includes/Modules/Payments/Module.php:142
 #: includes/Modules/Payments/Strings.php:28
 msgid "Payments"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:211
+#: includes/Core/Admin/Strings.php:213
 msgid "Notifications"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:212
+#: includes/Core/Admin/Strings.php:214
 msgid "Advanced"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:213
+#: includes/Core/Admin/Strings.php:215
 #: includes/Modules/Forms/Services/FormScope.php:157
-#: includes/Modules/Frontend/Shortcodes.php:655
+#: includes/Modules/Frontend/Shortcodes.php:687
 msgid "Yes"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:214
+#: includes/Core/Admin/Strings.php:216
 #: includes/Modules/Forms/Services/FormScope.php:156
 #: includes/Modules/Forms/Services/FormScope.php:160
-#: includes/Modules/Frontend/Shortcodes.php:656
+#: includes/Modules/Frontend/Shortcodes.php:688
 msgid "No"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:215
+#: includes/Core/Admin/Strings.php:217
 msgid "Move to trash?"
 msgstr ""
 
 #. translators: %s: a value the app fills in.
-#: includes/Core/Admin/Strings.php:217
+#: includes/Core/Admin/Strings.php:219
 #, php-format
 msgid "“%s” will be moved to the trash. You can restore it from the trash view."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:218
-#: includes/Core/Admin/Strings.php:227
+#: includes/Core/Admin/Strings.php:220
+#: includes/Core/Admin/Strings.php:229
 msgid "Trash"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:219
+#: includes/Core/Admin/Strings.php:221
 msgid "This record is not available"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:220
+#: includes/Core/Admin/Strings.php:222
 msgid "It may have been deleted, or you may not have access to it. Ask an administrator if you think you should see it."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:221
+#: includes/Core/Admin/Strings.php:223
 msgid "Restore"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:222
+#: includes/Core/Admin/Strings.php:224
 msgid "Delete permanently"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:223
+#: includes/Core/Admin/Strings.php:225
 msgid "Create"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:224
+#: includes/Core/Admin/Strings.php:226
 msgid "Search"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:225
+#: includes/Core/Admin/Strings.php:227
 msgid "Filters"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:228
+#: includes/Core/Admin/Strings.php:230
 msgid "{count} selected"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:229
+#: includes/Core/Admin/Strings.php:231
 msgid "Clear"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:230
+#: includes/Core/Admin/Strings.php:232
 msgid "No records match your search and these filters."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:231
+#: includes/Core/Admin/Strings.php:233
 msgid "No records match your search."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:232
+#: includes/Core/Admin/Strings.php:234
 msgid "No records match these filters."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:233
+#: includes/Core/Admin/Strings.php:235
 msgid "Clear search"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:234
+#: includes/Core/Admin/Strings.php:236
 msgid "Clear all"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:235
+#: includes/Core/Admin/Strings.php:237
 msgid "No records yet."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:236
+#: includes/Core/Admin/Strings.php:238
 msgid "Export CSV"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:237
+#: includes/Core/Admin/Strings.php:239
 msgid "Exporting…"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:238
+#: includes/Core/Admin/Strings.php:240
 msgid "The export could not be produced."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:239
+#: includes/Core/Admin/Strings.php:241
 msgid "Not saved yet: a section below needs attention."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:241
+#: includes/Core/Admin/Strings.php:243
 msgid "You do not have access to this"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:242
+#: includes/Core/Admin/Strings.php:244
 msgid "This could not be loaded"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:243
+#: includes/Core/Admin/Strings.php:245
 msgid "Ask an administrator if you think you should see it."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:244
+#: includes/Core/Admin/Strings.php:246
 msgid "Activate"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:245
+#: includes/Core/Admin/Strings.php:247
 msgid "Deactivate"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:246
+#: includes/Core/Admin/Strings.php:248
 msgid "Move to trash"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:247
+#: includes/Core/Admin/Strings.php:249
 msgid "Move {count} record(s) to the trash? You can restore them from the Trash view."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:248
+#: includes/Core/Admin/Strings.php:250
 msgid "Choose image"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:249
+#: includes/Core/Admin/Strings.php:251
 msgid "Use this image"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:250
+#: includes/Core/Admin/Strings.php:252
 msgid "Replace image"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:251
+#: includes/Core/Admin/Strings.php:253
 msgid "Remove image"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:252
+#: includes/Core/Admin/Strings.php:254
 #: includes/Core/Database/Repository.php:165
 #: includes/Modules/Bookings/Strings.php:85
 msgid "Created"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:253
+#: includes/Core/Admin/Strings.php:255
 #: includes/Core/Database/Repository.php:171
 msgid "Modified"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:254
+#: includes/Core/Admin/Strings.php:256
 msgid "Nothing matches that."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:255
+#: includes/Core/Admin/Strings.php:257
 msgid "Per minute"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:256
+#: includes/Core/Admin/Strings.php:258
 msgid "Per hour"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:257
+#: includes/Core/Admin/Strings.php:259
 msgid "Per day"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:258
+#: includes/Core/Admin/Strings.php:260
 msgid "Per week"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:259
+#: includes/Core/Admin/Strings.php:261
 msgid "Per month"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:260
+#: includes/Core/Admin/Strings.php:262
 msgid "Close"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:261
+#: includes/Core/Admin/Strings.php:263
 msgid "No filters yet. Add a field to narrow this list."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:262
+#: includes/Core/Admin/Strings.php:264
 msgid "Add a field"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:263
+#: includes/Core/Admin/Strings.php:265
 msgid "Reset"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:264
-#: templates/booking-form.php:168
+#: includes/Core/Admin/Strings.php:266
+#: templates/booking-form.php:185
 msgid "Apply"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:265
+#: includes/Core/Admin/Strings.php:267
 msgid "Change comparison"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:266
+#: includes/Core/Admin/Strings.php:268
 msgid "Remove filter"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:267
+#: includes/Core/Admin/Strings.php:269
 msgid "From"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:268
+#: includes/Core/Admin/Strings.php:270
 msgid "To"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:269
+#: includes/Core/Admin/Strings.php:271
 msgid "— Any —"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:270
+#: includes/Core/Admin/Strings.php:272
 msgid "is"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:271
+#: includes/Core/Admin/Strings.php:273
 msgid "is not"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:272
+#: includes/Core/Admin/Strings.php:274
 msgid "is one of"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:273
+#: includes/Core/Admin/Strings.php:275
 msgid "is less than"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:274
+#: includes/Core/Admin/Strings.php:276
 msgid "is at most"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:275
+#: includes/Core/Admin/Strings.php:277
 msgid "is more than"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:276
+#: includes/Core/Admin/Strings.php:278
 msgid "is at least"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:277
+#: includes/Core/Admin/Strings.php:279
 msgid "is between"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:278
+#: includes/Core/Admin/Strings.php:280
 msgid "contains"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:279
 #: includes/Core/Admin/Strings.php:281
+#: includes/Core/Admin/Strings.php:283
 msgid "is empty"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:280
 #: includes/Core/Admin/Strings.php:282
+#: includes/Core/Admin/Strings.php:284
 msgid "is not empty"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:283
+#: includes/Core/Admin/Strings.php:285
 msgid "Go to"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:284
+#: includes/Core/Admin/Strings.php:286
 msgid "Paste a reference, or search records and pages…"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:285
+#: includes/Core/Admin/Strings.php:287
 msgid "Search pages…"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:286
+#: includes/Core/Admin/Strings.php:288
 msgid "Nothing has that code."
 msgstr ""
 
 #. translators: %s: a value the app fills in.
-#: includes/Core/Admin/Strings.php:288
+#: includes/Core/Admin/Strings.php:290
 #, php-format
 msgid "Nothing matches “%s”."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:289
+#: includes/Core/Admin/Strings.php:291
 msgid "to move"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:290
+#: includes/Core/Admin/Strings.php:292
 msgid "to open"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:291
+#: includes/Core/Admin/Strings.php:293
 msgid "Type two letters to search"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:292
+#: includes/Core/Admin/Strings.php:294
 msgid "Search records, pages…"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:293
+#: includes/Core/Admin/Strings.php:295
 msgid "Local"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:294
+#: includes/Core/Admin/Strings.php:296
 msgid "Development"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:295
+#: includes/Core/Admin/Strings.php:297
 msgid "Staging"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:296
+#: includes/Core/Admin/Strings.php:298
 msgid "Menu"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:297
+#: includes/Core/Admin/Strings.php:299
 msgid "This is not the live site"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:298
+#: includes/Core/Admin/Strings.php:300
 msgid "View site"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:299
+#: includes/Core/Admin/Strings.php:301
 msgid "Exit full screen"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:300
+#: includes/Core/Admin/Strings.php:302
 msgid "Full screen"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:301
+#: includes/Core/Admin/Strings.php:303
 msgid "Not found"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:302
+#: includes/Core/Admin/Strings.php:304
 msgid "There is no screen at this address."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:303
+#: includes/Core/Admin/Strings.php:305
 msgid "Back to the dashboard"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:304
+#: includes/Core/Admin/Strings.php:306
 msgid "Account"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:305
+#: includes/Core/Admin/Strings.php:307
 msgid "Profile"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:306
+#: includes/Core/Admin/Strings.php:308
 msgid "Back to site"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:307
+#: includes/Core/Admin/Strings.php:309
 msgid "Exit to WordPress"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:308
+#: includes/Core/Admin/Strings.php:310
 msgid "Log out"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:309
+#: includes/Core/Admin/Strings.php:311
 msgid "This was not restored"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:310
+#: includes/Core/Admin/Strings.php:312
 msgid "Restore anyway"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:311
+#: includes/Core/Admin/Strings.php:313
 msgid "Neither page is chosen. A customer who pays online is sent back to a page that holds the booking form, and to the home page if there is none, where nothing tells them how the payment went. Choose at least one."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:312
+#: includes/Core/Admin/Strings.php:314
 msgid "Removed when you save"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:313
+#: includes/Core/Admin/Strings.php:315
 msgid "Will be removed"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:314
+#: includes/Core/Admin/Strings.php:316
 msgid "Remove saved value"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:315
+#: includes/Core/Admin/Strings.php:317
 msgid "Keep saved value"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:316
+#: includes/Core/Admin/Strings.php:318
 msgid "Remove the saved value?"
 msgstr ""
 
 #. translators: %s: the label of the setting whose saved value is being removed, e.g. "Secret key".
-#: includes/Core/Admin/Strings.php:318
+#: includes/Core/Admin/Strings.php:320
 #, php-format
 msgid "The saved value of \"%s\" is erased when you save the settings. Anything that relies on it stops working until a new value is entered."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:319
+#: includes/Core/Admin/Strings.php:321
 #: includes/Modules/Spaces/Strings.php:40
 msgid "Remove"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:320
+#: includes/Core/Admin/Strings.php:322
 msgid "Sent as you write it. While you keep the wording this came with, a booking that is still pending is told it was received, not that it is confirmed."
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:321
+#: includes/Core/Admin/Strings.php:323
 msgid "What the customer answered in the fields your booking form adds, one to a line"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:322
+#: includes/Core/Admin/Strings.php:324
 msgid "Columns"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:323
+#: includes/Core/Admin/Strings.php:325
 msgid "Choose which columns are shown"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:324
+#: includes/Core/Admin/Strings.php:326
 msgid "Overdue"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:325
+#: includes/Core/Admin/Strings.php:327
 msgid "Default"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:326
-#: includes/Modules/Frontend/Shortcodes.php:640
+#: includes/Core/Admin/Strings.php:328
+#: includes/Modules/Frontend/Shortcodes.php:672
 msgid "minute"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:327
-#: includes/Modules/Frontend/Shortcodes.php:642
+#: includes/Core/Admin/Strings.php:329
+#: includes/Modules/Frontend/Shortcodes.php:674
 msgid "hour"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:328
-#: includes/Modules/Frontend/Shortcodes.php:644
+#: includes/Core/Admin/Strings.php:330
+#: includes/Modules/Frontend/Shortcodes.php:676
 msgid "day"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:329
-#: includes/Modules/Frontend/Shortcodes.php:646
+#: includes/Core/Admin/Strings.php:331
+#: includes/Modules/Frontend/Shortcodes.php:678
 msgid "week"
 msgstr ""
 
-#: includes/Core/Admin/Strings.php:330
-#: includes/Modules/Frontend/Shortcodes.php:648
+#: includes/Core/Admin/Strings.php:332
+#: includes/Modules/Frontend/Shortcodes.php:680
 msgid "month"
 msgstr ""
 
@@ -1674,7 +1682,7 @@ msgid "No booking matches that reference and email."
 msgstr ""
 
 #: includes/Modules/Bookings/Http/AccountController.php:111
-#: includes/Modules/Frontend/Shortcodes.php:315
+#: includes/Modules/Frontend/Shortcodes.php:323
 msgid "Your booking has been cancelled."
 msgstr ""
 
@@ -1683,12 +1691,12 @@ msgstr ""
 #: includes/Modules/Bookings/Repositories/BookingRepository.php:214
 #: includes/Modules/Bookings/Strings.php:38
 #: includes/Modules/Calendar/Strings.php:30
-#: includes/Modules/Frontend/Shortcodes.php:627
+#: includes/Modules/Frontend/Shortcodes.php:659
 #: includes/Modules/Locations/Module.php:107
 #: includes/Modules/Spaces/Module.php:110
 #: includes/Modules/Spaces/Repositories/SpaceRepository.php:90
 #: includes/Modules/SpaceTypes/Strings.php:37
-#: templates/booking-form.php:100
+#: templates/booking-form.php:101
 #: assets/blocks/booking-form/editor.js:91
 msgid "Location"
 msgstr ""
@@ -1721,8 +1729,8 @@ msgstr ""
 #: includes/Modules/Bookings/Services/BookingAdminService.php:110
 #: includes/Modules/Bookings/Services/BookingAdminService.php:428
 #: includes/Modules/Bookings/Strings.php:41
-#: includes/Modules/Frontend/Shortcodes.php:629
-#: templates/booking-form.php:119
+#: includes/Modules/Frontend/Shortcodes.php:661
+#: templates/booking-form.php:120
 msgid "Entry"
 msgstr ""
 
@@ -1732,8 +1740,8 @@ msgstr ""
 #: includes/Modules/Bookings/Services/BookingAdminService.php:111
 #: includes/Modules/Bookings/Services/BookingAdminService.php:429
 #: includes/Modules/Bookings/Strings.php:42
-#: includes/Modules/Frontend/Shortcodes.php:630
-#: templates/booking-form.php:126
+#: includes/Modules/Frontend/Shortcodes.php:662
+#: templates/booking-form.php:127
 msgid "Exit"
 msgstr ""
 
@@ -1750,7 +1758,7 @@ msgstr ""
 
 #: includes/Modules/Bookings/Http/BookingsController.php:335
 #: includes/Modules/Bookings/Strings.php:83
-#: includes/Modules/Frontend/Shortcodes.php:305
+#: includes/Modules/Frontend/Shortcodes.php:313
 msgid "Reference"
 msgstr ""
 
@@ -1768,7 +1776,7 @@ msgstr ""
 #: includes/Modules/Forms/Repositories/FormRepository.php:171
 #: includes/Modules/Forms/Services/FormService.php:422
 #: includes/Modules/Forms/Strings.php:35
-#: includes/Modules/Frontend/Shortcodes.php:307
+#: includes/Modules/Frontend/Shortcodes.php:315
 #: includes/Modules/Locations/Module.php:117
 #: includes/Modules/Locations/Repositories/LocationRepository.php:95
 #: includes/Modules/Locations/Services/LocationService.php:366
@@ -1782,7 +1790,7 @@ msgstr ""
 #: includes/Modules/Spaces/Services/SpaceService.php:230
 #: includes/Modules/Spaces/Strings.php:39
 #: includes/Modules/SpaceTypes/Module.php:132
-#: includes/Modules/SpaceTypes/Repositories/SpaceTypeRepository.php:83
+#: includes/Modules/SpaceTypes/Repositories/SpaceTypeRepository.php:84
 #: includes/Modules/SpaceTypes/Services/SpaceTypeService.php:383
 #: includes/Modules/SpaceTypes/Strings.php:53
 msgid "Status"
@@ -1805,9 +1813,9 @@ msgstr ""
 #: includes/Modules/Bookings/Module.php:232
 #: includes/Modules/Bookings/Strings.php:35
 #: includes/Modules/Forms/Strings.php:102
-#: includes/Modules/Frontend/Shortcodes.php:634
+#: includes/Modules/Frontend/Shortcodes.php:666
 #: includes/Modules/Locations/Strings.php:56
-#: templates/booking-form.php:200
+#: templates/booking-form.php:217
 msgid "Phone"
 msgstr ""
 
@@ -1830,8 +1838,8 @@ msgstr ""
 #: includes/Modules/Bookings/Http/BookingsController.php:350
 #: includes/Modules/Bookings/Repositories/BookingRepository.php:236
 #: includes/Modules/Bookings/Strings.php:49
-#: includes/Modules/Frontend/Shortcodes.php:308
-#: includes/Modules/Frontend/Shortcodes.php:597
+#: includes/Modules/Frontend/Shortcodes.php:316
+#: includes/Modules/Frontend/Shortcodes.php:629
 #: templates/invoice.php:132
 #: templates/invoice.php:161
 msgid "Total"
@@ -1856,7 +1864,7 @@ msgstr ""
 msgid "location_id, entry and exit are required."
 msgstr ""
 
-#: includes/Modules/Bookings/Http/PublicBookingController.php:263
+#: includes/Modules/Bookings/Http/PublicBookingController.php:287
 msgid "Your booking has been created."
 msgstr ""
 
@@ -1990,7 +1998,7 @@ msgid "The booking could not be changed."
 msgstr ""
 
 #: includes/Modules/Bookings/Services/CustomerBookings.php:101
-#: includes/Modules/Frontend/Shortcodes.php:215
+#: includes/Modules/Frontend/Shortcodes.php:223
 #: includes/Modules/Payments/Http/PublicPaymentController.php:137
 msgid "Booking not found."
 msgstr ""
@@ -2081,7 +2089,7 @@ msgstr[1] ""
 #. translators: 1: how many spaces, e.g. "2 spaces". 2: how long, e.g. "3 days".
 #. translators: 1: a space type's name. 2: how many spaces.
 #: includes/Modules/Bookings/Services/Quote.php:395
-#: includes/Modules/Frontend/Shortcodes.php:652
+#: includes/Modules/Frontend/Shortcodes.php:684
 #, php-format
 msgid "%1$s × %2$s"
 msgstr ""
@@ -2096,8 +2104,8 @@ msgid "Reinstate"
 msgstr ""
 
 #: includes/Modules/Bookings/Strings.php:29
-#: includes/Modules/Frontend/Shortcodes.php:425
-#: includes/Modules/Frontend/Shortcodes.php:617
+#: includes/Modules/Frontend/Shortcodes.php:433
+#: includes/Modules/Frontend/Shortcodes.php:649
 msgid "Confirm"
 msgstr ""
 
@@ -2127,7 +2135,7 @@ msgid "Spaces"
 msgstr ""
 
 #: includes/Modules/Bookings/Strings.php:43
-#: includes/Modules/Frontend/Shortcodes.php:631
+#: includes/Modules/Frontend/Shortcodes.php:663
 msgid "Duration"
 msgstr ""
 
@@ -2142,8 +2150,8 @@ msgstr ""
 
 #: includes/Modules/Bookings/Strings.php:48
 #: includes/Modules/Bookings/Strings.php:84
-#: includes/Modules/Frontend/Shortcodes.php:424
-#: includes/Modules/Frontend/Shortcodes.php:616
+#: includes/Modules/Frontend/Shortcodes.php:432
+#: includes/Modules/Frontend/Shortcodes.php:648
 #: includes/Modules/Payments/Module.php:141
 #: includes/Modules/Payments/Strings.php:56
 msgid "Payment"
@@ -2204,7 +2212,7 @@ msgid "No notes on this booking."
 msgstr ""
 
 #: includes/Modules/Bookings/Strings.php:62
-#: includes/Modules/Frontend/Shortcodes.php:312
+#: includes/Modules/Frontend/Shortcodes.php:320
 msgid "Cancel this booking?"
 msgstr ""
 
@@ -2213,7 +2221,7 @@ msgid "Its space becomes free for somebody else to book. Payments already record
 msgstr ""
 
 #: includes/Modules/Bookings/Strings.php:64
-#: includes/Modules/Frontend/Shortcodes.php:314
+#: includes/Modules/Frontend/Shortcodes.php:322
 msgid "Keep booking"
 msgstr ""
 
@@ -2236,7 +2244,7 @@ msgid "Default for new bookings"
 msgstr ""
 
 #: includes/Modules/Bookings/Strings.php:70
-#: templates/booking-form.php:165
+#: templates/booking-form.php:182
 msgid "Coupon code"
 msgstr ""
 
@@ -2271,7 +2279,7 @@ msgstr ""
 #: includes/Modules/Bookings/Strings.php:79
 #: includes/Modules/Forms/Module.php:131
 #: includes/Modules/Forms/Strings.php:39
-#: includes/Modules/Frontend/Shortcodes.php:632
+#: includes/Modules/Frontend/Shortcodes.php:664
 #: includes/Modules/Locations/Module.php:112
 #: includes/Modules/Locations/Strings.php:34
 #: includes/Modules/SpaceTypes/Module.php:127
@@ -2985,14 +2993,14 @@ msgid "This booking form is no longer taking bookings. Please reload the page."
 msgstr ""
 
 #: includes/Modules/Forms/Services/FormScope.php:168
-#: includes/Modules/Frontend/Shortcodes.php:318
-#: includes/Modules/Frontend/Shortcodes.php:607
+#: includes/Modules/Frontend/Shortcodes.php:326
+#: includes/Modules/Frontend/Shortcodes.php:639
 msgid "This field is required."
 msgstr ""
 
 #: includes/Modules/Forms/Services/FormScope.php:170
-#: includes/Modules/Frontend/Shortcodes.php:319
-#: includes/Modules/Frontend/Shortcodes.php:608
+#: includes/Modules/Frontend/Shortcodes.php:327
+#: includes/Modules/Frontend/Shortcodes.php:640
 msgid "Enter a valid email address."
 msgstr ""
 
@@ -3262,8 +3270,8 @@ msgid "Dates and location"
 msgstr ""
 
 #: includes/Modules/Forms/Strings.php:86
-#: templates/booking-form.php:144
-#: templates/booking-form.php:145
+#: templates/booking-form.php:161
+#: templates/booking-form.php:162
 msgid "Choose a space"
 msgstr ""
 
@@ -3272,13 +3280,13 @@ msgid "Customer details"
 msgstr ""
 
 #: includes/Modules/Forms/Strings.php:88
-#: includes/Modules/Frontend/Shortcodes.php:598
-#: includes/Modules/Frontend/Shortcodes.php:636
+#: includes/Modules/Frontend/Shortcodes.php:630
+#: includes/Modules/Frontend/Shortcodes.php:668
 msgid "Payment method"
 msgstr ""
 
 #: includes/Modules/Forms/Strings.php:89
-#: templates/booking-form.php:242
+#: templates/booking-form.php:259
 msgid "Review and confirm"
 msgstr ""
 
@@ -3303,7 +3311,7 @@ msgid "Text"
 msgstr ""
 
 #: includes/Modules/Forms/Strings.php:95
-#: includes/Modules/Frontend/Shortcodes.php:300
+#: includes/Modules/Frontend/Shortcodes.php:308
 msgid "Email address"
 msgstr ""
 
@@ -3324,13 +3332,13 @@ msgid "Checkbox"
 msgstr ""
 
 #: includes/Modules/Forms/Strings.php:100
-#: templates/booking-form.php:184
+#: templates/booking-form.php:201
 msgid "Full name"
 msgstr ""
 
 #: includes/Modules/Forms/Strings.php:103
-#: includes/Modules/Frontend/Shortcodes.php:635
-#: templates/booking-form.php:206
+#: includes/Modules/Frontend/Shortcodes.php:667
+#: templates/booking-form.php:223
 msgid "License plate"
 msgstr ""
 
@@ -3477,7 +3485,7 @@ msgid "All space types"
 msgstr ""
 
 #: includes/Modules/Forms/Strings.php:152
-#: includes/Modules/Frontend/Shortcodes.php:663
+#: includes/Modules/Frontend/Shortcodes.php:695
 msgid "Copy"
 msgstr ""
 
@@ -3514,8 +3522,8 @@ msgid "Design"
 msgstr ""
 
 #: includes/Modules/Frontend/Assets.php:288
-#: includes/Modules/Frontend/Shortcodes.php:320
-#: includes/Modules/Frontend/Shortcodes.php:604
+#: includes/Modules/Frontend/Shortcodes.php:328
+#: includes/Modules/Frontend/Shortcodes.php:636
 msgid "Something went wrong. Please try again."
 msgstr ""
 
@@ -3531,237 +3539,267 @@ msgstr ""
 msgid "A form visitors book a parking space with."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:164
+#. translators: %s: a price.
+#: includes/Modules/Frontend/FromPrice.php:63
+#, php-format
+msgid "from %s / minute"
+msgstr ""
+
+#. translators: %s: a price.
+#: includes/Modules/Frontend/FromPrice.php:66
+#, php-format
+msgid "from %s / hour"
+msgstr ""
+
+#. translators: %s: a price.
+#: includes/Modules/Frontend/FromPrice.php:69
+#, php-format
+msgid "from %s / week"
+msgstr ""
+
+#. translators: %s: a price.
+#: includes/Modules/Frontend/FromPrice.php:72
+#, php-format
+msgid "from %s / month"
+msgstr ""
+
+#. translators: %s: a price.
+#: includes/Modules/Frontend/FromPrice.php:75
+#, php-format
+msgid "from %s / day"
+msgstr ""
+
+#: includes/Modules/Frontend/Shortcodes.php:171
 msgid "The location this page names is not one this form books at, so the form starts on its first location."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:209
+#: includes/Modules/Frontend/Shortcodes.php:217
 msgid "This summary link is invalid or has expired."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:256
+#: includes/Modules/Frontend/Shortcodes.php:264
 msgid "Starting payment…"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:257
+#: includes/Modules/Frontend/Shortcodes.php:265
 msgid "Please follow the payment instructions."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:258
+#: includes/Modules/Frontend/Shortcodes.php:266
 msgid "Could not start payment."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:296
+#: includes/Modules/Frontend/Shortcodes.php:304
 msgid "My bookings"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:297
+#: includes/Modules/Frontend/Shortcodes.php:305
 msgid "Find your booking"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:298
+#: includes/Modules/Frontend/Shortcodes.php:306
 msgid "Enter the reference from your confirmation and the email address you booked with."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:299
+#: includes/Modules/Frontend/Shortcodes.php:307
 msgid "Booking reference"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:301
+#: includes/Modules/Frontend/Shortcodes.php:309
 msgid "Find booking"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:302
+#: includes/Modules/Frontend/Shortcodes.php:310
 msgid "Searching…"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:303
+#: includes/Modules/Frontend/Shortcodes.php:311
 msgid "Look up another booking"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:304
+#: includes/Modules/Frontend/Shortcodes.php:312
 msgid "No bookings found."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:306
-#: includes/Modules/Frontend/Shortcodes.php:423
-#: includes/Modules/Frontend/Shortcodes.php:615
+#: includes/Modules/Frontend/Shortcodes.php:314
+#: includes/Modules/Frontend/Shortcodes.php:431
+#: includes/Modules/Frontend/Shortcodes.php:647
 msgid "Details"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:310
+#: includes/Modules/Frontend/Shortcodes.php:318
 msgid "View"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:313
+#: includes/Modules/Frontend/Shortcodes.php:321
 msgid "Yes, cancel it"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:317
+#: includes/Modules/Frontend/Shortcodes.php:325
 msgid "Loading your bookings…"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:421
-#: includes/Modules/Frontend/Shortcodes.php:613
+#: includes/Modules/Frontend/Shortcodes.php:429
+#: includes/Modules/Frontend/Shortcodes.php:645
 #: includes/Modules/Locations/Strings.php:83
 msgid "Dates"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:428
+#: includes/Modules/Frontend/Shortcodes.php:436
 msgid "Where and when"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:429
+#: includes/Modules/Frontend/Shortcodes.php:437
 msgid "Pick your space"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:430
+#: includes/Modules/Frontend/Shortcodes.php:438
 msgid "Contact and vehicle"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:431
+#: includes/Modules/Frontend/Shortcodes.php:439
 msgid "How you pay"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:432
+#: includes/Modules/Frontend/Shortcodes.php:440
 msgid "Check and book"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:461
+#: includes/Modules/Frontend/Shortcodes.php:469
 msgid "This booking form is inactive, so visitors do not see it."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:591
+#: includes/Modules/Frontend/Shortcodes.php:623
 msgid "Checking…"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:592
+#: includes/Modules/Frontend/Shortcodes.php:624
 msgid "No spaces are available for those dates."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:593
+#: includes/Modules/Frontend/Shortcodes.php:625
 msgid "Please choose a space type."
 msgstr ""
 
 #. translators: %1$s: how many spaces of a type are free.
-#: includes/Modules/Frontend/Shortcodes.php:595
+#: includes/Modules/Frontend/Shortcodes.php:627
 #, php-format
 msgid "%1$s available"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:596
+#: includes/Modules/Frontend/Shortcodes.php:628
 msgid "Sold out"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:599
+#: includes/Modules/Frontend/Shortcodes.php:631
 msgid "Coupon applied"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:600
+#: includes/Modules/Frontend/Shortcodes.php:632
 msgid "That code is not valid for this booking."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:601
+#: includes/Modules/Frontend/Shortcodes.php:633
 msgid "Pick a space"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:602
+#: includes/Modules/Frontend/Shortcodes.php:634
 msgid "Any available"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:603
+#: includes/Modules/Frontend/Shortcodes.php:635
 msgid "Processing…"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:609
+#: includes/Modules/Frontend/Shortcodes.php:641
 msgid "Exit must be after entry."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:619
-#: templates/booking-form.php:174
-#: templates/booking-form.php:236
+#: includes/Modules/Frontend/Shortcodes.php:651
+#: templates/booking-form.php:191
+#: templates/booking-form.php:253
 msgid "Continue"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:620
-#: templates/booking-form.php:224
+#: includes/Modules/Frontend/Shortcodes.php:652
+#: templates/booking-form.php:241
 msgid "Review"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:621
+#: includes/Modules/Frontend/Shortcodes.php:653
 msgid "(completed)"
 msgstr ""
 
 #. translators: 1: the current step's number. 2: how many steps there are.
-#: includes/Modules/Frontend/Shortcodes.php:623
-#: templates/booking-form.php:72
+#: includes/Modules/Frontend/Shortcodes.php:655
+#: templates/booking-form.php:73
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:626
-#: templates/booking-form.php:267
-#: templates/booking-form.php:275
+#: includes/Modules/Frontend/Shortcodes.php:658
+#: templates/booking-form.php:284
+#: templates/booking-form.php:292
 msgid "Your booking"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:641
+#: includes/Modules/Frontend/Shortcodes.php:673
 msgid "minutes"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:643
+#: includes/Modules/Frontend/Shortcodes.php:675
 msgid "hours"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:645
+#: includes/Modules/Frontend/Shortcodes.php:677
 msgid "days"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:647
+#: includes/Modules/Frontend/Shortcodes.php:679
 msgid "weeks"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:649
+#: includes/Modules/Frontend/Shortcodes.php:681
 msgid "months"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:659
+#: includes/Modules/Frontend/Shortcodes.php:691
 msgid "Booking confirmed"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:661
+#: includes/Modules/Frontend/Shortcodes.php:693
 msgid "Keep your reference: you will need it to view or change this booking."
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:662
+#: includes/Modules/Frontend/Shortcodes.php:694
 #: templates/payment-return.php:64
 msgid "Your reference"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:664
+#: includes/Modules/Frontend/Shortcodes.php:696
 msgid "Copied"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:665
+#: includes/Modules/Frontend/Shortcodes.php:697
 msgid "View your booking"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:666
+#: includes/Modules/Frontend/Shortcodes.php:698
 msgid "Add to Google Calendar"
 msgstr ""
 
 #. translators: %1$s: the booking reference.
-#: includes/Modules/Frontend/Shortcodes.php:668
+#: includes/Modules/Frontend/Shortcodes.php:700
 #, php-format
 msgid "Parking booking %1$s"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:669
+#: includes/Modules/Frontend/Shortcodes.php:701
 #: templates/payment-return.php:30
 msgid "Make another booking"
 msgstr ""
 
-#: includes/Modules/Frontend/Shortcodes.php:670
+#: includes/Modules/Frontend/Shortcodes.php:702
 msgid "Your booking is saved, but the payment could not be started."
 msgstr ""
 
@@ -4497,12 +4535,12 @@ msgstr ""
 msgid "Length"
 msgstr ""
 
-#: includes/Modules/SpaceTypes/Services/SpaceTypeService.php:471
+#: includes/Modules/SpaceTypes/Services/SpaceTypeService.php:478
 #: includes/Modules/SpaceTypes/Strings.php:96
 msgid "A space type needs a name."
 msgstr ""
 
-#: includes/Modules/SpaceTypes/Services/SpaceTypeService.php:483
+#: includes/Modules/SpaceTypes/Services/SpaceTypeService.php:490
 msgid "That dimension is too large."
 msgstr ""
 
@@ -4726,6 +4764,22 @@ msgstr ""
 msgid "No %1$s price for %2$s: customers can’t book this type there."
 msgstr ""
 
+#: includes/Modules/SpaceTypes/Strings.php:104
+msgid "Badge (optional)"
+msgstr ""
+
+#: includes/Modules/SpaceTypes/Strings.php:105
+msgid "Most popular"
+msgstr ""
+
+#: includes/Modules/SpaceTypes/Strings.php:106
+msgid "A short highlight on this type in the booking form, such as \"Most popular\" or \"Save $5\". Only write what is true for your car park."
+msgstr ""
+
+#: includes/Modules/SpaceTypes/Strings.php:107
+msgid "At most 40 characters."
+msgstr ""
+
 #. translators: %s: the plugin file that was not loaded, e.g. "plugixa-car-parking/plugixa-car-parking.php".
 #: plugixa-car-parking.php:49
 #, php-format
@@ -4736,74 +4790,78 @@ msgstr ""
 msgid "Plugixa Car Parking: dependencies are missing. Run \"composer install\" in the plugin directory."
 msgstr ""
 
-#: templates/booking-form.php:26
+#: templates/booking-form.php:27
 msgid "No parking locations are available yet."
 msgstr ""
 
-#: templates/booking-form.php:60
+#: templates/booking-form.php:61
 msgid "Book your parking"
 msgstr ""
 
-#: templates/booking-form.php:61
+#: templates/booking-form.php:62
 msgid "Reserve a space in a few steps."
 msgstr ""
 
-#: templates/booking-form.php:65
+#: templates/booking-form.php:66
 msgid "Booking progress"
 msgstr ""
 
-#: templates/booking-form.php:94
+#: templates/booking-form.php:95
 msgid "When do you need parking?"
 msgstr ""
 
-#: templates/booking-form.php:133
+#: templates/booking-form.php:134
 msgid "Quick stay lengths"
 msgstr ""
 
-#: templates/booking-form.php:138
+#: templates/booking-form.php:152
 msgid "Check availability"
 msgstr ""
 
-#: templates/booking-form.php:156
+#: templates/booking-form.php:173
 msgid "Number of spaces"
 msgstr ""
 
-#: templates/booking-form.php:159
+#: templates/booking-form.php:176
 msgid "One space fewer"
 msgstr ""
 
-#: templates/booking-form.php:160
+#: templates/booking-form.php:177
 msgid "One space more"
 msgstr ""
 
-#: templates/booking-form.php:173
-#: templates/booking-form.php:223
-#: templates/booking-form.php:235
-#: templates/booking-form.php:246
+#: templates/booking-form.php:183
+msgid "Enter code"
+msgstr ""
+
+#: templates/booking-form.php:190
+#: templates/booking-form.php:240
+#: templates/booking-form.php:252
+#: templates/booking-form.php:263
 msgid "Back"
 msgstr ""
 
-#: templates/booking-form.php:180
+#: templates/booking-form.php:197
 msgid "Your details"
 msgstr ""
 
-#: templates/booking-form.php:220
+#: templates/booking-form.php:237
 msgid "Leave this field empty"
 msgstr ""
 
-#: templates/booking-form.php:230
+#: templates/booking-form.php:247
 msgid "How would you like to pay?"
 msgstr ""
 
-#: templates/booking-form.php:247
+#: templates/booking-form.php:264
 msgid "Confirm booking"
 msgstr ""
 
-#: templates/booking-summary.php:32
+#: templates/booking-summary.php:33
 msgid "Print"
 msgstr ""
 
-#: templates/booking-summary.php:40
+#: templates/booking-summary.php:41
 msgid "Pay now"
 msgstr ""
 
