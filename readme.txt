@@ -4,7 +4,7 @@ Tags: parking, parking booking, reservation, car park, booking
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -253,6 +253,12 @@ The plugin itself sends nothing to any outside service: no analytics, no trackin
 20. Booking form, Minimal design - one column with a progress bar
 
 == Changelog ==
+
+= 1.3.2 =
+* Fix: emails show the entry and exit times in your date and time format, as the invoice does, instead of "2026-11-24 00:00:00".
+* Fix: when two payment methods would show the same name to the customer, each shows its full name instead, so the customer can tell them apart.
+* Fix: the change from the previous period is rounded to one decimal ("+87.9%").
+* Add-on: editing a season pass shows its location and space type by name, instead of "#3".
 
 = 1.3.1 =
 * New: a fresh look for the booking form, the customer's bookings page and the booking summary, in all three designs: Space Grotesk headings, Inter text, flatter rows with a coloured mark on the one you choose, and tighter corners. Both typefaces are included in the plugin and are never loaded from a font service.

@@ -4,7 +4,7 @@
  * Plugin Name: Plugixa Car Parking
  * Plugin URI: https://www.plugixa.com/plugins/plugixa-car-parking
  * Description: Car-park booking and reservation system with a React admin panel, a capacity-based booking engine, live availability, a booking wizard shortcode and Gutenberg block, coupons, offline payment and email notifications.
- * Version: 1.3.1
+ * Version: 1.3.2
  * Author: Plugixa
  * Author URI: https://plugixa.com
  * Copyright (C) 2026 Plugixa (https://plugixa.com)
@@ -49,7 +49,7 @@ if ( defined( 'PLUGIXA_CARPARKING_PATH' ) ) {
     return;
 }
 // Plugin constants
-define( 'PLUGIXA_CARPARKING_VERSION', '1.3.1' );
+define( 'PLUGIXA_CARPARKING_VERSION', '1.3.2' );
 define( 'PLUGIXA_CARPARKING_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PLUGIXA_CARPARKING_URL', plugin_dir_url( __FILE__ ) );
 define( 'PLUGIXA_CARPARKING_BASENAME', plugin_basename( __FILE__ ) );

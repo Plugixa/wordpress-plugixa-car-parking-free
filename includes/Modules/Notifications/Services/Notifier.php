@@ -437,8 +437,8 @@ final class Notifier {
 			'{customer_name}'  => (string) ( $booking['customer_name'] ?? '' ),
 			'{customer_email}' => (string) ( $booking['customer_email'] ?? '' ),
 			'{location_name}'  => (string) ( $location['name'] ?? '' ),
-			'{entry_datetime}' => (string) ( $booking['entry_datetime'] ?? '' ),
-			'{exit_datetime}'  => (string) ( $booking['exit_datetime'] ?? '' ),
+			'{entry_datetime}' => $this->when( $booking['entry_datetime'] ?? '' ),
+			'{exit_datetime}'  => $this->when( $booking['exit_datetime'] ?? '' ),
 			'{quantity}'       => (string) ( $booking['quantity'] ?? 1 ),
 			'{total}'          => Money::format( (float) ( $booking['total'] ?? 0 ) ),
 			// The status as the site calls it, not the slug it is stored under.
@@ -466,5 +466,25 @@ final class Notifier {
 		}
 
 		return $context;
+	}
+
+	/**
+	 * A stored datetime in the site's own date and time format, as the invoice shows it.
+	 *
+	 * The stored value is the car park's wall-clock time, so it is formatted as is, with no
+	 * timezone shift. Month names come out translated. A value that will not parse is kept.
+	 *
+	 * @param mixed $value The stored datetime.
+	 */
+	private function when( mixed $value ): string {
+		$value = is_scalar( $value ) ? (string) $value : '';
+		if ( '' === $value ) {
+			return '';
+		}
+
+		$format    = trim( (string) Settings::get( 'date_format', 'Y-m-d' ) . ' ' . (string) Settings::get( 'time_format', 'H:i' ) );
+		$formatted = mysql2date( '' !== $format ? $format : 'Y-m-d H:i', $value );
+
+		return is_string( $formatted ) && '' !== $formatted ? $formatted : $value;
 	}
 }

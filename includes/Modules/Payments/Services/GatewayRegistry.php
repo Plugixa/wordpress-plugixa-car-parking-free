@@ -101,6 +101,28 @@ final class GatewayRegistry {
 			}
 		}
 
+		return $this->disambiguate( $available );
+	}
+
+	/**
+	 * Give two methods that would read the same to the customer their full names instead.
+	 *
+	 * Two online gateways can both word themselves "Pay online". Shown side by side, the customer
+	 * cannot tell them apart, so each method whose short label is shared falls back to its admin
+	 * name, which names the provider.
+	 *
+	 * @param array<int, array{id: string, label: string, online: bool, icon: string, logos: string[]}> $available The methods on offer.
+	 * @return array<int, array{id: string, label: string, online: bool, icon: string, logos: string[]}>
+	 */
+	private function disambiguate( array $available ): array {
+		$counts = array_count_values( array_column( $available, 'label' ) );
+
+		foreach ( $available as $index => $method ) {
+			if ( ( $counts[ $method['label'] ] ?? 0 ) > 1 && isset( $this->gateways[ $method['id'] ] ) ) {
+				$available[ $index ]['label'] = $this->gateways[ $method['id'] ]->label();
+			}
+		}
+
 		return $available;
 	}
 
